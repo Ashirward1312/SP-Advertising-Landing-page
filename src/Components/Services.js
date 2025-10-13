@@ -87,8 +87,8 @@ const ServicesPage = () => {
           <Card
             key={index}
             sx={{
-              width: 280,
-              height: 380, // fixed height for alignment
+              width: 200,
+              height: 280, // fixed height for alignment
               p: 4,
               borderRadius: 2,
               border: "1px solid #e5e7eb",

@@ -40,7 +40,7 @@ const pulse = keyframes`
 const HeroRoot = styled('section')(({ theme }) => ({
   position: 'relative',
   overflow: 'hidden',
-  minHeight: '92vh',
+  minHeight: '100vh', // desktop unchanged
   display: 'flex',
   alignItems: 'center',
   // blue gradient background
@@ -57,6 +57,11 @@ const HeroRoot = styled('section')(({ theme }) => ({
       'radial-gradient(1500px 600px at -20% 110%, rgba(255,255,255,.18), transparent 60%)',
     pointerEvents: 'none',
   },
+  // MOBILE ONLY changes
+  [theme.breakpoints.down('sm')]: {
+    minHeight: '100dvh',
+    paddingBlock: theme.spacing(6),
+  },
 }));
 
 const Blob = styled(Box)(({ theme }) => ({
@@ -71,11 +76,15 @@ const Blob = styled(Box)(({ theme }) => ({
   filter: 'drop-shadow(0 20px 50px rgba(2, 6, 23, 0.25))',
   animation: `${blobMorph} 16s ease-in-out infinite`,
   zIndex: 0,
-  // make sure it shrinks on small screens
+  // original medium behavior unchanged
   [theme.breakpoints.down('md')]: {
     width: 420,
     height: 420,
     right: '2%',
+  },
+  // MOBILE ONLY: hide on phones
+  [theme.breakpoints.down('sm')]: {
+    display: 'none',
   },
 }));
 
@@ -88,6 +97,10 @@ const DotPattern = styled(Box)(({ theme }) => ({
     'radial-gradient(rgba(255,255,255,0.7) 1.2px, transparent 1.2px)',
   backgroundSize: '16px 16px',
   zIndex: 0,
+  // MOBILE ONLY: hide decorative dots
+  [theme.breakpoints.down('sm')]: {
+    display: 'none',
+  },
 }));
 
 const FloatImage = styled('img')(({ theme }) => ({
@@ -97,9 +110,14 @@ const FloatImage = styled('img')(({ theme }) => ({
   maxWidth: 520,
   animation: `${floatY} 7s ease-in-out infinite`,
   filter: 'drop-shadow(0 20px 40px rgba(3, 7, 18, 0.25))',
+  // original medium behavior unchanged
   [theme.breakpoints.down('md')]: {
     maxWidth: 420,
     marginInline: 'auto',
+  },
+  // MOBILE ONLY: slightly smaller
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: 360,
   },
 }));
 
@@ -168,12 +186,20 @@ export default function HomeHero() {
         >
           {/* Left content */}
           <Grid item xs={12} md={7} lg={6}>
-            <Stack spacing={2} sx={{ animation: `${fadeUp} .8s ease .05s both` }}>
+            <Stack
+              spacing={2}
+              sx={{
+                animation: `${fadeUp} .8s ease .05s both`,
+                // MOBILE ONLY: center text
+                textAlign: { xs: 'center', sm: 'left' },
+                alignItems: { xs: 'center', sm: 'flex-start' },
+              }}
+            >
               <Typography
                 variant="h2"
                 sx={{
                   lineHeight: 1.1,
-                  fontSize: { xs: 36, sm: 44, md: 56 },
+                  fontSize: { xs: 30, sm: 40, md: 50 },
                 }}
               >
                 Empowering Your Brand
@@ -192,7 +218,7 @@ export default function HomeHero() {
               <Typography
                 component="h1"
                 sx={{
-                  fontWeight: 800,
+                  fontWeight: 700,
                   lineHeight: 1.15,
                   fontSize: { xs: 38, sm: 52, md: 66 },
                   letterSpacing: { md: -1 },
@@ -214,7 +240,16 @@ export default function HomeHero() {
                 With SP Advertising, make your brand live better.
               </Typography>
 
-              <Stack direction="row" spacing={2} sx={{ pt: 2 }}>
+              <Stack
+                // MOBILE ONLY: stack buttons vertically
+                direction={{ xs: 'column', sm: 'row' }}
+                spacing={{ xs: 1.5, sm: 2 }}
+                sx={{
+                  pt: 2,
+                  width: '100%',
+                  alignItems: { xs: 'stretch', sm: 'center' },
+                }}
+              >
                 <CTAButton
                   variant="contained"
                   endIcon={
@@ -222,6 +257,11 @@ export default function HomeHero() {
                       <ArrowForwardRoundedIcon />
                     </ArrowCircle>
                   }
+                  sx={{
+                    width: { xs: '100%', sm: 'auto' },
+                    height: { xs: 56, sm: 64 },
+                    fontSize: { xs: '1rem', sm: '1.05rem' },
+                  }}
                 >
                   Get Services
                 </CTAButton>
@@ -233,8 +273,10 @@ export default function HomeHero() {
                     color: '#fff',
                     textTransform: 'none',
                     fontWeight: 600,
-                    '&:hover': { opacity: 0.85, transform: 'translateY(-2px)' },
                     transition: 'transform .25s ease, opacity .25s ease',
+                    '&:hover': { opacity: 0.85, transform: 'translateY(-2px)' },
+                    width: { xs: '100%', sm: 'auto' },
+                    height: { xs: 48, sm: 56 },
                   }}
                 >
                   Learn more
@@ -261,14 +303,8 @@ export default function HomeHero() {
 
       {/* Decorative shapes */}
       <Blob aria-hidden />
-      <DotPattern
-        aria-hidden
-        sx={{ left: { xs: -20, md: 40 }, top: 80 }}
-      />
-      <DotPattern
-        aria-hidden
-        sx={{ right: 140, top: 120, opacity: 0.35 }}
-      />
+      <DotPattern aria-hidden sx={{ left: { xs: -20, md: 40 }, top: 80 }} />
+      <DotPattern aria-hidden sx={{ right: 140, top: 120, opacity: 0.35 }} />
       <DotPattern
         aria-hidden
         sx={{ right: 60, bottom: 80, width: 160, height: 160, opacity: 0.25 }}
