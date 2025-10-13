@@ -5,7 +5,7 @@ const Contact = () => {
   return (
     <Box
       sx={{
-        background: "#f8f9fa", // light grey background for subtle contrast
+        background: "#f8f9faff", // light grey background for subtle contrast
         color: "#0b1220",
         py: 12,
         px: 3,
