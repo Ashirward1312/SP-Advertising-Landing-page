@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import {
   FaBullhorn, FaLightbulb, FaChartLine, FaVideo, FaPaintBrush, FaChartPie,
-  FaSearch, FaEnvelope, FaUsers, FaMobileAlt,   // NEW icons
+  FaSearch, FaEnvelope,  // Removed FaUsers, FaMobileAlt
 } from 'react-icons/fa';
 import './Service.css';
-
 const servicesData = [
   {
     icon: <FaBullhorn size={52} color="#2563eb" />,
