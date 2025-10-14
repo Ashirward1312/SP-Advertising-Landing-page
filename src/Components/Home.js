@@ -1,93 +1,115 @@
-// src/MarketingHero.jsx
-import React from 'react';
-import { Container } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import './Home.css';
 
-// Change this to your own background if you want:
-const BG_URL =
-  'https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1800&auto=format&fit=crop';
+const DEFAULT_AD_TYPES = [
+  'Outdoor Advertising',
+  'Digital Marketing',
+  'SEO Optimization',
+  'Google Ads (PPC)',
+  'Social Media Marketing',
+  'Branding & Identity',
+  'Print Advertising',
+  'TV Commercials',
+  'Radio Ads',
+  'Influencer Marketing',
+  'Content Marketing',
+  'Email Marketing',
+  'Event Marketing',
+  'PR & Media',
+  'Website Development',
+  'Video Production',
+  'OTT & In‑App Ads',
+  'SMS / WhatsApp Marketing',
+  'Lead Generation',
+];
 
-export default function MarketingHero() {
+const HERO_IMAGE =
+  'https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop';
+
+export default function AdsHero({
+  adTypes = DEFAULT_AD_TYPES,
+  imageSrc = HERO_IMAGE,
+  ctaHref = '#contact',
+}) {
+  const [idx, setIdx] = useState(0);
+  const [text, setText] = useState('');
+  const [isDel, setIsDel] = useState(false);
+
+  // Typing settings
+  const TYPE_SPEED = 70;     // ms per char
+  const DELETE_SPEED = 35;   // ms per char
+  const HOLD_TIME = 1400;    // ms after full word
+
+  useEffect(() => {
+    const current = adTypes[idx % adTypes.length] || '';
+    let timer;
+
+    if (!isDel && text.length < current.length) {
+      timer = setTimeout(() => setText(current.slice(0, text.length + 1)), TYPE_SPEED);
+    } else if (!isDel && text.length === current.length) {
+      timer = setTimeout(() => setIsDel(true), HOLD_TIME);
+    } else if (isDel && text.length > 0) {
+      timer = setTimeout(() => setText(current.slice(0, text.length - 1)), DELETE_SPEED);
+    } else if (isDel && text.length === 0) {
+      setIsDel(false);
+      setIdx((i) => (i + 1) % adTypes.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [text, isDel, idx, adTypes]);
+
   return (
-    <section
-      className="mk-hero"
-      style={{ '--hero-bg': `url('${BG_URL}')` }}
-    >
-      {/* Decorative layers */}
-      <div className="mk-hero__orb mk-hero__orb--1" aria-hidden="true" />
-      <div className="mk-hero__orb mk-hero__orb--2" aria-hidden="true" />
-      <div className="mk-hero__ring" aria-hidden="true" />
+    <section className="ads-hero">
+      {/* Decorative shapes */}
+      <div className="ads-blob" aria-hidden="true" />
+      <div className="ads-dots ads-dots--left" aria-hidden="true" />
+      <div className="ads-dots ads-dots--right" aria-hidden="true" />
 
-      <Container maxWidth="xl" className="mk-hero__container">
-        <div className="mk-hero__panel">
-          <div className="mk-hero__badge">
-            All‑Type Marketing · Digital · Outdoor · Print
-          </div>
+      <div className="ads-container">
+        <div className="ads-grid">
+          {/* Left content */}
+          <div className="ads-left">
+            <div className="eyebrow">Empowering Your Brand</div>
 
-          <h1 className="mk-hero__title">
-            Grow Smarter, <span>Market Everywhere</span>.
-          </h1>
+            <h1 className="ads-title">
+              with Strategic Advertising
+            </h1>
 
-          <p className="mk-hero__subtitle">
-            ROI‑first campaigns across SEO, Performance Ads, Social Media,
-            Branding, Outdoor and Print. Strategy + Creative + Media under one
-            roof.
-          </p>
+            {/* The white changing line */}
+            <h2 className="ads-switcher" aria-live="polite">
+              <span className="switcher-text">{text}</span>
+              <span className="cursor" aria-hidden="true" />
+              <span className="badge">{adTypes.length}+ types</span>
+            </h2>
 
-          <div className="mk-hero__cta">
-            <a className="mk-btn mk-btn--primary" href="#contact">
-              Get Free Audit
-            </a>
-            <a className="mk-btn mk-btn--ghost" href="#work">
-              See Our Work
-            </a>
-          </div>
+            <p className="ads-desc">
+              Welcome to SP ADVERTISING, one of the most creative and
+              well‑established advertising agencies in Raipur, Chhattisgarh.
+              With SP Advertising, make your brand live better.
+            </p>
 
-          <ul className="mk-hero__chips" aria-label="Our services">
-            <li>SEO</li>
-            <li>Google Ads</li>
-            <li>Social Media</li>
-            <li>Branding</li>
-            <li>Outdoor</li>
-            <li>Print</li>
-          </ul>
-
-          <div className="mk-hero__stats">
-            <div className="stat">
-              <strong>120+</strong>
-              <span>Brands</span>
-            </div>
-            <div className="stat">
-              <strong>9+ yrs</strong>
-              <span>Experience</span>
-            </div>
-            <div className="stat">
-              <strong>12M+</strong>
-              <span>Impressions</span>
-            </div>
-            <div className="stat">
-              <strong>4.9/5</strong>
-              <span>Client rating</span>
+            <div className="cta-row">
+              <a className="cta-btn" href={ctaHref}>
+                <span>Get Services</span>
+                <span className="cta-arrow">➜</span>
+              </a>
             </div>
           </div>
-        </div>
-      </Container>
 
-      {/* Scrolling service strip */}
-      <div className="mk-hero__marquee" aria-hidden="true">
-        <div className="track">
-          <span>SEO</span>
-          <span>Performance Ads</span>
-          <span>Social Media</span>
-          <span>Branding</span>
-          <span>Outdoor</span>
-          <span>Print</span>
-          <span>SEO</span>
-          <span>Performance Ads</span>
-          <span>Social Media</span>
-          <span>Branding</span>
-          <span>Outdoor</span>
-          <span>Print</span>
+          {/* Right illustration */}
+          <div className="ads-right">
+            <div className="image-wrap">
+              <img
+                src={imageSrc}
+                alt="Advertising illustration"
+                onError={(e) => {
+                  e.currentTarget.src =
+                    'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop';
+                }}
+              />
+              <div className="bubble" aria-hidden="true" />
+            </div>
+          </div>
         </div>
       </div>
     </section>

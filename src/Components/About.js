@@ -24,21 +24,21 @@ const About = () => {
   return (
     <Box
       sx={{
-        background: "#ffffff", // White background
+        background: "#ffffff",
         color: "#0b1220",
-        py: 10,
-        px: 3,
+        py: { xs: 6, md: 10 }, // reduced vertical padding
+        px: { xs: 2, md: 3 },
         textAlign: "center",
-        minHeight: "100vh",
+        minHeight: "auto",
       }}
     >
       {/* Header */}
-      <Box sx={{ mb: 8 }}>
+      <Box sx={{ mb: { xs: 4, md: 6 } }}>
         <Typography
-          variant="h3"
+          variant="h4"
           sx={{
             fontWeight: "bold",
-            mb: 2,
+            mb: 1,
             opacity: 0,
             animation: "fadeInDown 1s forwards",
           }}
@@ -53,6 +53,7 @@ const About = () => {
             opacity: 0,
             animation: "fadeIn 1.5s forwards",
             color: "#475569",
+            fontSize: { xs: "0.9rem", md: "1rem" },
           }}
         >
           We craft innovative campaigns that connect brands with audiences. Our expertise
@@ -66,49 +67,67 @@ const About = () => {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: 4,
+          gap: { xs: 2, md: 4 },
         }}
       >
         {cardData.map((card, index) => (
           <Card
             key={index}
             sx={{
-              width: 280,
-              p: 4,
+              width: { xs: 250, sm: 260, md: 280 },
+              p: { xs: 2.5, md: 3 },
               borderRadius: 2,
-              border: "1px solid #e5e7eb", // subtle border
+              border: "1px solid #e5e7eb",
               background: "#ffffff",
               transition: "transform 0.4s, box-shadow 0.4s",
               "&:hover": {
-                transform: "translateY(-10px)",
-                boxShadow: "0 15px 30px rgba(0,0,0,0.15)",
+                transform: "translateY(-8px)",
+                boxShadow: "0 12px 25px rgba(0,0,0,0.1)",
               },
             }}
           >
-            <CardContent sx={{ textAlign: "center" }}>
+            <CardContent
+              sx={{
+                textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                height: "100%",
+              }}
+            >
               <Box
                 sx={{
                   mb: 2,
                   display: "inline-block",
-                  transition: "transform 0.3s, color 0.3s",
-                  "&:hover": { transform: "rotate(20deg) scale(1.2)" },
+                  transition: "transform 0.3s",
+                  "&:hover": { transform: "rotate(15deg) scale(1.15)" },
                 }}
               >
                 {card.icon}
               </Box>
-              <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: "bold", mb: 1, fontSize: { xs: "1rem", md: "1.1rem" } }}
+              >
                 {card.title}
               </Typography>
-              <Typography variant="body2" sx={{ color: "#475569", mb: 2 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "#475569",
+                  mb: 2,
+                  fontSize: { xs: "0.85rem", md: "0.9rem" },
+                }}
+              >
                 {card.desc}
               </Typography>
-              {/* Example Button */}
               <Button
                 variant="contained"
                 sx={{
                   textTransform: "none",
                   borderRadius: 2,
                   backgroundColor: "#2563eb",
+                  fontSize: { xs: "0.75rem", md: "0.85rem" },
                   "&:hover": { backgroundColor: "#1e40af" },
                 }}
               >
@@ -123,7 +142,7 @@ const About = () => {
       <style>
         {`
           @keyframes fadeInDown {
-            0% { opacity: 0; transform: translateY(-50px); }
+            0% { opacity: 0; transform: translateY(-40px); }
             100% { opacity: 1; transform: translateY(0); }
           }
           @keyframes fadeIn {
