@@ -212,17 +212,17 @@ export default function AdvertisingFooter() {
   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Mail size={16} style={{ marginRight: '8px' }} />
-      <Typography variant="body2">contact@sp.com</Typography>
+      <Typography variant="body2">Sp@gmail.com</Typography>
     </Box>
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Phone size={16} style={{ marginRight: '8px' }} />
-      <Typography variant="body2">+1 (555) 123-4567</Typography>
+      <Typography variant="body2">+91 9123456780 </Typography>
     </Box>
     <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
       <MapPin size={16} style={{ marginRight: '8px', marginTop: '4px' }} />
       <Typography variant="body2">
-        123 Creative Street<br />
-        New York, NY 10001
+        Shankar Nagar <br />
+        Raipur,Chhattisgarh 492001
       </Typography>
     </Box>
   </Box>
