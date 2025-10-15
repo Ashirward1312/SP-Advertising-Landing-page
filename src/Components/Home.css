@@ -90,9 +90,12 @@
   margin-top: 8px;
   max-width: 68ch;
   font-size: clamp(14.5px, 2vw, 18px);
-  color: rgba(255,255,255,.94);
+  color: rgba(255, 255, 255, 0.94);
   line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500; /* You can adjust this: 300 = light, 500 = medium, 600 = semi-bold */
 }
+
 
 /* CTA */
 .cta-row { margin-top: clamp(14px, 2.4vw, 22px); }

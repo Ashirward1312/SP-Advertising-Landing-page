@@ -32,7 +32,7 @@ export default function ContactUsModal({ open, onClose, onSubmit }) {
     if (!values.name.trim()) e.name = 'Please enter your name';
     if (!/^\S+@\S+\.\S+$/.test(values.email)) e.email = 'Enter a valid email';
     if (values.phone && !/^[\d+\-\s()]{7,15}$/.test(values.phone)) e.phone = 'Enter a valid phone';
-    if (!values.message.trim() || values.message.trim().length < 10) e.message = 'Message must be 10+ chars';
+    if (!values.message.trim() || values.message.trim().length < 10) e.message = 'Message must be 10+ characters';
     return e;
   };
 
@@ -44,12 +44,30 @@ export default function ContactUsModal({ open, onClose, onSubmit }) {
 
     setSending(true);
     try {
-      // Plug your API here
-      await new Promise((r) => setTimeout(r, 900));
-      onSubmit?.(values);
-      // Reset if needed
-      // setValues({ name:'', email:'', phone:'', message:'' });
-      onClose?.();
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '5086a787-47c0-416a-8498-f6751f82a234', // ✅ your Web3Forms key
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          message: values.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert('✅ Message sent successfully!');
+        setValues({ name: '', email: '', phone: '', message: '' });
+        onSubmit?.(values);
+        onClose?.();
+      } else {
+        alert('❌ Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      alert('⚠️ An error occurred while sending the message.');
     } finally {
       setSending(false);
     }
@@ -82,7 +100,7 @@ export default function ContactUsModal({ open, onClose, onSubmit }) {
         },
       }}
     >
-      {/* Close chip */}
+      {/* Close button */}
       <IconButton
         aria-label="Close"
         onClick={onClose}
