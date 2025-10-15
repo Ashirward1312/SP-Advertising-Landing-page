@@ -142,17 +142,20 @@ function ServiceCard({ service, index }) {
 
       <CardContent sx={{ p: 2.5, display: 'grid', gap: 1, flexGrow: 1 }}>
         <Typography variant="h6">{service.title}</Typography>
-        <Typography
-          color="text.secondary"
-          sx={{
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-          }}
-        >
-          {service.desc}
-        </Typography>
+       <Typography
+  color="text.secondary"
+  sx={{
+    display: '-webkit-box',
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+    fontFamily: "Poppins",  // <--- add this
+    fontWeight: 500,                     // optional: adjust weight
+  }}
+>
+  {service.desc}
+</Typography>
+
         <Button
           size="small"
           variant="text"
