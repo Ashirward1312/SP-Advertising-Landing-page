@@ -1,0 +1,5 @@
+@import "tailwindcss";
+/* Optional: body font default set kar sakte ho */
+body {
+   font-family:"poppins", sans-serif;
+}
