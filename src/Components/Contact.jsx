@@ -43,7 +43,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-slate-50 to-white py-10 sm:py-12 lg:py-14">
+    <section className="relative w-full bg-gradient-to-b from-slate-50 to-white py-10 sm:py-12 lg:py-14" id="contact">
       {/* Soft orange backdrop */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 -z-10 h-72 w-[90vw] -translate-x-1/2 bg-gradient-to-tr from-orange-400/10 via-amber-400/10 to-transparent blur-3xl"

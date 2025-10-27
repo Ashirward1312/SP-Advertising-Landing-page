@@ -47,7 +47,7 @@ export default function About() {
   ];
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-orange-50 to-white py-12 sm:py-14 lg:py-16">
+    <section className="relative w-full bg-gradient-to-b from-orange-50 to-white py-12 sm:py-14 lg:py-16" id="about">
       {/* Decorative Glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 -z-10 h-96 w-[95vw] -translate-x-1/2 bg-gradient-to-tr from-orange-400/20 via-yellow-400/10 to-transparent blur-3xl"

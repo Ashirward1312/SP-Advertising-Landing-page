@@ -1,5 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaCheckCircle, FaUsers, FaHandsHelping } from "react-icons/fa";
+import {
+  FaCheckCircle,
+  FaUsers,
+  FaHandsHelping,
+  FaShieldAlt,
+  FaBolt,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+ // Example local image import
 
 /* ================== Accessibility Hooks: Motion prefs + Reveal on scroll ================== */
 // Users jinko animations pasand nahi (prefers-reduced-motion), unke liye animations skip
@@ -50,9 +58,13 @@ const FOUNDER = {
 
 /* ================== Features (icons + text) ================== */
 const features = [
-  { icon: <FaUsers size={28} />, title: "Trusted Team", desc: "Verified experts ensuring reliability and professionalism in every deal." },
-  { icon: <FaHandsHelping size={28} />, title: "Customer First", desc: "We prioritize your needs, offering guidance every step of the way." },
-  { icon: <FaCheckCircle size={28} />, title: "Transparent Process", desc: "Clear pricing, honest insights, and end-to-end support for peace of mind." },
+  { icon: <FaUsers size={28} aria-hidden="true" />, title: "Trusted Team", desc: "Verified experts ensuring reliability and professionalism in every deal." },
+  { icon: <FaHandsHelping size={28} aria-hidden="true" />, title: "Customer First", desc: "We prioritize your needs, offering guidance every step of the way." },
+  { icon: <FaCheckCircle size={28} aria-hidden="true" />, title: "Transparent Process", desc: "Clear pricing, honest insights, and end-to-end support for peace of mind." },
+
+  { icon: <FaShieldAlt size={28} aria-hidden="true" />, title: "Verified Listings", desc: "Each property is vetted with documentation checks and on‑ground verification." },
+  { icon: <FaBolt size={28} aria-hidden="true" />, title: "Fast Closures", desc: "Streamlined paperwork and coordination to close deals quickly and smoothly." },
+  { icon: <FaMapMarkerAlt size={28} aria-hidden="true" />, title: "Local Expertise", desc: "Neighborhood insights, pricing trends, and guidance you can trust." },
 ];
 
 /* ================== Main Component ================== */
@@ -140,7 +152,7 @@ const HowWeAre = () => {
         {/* ================== Section header for features ================== */}
         <div className="text-center mt-12 sm:mt-16">
           <h3 className="text-3xl font-bold text-gray-900 mb-2 inline-block">
-            How We Are
+            Who We Are
             <span className="block w-16 h-1 bg-orange-400 rounded mt-2 mx-auto" />
           </h3>
           <p className="text-gray-600 max-w-2xl mx-auto font-poppins">

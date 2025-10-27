@@ -46,7 +46,7 @@ const ASSOCIATES = [
     id: "cgar",
     name: "CGAR",
     image: "https://bansodrealtors.com/wp-content/uploads/2021/05/3-1.jpg",
-    desc: "CGAR is a local association under NAR‑INDIA with 50+ members collaborating across Chhattisgarh.",
+    desc: "CGAR is a local association under NAR-INDIA with 50+ members collaborating across Chhattisgarh.",
   },
   {
     id: "honest",
@@ -56,11 +56,10 @@ const ASSOCIATES = [
   },
   {
     id: "nar",
-    name: "NAR‑India",
+    name: "NAR-India",
     image: "https://bansodrealtors.com/wp-content/uploads/2021/05/5-1.jpg",
-    desc: "NAR‑India promotes the highest professional and ethical standards among real estate professionals.",
+    desc: "NAR-India promotes the highest professional and ethical standards among real estate professionals.",
   },
- 
 ];
 
 /* ================== DATA: Company facts / stats ================== */
@@ -72,10 +71,7 @@ const STATS = [
   { value: "150", label: "Joint ventures completed" },
 ];
 
-/* ================== Image block (BIGGER sizes) ==================
-   - Height container: h-28 → h-36 across breakpoints
-   - Image max-height: max-h-28/32/36 for crisp large display
-*/
+/* ================== Image block ================== */
 function ImageBlock({ name, image }) {
   return (
     <div className="flex items-center justify-center h-28 sm:h-32 md:h-36">
@@ -96,7 +92,7 @@ function ImageBlock({ name, image }) {
   );
 }
 
-/* ================== Associate card (image + description) ================== */
+/* ================== Associate card ================== */
 function AssociateCard({ item }) {
   return (
     <article className="group rounded-2xl bg-white ring-1 ring-slate-200 p-6 sm:p-7 hover:shadow-md transition">
@@ -115,7 +111,7 @@ export default function AssociatesPage() {
 
   return (
     <section className="relative w-full bg-gradient-to-b from-slate-50 to-white py-12 sm:py-14 lg:py-16">
-      {/* Soft orange decorative glow */}
+      {/* Decorative glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 -z-10 h-80 w-[90vw] -translate-x-1/2 bg-gradient-to-tr from-orange-400/10 via-amber-400/10 to-transparent blur-3xl"
         aria-hidden="true"
@@ -132,7 +128,7 @@ export default function AssociatesPage() {
           </p>
         </header>
 
-        {/* Associates Grid (slightly larger gaps for bigger images) */}
+        {/* Associates Grid */}
         <div
           ref={gridRef}
           className={`mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 transition-all duration-700 ${
@@ -184,8 +180,21 @@ export default function AssociatesPage() {
           <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
             {STATS.map((s) => (
               <div key={s.label} className="rounded-2xl bg-white ring-1 ring-slate-200 p-5 text-center hover:shadow-sm">
-                <div className={`font-semibold text-orange-600 ${s.compact ? "text-xl sm:text-2xl" : "text-2xl sm:text-3xl"}`}>
-                  {s.value}
+                <div
+                  className={`font-semibold text-orange-600 ${
+                    s.compact ? "text-xl sm:text-2xl" : "text-2xl sm:text-3xl"
+                  }`}
+                >
+                  {s.label === "Property ventured" ? (
+                    <>
+                      2.50{" "}
+                      <span className="text-[15px] sm:text-xm font-normal text-orange-500">
+                        lakh sq ft
+                      </span>
+                    </>
+                  ) : (
+                    s.value
+                  )}
                 </div>
                 <div className="mt-1 text-xs sm:text-sm text-slate-600 font-poppins">{s.label}</div>
               </div>

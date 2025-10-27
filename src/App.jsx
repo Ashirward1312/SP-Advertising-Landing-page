@@ -19,20 +19,21 @@ function App() {
   return (
     <div >
       <Nav />
-      <Home /> 
+      <Home />
       <MyChatBot />
       <Floating />
       <Whatsapp />
       <Listing />
-      <Service />
-      <Testimonial />
-      <About />
       <How />
+      <Service />
+
+      <About />
+      <Testimonial />
+
       <Brand />
       <Contact />
       <Faq />
       <Contactus />
-      {/* <Chat /> */}
       <Footer />
 
     </div>

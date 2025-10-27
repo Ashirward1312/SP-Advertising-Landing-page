@@ -56,7 +56,7 @@ export default function Hero() {
     `${url} 1x, ${url}${url.includes("?") ? "&" : "?"}dpr=2 2x`;
 
   return (
-    <section className="relative w-full min-h-[100svh] overflow-hidden flex flex-col justify-center items-center">
+    <section className="relative w-full min-h-[100svh] overflow-hidden flex flex-col justify-center items-center" id="home">
       {/* Background slideshow */}
       <div className="absolute inset-0">
         {IMAGES.map((img, i) => (
