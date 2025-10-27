@@ -7,7 +7,6 @@ import {
   FaBolt,
   FaMapMarkerAlt,
 } from "react-icons/fa";
- // Example local image import
 
 /* ================== Accessibility Hooks: Motion prefs + Reveal on scroll ================== */
 // Users jinko animations pasand nahi (prefers-reduced-motion), unke liye animations skip
@@ -40,20 +39,22 @@ function useReveal(prefersReducedMotion) {
   return [ref, inView];
 }
 
-/* ================== Founder Content (IMAGE YAHAN SET KAREIN) ================== */
-// NOTE: Unsplash/remote image use na karna ho to abhi empty chhoda hai.
-// Local file ka example:
-// import founderImg from "../assets/founder.jpg";
-// const FOUNDER_PHOTO = founderImg;
-
-const FOUNDER_PHOTO = ""; // TODO: yahan apna image URL ya local import set karein (empty = placeholder shown)
+/* ================== Founder Content ================== */
+/*
+  NOTE:
+  - A) Remote image (default): Neeche Unsplash portrait use ho raha hai.
+  - B) Local image: Niche 2 lines uncomment karo aur apna path laga do.
+     import founderImg from "../assets/founder.jpg";
+     const FOUNDER_PHOTO = founderImg;
+*/
+const FOUNDER_PHOTO =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCNT1d_tTUC198Lg5sA-WexMWd9yziJ19nKQ&s"; // clean professional portrait
 
 const FOUNDER = {
   quote: "We believe we are enablers of people's dreams.",
-  name: "Founder Name",            // optional
-  role: "Founder, Your Brand",     // optional
-  bio:
-    "We’re a modern real estate team focused on verified data, transparent pricing and fast closures — so every client can move with confidence.",
+  name: "Founder Name",
+  role: "Founder, Your Brand",
+  bio: "We’re a modern real estate team focused on verified data, transparent pricing and fast closures — so every client can move with confidence.",
 };
 
 /* ================== Features (icons + text) ================== */
@@ -61,10 +62,9 @@ const features = [
   { icon: <FaUsers size={28} aria-hidden="true" />, title: "Trusted Team", desc: "Verified experts ensuring reliability and professionalism in every deal." },
   { icon: <FaHandsHelping size={28} aria-hidden="true" />, title: "Customer First", desc: "We prioritize your needs, offering guidance every step of the way." },
   { icon: <FaCheckCircle size={28} aria-hidden="true" />, title: "Transparent Process", desc: "Clear pricing, honest insights, and end-to-end support for peace of mind." },
-
   { icon: <FaShieldAlt size={28} aria-hidden="true" />, title: "Verified Listings", desc: "Each property is vetted with documentation checks and on‑ground verification." },
-  { icon: <FaBolt size={28} aria-hidden="true" />, title: "Fast Closures", desc: "Streamlined paperwork and coordination to close deals quickly and smoothly." },
-  { icon: <FaMapMarkerAlt size={28} aria-hidden="true" />, title: "Local Expertise", desc: "Neighborhood insights, pricing trends, and guidance you can trust." },
+  // { icon: <FaBolt size={28} aria-hidden="true" />, title: "Fast Closures", desc: "Streamlined paperwork and coordination to close deals quickly and smoothly." },
+  // { icon: <FaMapMarkerAlt size={28} aria-hidden="true" />, title: "Local Expertise", desc: "Neighborhood insights, pricing trends, and guidance you can trust." },
 ];
 
 /* ================== Main Component ================== */
@@ -76,10 +76,7 @@ const HowWeAre = () => {
   return (
     <section className="py-16 sm:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ================== Dark Glass Card (Two-column layout) ==================
-           - Left: Big circular image (placeholder if no image)
-           - Right: Quote + Bio + Name/Role
-        */}
+        {/* ================== HERO: 2-column (Left photo, Right content) ================== */}
         <div
           ref={heroRef}
           className={`relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-slate-900 text-white ring-1 ring-white/10 p-6 sm:p-10 transition-all duration-700 ${
@@ -105,20 +102,18 @@ const HowWeAre = () => {
 
           {/* Grid: Image (left) + Content (right) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-            {/* ---------- Left: Founder Image (bigger) ---------- */}
+            {/* Left: Founder Image */}
             <div className="lg:col-span-5 flex justify-center lg:justify-start">
-              {/* If image provided -> show it, else show clean placeholder */}
               {FOUNDER_PHOTO ? (
                 <img
                   src={FOUNDER_PHOTO}
-                  alt="Founder portrait"
+                  alt="Founder portrait (representative)"
                   loading="eager"
-                  fetchpriority="high"
+                  fetchPriority="high"
                   decoding="async"
                   className="h-48 w-48 sm:h-60 sm:w-60 lg:h-72 lg:w-72 rounded-full object-cover object-center ring-4 ring-orange-400/80 shadow-2xl"
                 />
               ) : (
-                // Placeholder: empty circle with orange ring (no external image)
                 <div
                   className="h-48 w-48 sm:h-60 sm:w-60 lg:h-72 lg:w-72 rounded-full ring-4 ring-orange-400/70 shadow-2xl bg-gradient-to-tr from-slate-800 to-slate-700"
                   aria-label="Founder image placeholder"
@@ -126,19 +121,14 @@ const HowWeAre = () => {
               )}
             </div>
 
-            {/* ---------- Right: Details / Description ---------- */}
+            {/* Right: Details / Description */}
             <div className="lg:col-span-7">
-              {/* Main quote */}
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
                 {FOUNDER.quote}
               </h2>
-
-              {/* Short bio/description */}
               <p className="mt-4 text-white/85 text-sm sm:text-base font-poppins max-w-2xl">
                 {FOUNDER.bio}
               </p>
-
-              {/* Name + role (optional) */}
               {(FOUNDER.name || FOUNDER.role) && (
                 <div className="mt-6">
                   {FOUNDER.name && <div className="text-base sm:text-lg font-semibold">{FOUNDER.name}</div>}
@@ -160,25 +150,38 @@ const HowWeAre = () => {
           </p>
         </div>
 
-        {/* ================== Features Grid ================== */}
+        {/* ================== Features: Vertical timeline cards ================== */}
         <div
           ref={gridRef}
-          className={`mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 transition-all duration-700 ${
+          className={`relative mt-10 transition-all duration-700 ${
             gridInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
-          {features.map((f, i) => (
-            <div
-              key={i}
-              className="p-6 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-xl transition-transform duration-300 transform hover:-translate-y-2"
-            >
-              <div className="flex items-center justify-center w-14 h-14 bg-orange-100 text-orange-500 rounded-full mb-4 mx-auto">
-                {f.icon}
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">{f.title}</h4>
-              <p className="text-gray-600 font-poppins text-sm">{f.desc}</p>
-            </div>
-          ))}
+          {/* Vertical connector line (decorative) */}
+          <div
+            aria-hidden="true"
+            className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-orange-200 via-orange-200/70 to-transparent"
+          />
+          <ol className="space-y-6">
+            {features.map((f, i) => (
+              <li key={i} className="relative pl-16 sm:pl-20">
+                {/* Icon pin (left) */}
+                <span className="absolute left-0 top-1">
+                  <span className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-orange-100 text-orange-600 ring-4 ring-white shadow-sm">
+                    {f.icon}
+                  </span>
+                </span>
+
+                {/* Card content (right) */}
+                <div className="rounded-xl bg-white ring-1 ring-gray-100 p-5 sm:p-6 shadow-sm hover:shadow-md transition">
+                  <h4 className="text-lg font-semibold text-gray-900">{f.title}</h4>
+                  <p className="mt-1.5 text-gray-600 font-poppins text-sm sm:text-[15px] leading-relaxed">
+                    {f.desc}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

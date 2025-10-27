@@ -295,7 +295,7 @@ export default function PropertySearch() {
                   aria-controls="kw-listbox"
                   aria-autocomplete="list"
                   aria-activedescendant={activeIndex >= 0 ? `kw-option-${activeIndex}` : undefined}
-                  placeholder="Locality"
+                  placeholder="Location"
                   className={`${fieldBase} pl-10 pr-9`}
                 />
 

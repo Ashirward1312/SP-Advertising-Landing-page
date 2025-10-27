@@ -145,11 +145,7 @@ function ServiceCard({ item, delay = 0 }) {
     </a>
 
 
-          {/* Right side indicator - optional trust badge */}
-          <div className="hidden sm:flex items-center gap-2 text-xs text-orange-500">
-            <span className="h-2 w-2 rounded-full bg-orange-500 animate-pulse" />
-            <span>Trusted service</span>
-          </div>
+         
         </div>
       </div>
     </article>
@@ -172,7 +168,7 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xs font-medium text-orange-700 ring-1 ring-orange-200">
+          <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xm font-medium text-orange-700 ring-1 ring-orange-200">
             Our Services
           </span>
           <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">

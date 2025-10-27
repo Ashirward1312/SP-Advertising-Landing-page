@@ -57,7 +57,7 @@ export default function About() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xs font-medium text-orange-700 ring-1 ring-orange-100">
+          <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xm font-medium text-orange-700 ring-1 ring-orange-100">
             About us
           </span>
           <h2 className="mt-3 text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
@@ -120,12 +120,8 @@ export default function About() {
               >
                 Contact us
               </a>
-              <a
-                href="#browse"
-                className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-slate-800 ring-1 ring-slate-200 hover:bg-orange-50"
-              >
-                Explore listings
-              </a>
+              
+                
             </div>
           </div>
 
