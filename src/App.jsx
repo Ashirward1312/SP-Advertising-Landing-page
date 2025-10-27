@@ -19,7 +19,7 @@ function App() {
   return (
     <div >
       <Nav />
-      <Home />
+      <Home /> 
       <MyChatBot />
       <Floating />
       <Whatsapp />
