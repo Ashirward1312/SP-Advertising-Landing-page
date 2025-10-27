@@ -1,36 +1,60 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { jsPDF } from "jspdf";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef(null); // header ka ref: height nikalne ke liye
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
+
+    // Agar URL me hash already present ho to mount ke baad smooth scroll kar do
+    const hash = window.location.hash?.replace("#", "");
+    if (hash) {
+      setTimeout(() => scrollToId(hash), 0);
+    }
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  // Smooth scroll helper (header height ke saath)
+  const scrollToId = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const headerH = headerRef.current?.offsetHeight || 0;
+    const top = window.scrollY + el.getBoundingClientRect().top - headerH - 8; // 8px padding
+    window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+    // Hash update (URL me reflect ho)
+    history.pushState(null, "", `#${id}`);
+  };
+
+  // Nav click handler (desktop + mobile)
+  const handleNavClick = (e, id) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    scrollToId(id);
+  };
+
+  const toggleMenu = () => setMenuOpen((v) => !v);
 
   // Function to generate and download PDF
   const downloadQuotePDF = () => {
     const doc = new jsPDF();
-
     doc.setFontSize(16);
     doc.text("Property Quote", 20, 20);
-
     doc.setFontSize(12);
     doc.text("Property Name: Sample Property", 20, 40);
     doc.text("Location: Raipur, Chhattisgarh", 20, 50);
     doc.text("Type: Residential", 20, 60);
     doc.text("Price: ₹50,00,000", 20, 70);
-
     doc.save("Property_Quote.pdf");
   };
 
   return (
     <header
+      ref={headerRef}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled ? "bg-black/70 backdrop-blur-lg shadow-lg" : "bg-transparent"
       }`}
@@ -43,24 +67,21 @@ const Header = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          {/* Navigation Links */}
+          {/* Navigation Links (smooth scroll) */}
           <nav className="flex space-x-6 text-white/90 text-sm font-medium">
-            <a href="#home" className="hover:text-orange-400 transition">
+            <a href="#home" onClick={(e) => handleNavClick(e, "home")} className="hover:text-orange-400 transition">
               Home
             </a>
-            <a href="#service" className="hover:text-orange-400 transition">
+            <a href="#service" onClick={(e) => handleNavClick(e, "service")} className="hover:text-orange-400 transition">
               Service
             </a>
-            <a href="#about" className="hover:text-orange-400 transition">
+            <a href="#about" onClick={(e) => handleNavClick(e, "about")} className="hover:text-orange-400 transition">
               About
             </a>
-            <a
-              href="#testimonials"
-              className="hover:text-orange-400 transition"
-            >
+            <a href="#testimonials" onClick={(e) => handleNavClick(e, "testimonials")} className="hover:text-orange-400 transition">
               Testimonials
             </a>
-            <a href="#contact" className="hover:text-orange-400 transition">
+            <a href="#contact" onClick={(e) => handleNavClick(e, "contact")} className="hover:text-orange-400 transition">
               Contact
             </a>
           </nav>
@@ -75,39 +96,14 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden text-white focus:outline-none"
-        >
+        <button onClick={toggleMenu} className="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
           {menuOpen ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           )}
         </button>
@@ -116,39 +112,19 @@ const Header = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-black/90 text-white text-center space-y-4 py-6 transition-all">
-          <a
-            href="#home"
-            onClick={() => setMenuOpen(false)}
-            className="block hover:text-orange-400 transition"
-          >
+          <a href="#home" onClick={(e) => handleNavClick(e, "home")} className="block hover:text-orange-400 transition">
             Home
           </a>
-          <a
-            href="#services"
-            onClick={() => setMenuOpen(false)}
-            className="block hover:text-orange-400 transition"
-          >
-            Services
+          <a href="#service" onClick={(e) => handleNavClick(e, "service")} className="block hover:text-orange-400 transition">
+            Service
           </a>
-          <a
-            href="#about"
-            onClick={() => setMenuOpen(false)}
-            className="block hover:text-orange-400 transition"
-          >
+          <a href="#about" onClick={(e) => handleNavClick(e, "about")} className="block hover:text-orange-400 transition">
             About
           </a>
-          <a
-            href="#testimonials"
-            onClick={() => setMenuOpen(false)}
-            className="block hover:text-orange-400 transition"
-          >
+          <a href="#testimonials" onClick={(e) => handleNavClick(e, "testimonials")} className="block hover:text-orange-400 transition">
             Testimonials
           </a>
-          <a
-            href="#contact"
-            onClick={() => setMenuOpen(false)}
-            className="block hover:text-orange-400 transition"
-          >
+          <a href="#contact" onClick={(e) => handleNavClick(e, "contact")} className="block hover:text-orange-400 transition">
             Contact
           </a>
 
