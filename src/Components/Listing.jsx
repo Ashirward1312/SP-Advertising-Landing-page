@@ -245,7 +245,7 @@ export default function PropertySearch() {
             <h2 className="heading-font text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
               Search Properties in Raipur, Chhattisgarh
             </h2>
-            <p className="text-slate-600">Filter by price, locality, size and type. Fully responsive and fast.</p>
+            {/* <p className="text-slate-600">Filter by price, locality, size and type. Fully responsive and fast.</p> */}
           </div>
           <div className="flex items-center gap-2">
             <label className="text-sm text-slate-600">Sort</label>

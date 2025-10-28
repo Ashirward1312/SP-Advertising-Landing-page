@@ -42,7 +42,7 @@ const Testimonial = () => {
         </h2>
         <p className="paragraph-font text-gray-600 max-w-2xl mx-auto mb-12">
           Hear from our clients and partners about their experience working with{" "}
-          <span className="text-orange-500 font-semibold">Mahesh Ventures</span>.
+          <span className="text-orange-500 font-semibold">Maheshjjj Ventures</span>.
         </p>
 
         {/* Testimonials Grid */}
