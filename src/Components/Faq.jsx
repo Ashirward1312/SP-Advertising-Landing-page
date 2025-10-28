@@ -26,50 +26,74 @@ const faqs = [
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-
-  const toggleAnswer = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
+  const toggleAnswer = (index) =>
+    setActiveIndex((prev) => (prev === index ? null : index));
 
   return (
-    <section className="flex flex-col justify-center items-center min-h-screen bg-gray-50 py-20 px-4">
-      <div className="max-w-3xl w-full text-center">
+    <section
+      id="faq"
+      className="w-full bg-gray-50 py-10 px-4 sm:py-14 sm:px-8 lg:py-20 lg:px-16"
+    >
+      <div className="mx-auto max-w-4xl w-full text-center">
         {/* Header */}
-        <h2 className="text-4xl font-bold text-gray-900 mb-6 relative inline-block">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
           Frequently Asked Questions
-          <span className="block w-16 h-1 bg-orange-400 rounded mt-2 mx-auto" />
+          <span className="block w-20 h-1 bg-orange-400 rounded mt-3 mx-auto"></span>
         </h2>
-        <p className="text-gray-600 mb-12 font-poppins">
+
+        <p className="text-gray-600 mb-8 sm:mb-10 text-sm sm:text-base lg:text-lg">
           Answers to the most common questions our clients ask. Click to reveal details.
         </p>
 
         {/* FAQ List */}
-        <div className="space-y-4 text-left">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white border border-gray-100 rounded-xl shadow-sm transition hover:shadow-md cursor-pointer"
-              onClick={() => toggleAnswer(index)}
-            >
-              <div className="flex justify-between items-center p-5">
-                <h3 className="text-lg font-medium text-gray-900">
-                  {faq.question}
-                </h3>
-                <span className="text-orange-500">
-                  {activeIndex === index ? <FaChevronUp /> : <FaChevronDown />}
-                </span>
-              </div>
+        <div className="space-y-4 sm:space-y-5">
+          {faqs.map((faq, index) => {
+            const open = activeIndex === index;
+            const panelId = `faq-panel-${index}`;
+            const btnId = `faq-trigger-${index}`;
+
+            return (
               <div
-                className={`px-5 pb-5 text-gray-600 font-poppins text-sm transition-all duration-300 overflow-hidden ${
-                  activeIndex === index
-                    ? "max-h-40 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
+                key={index}
+                className="bg-white border border-gray-100 rounded-xl shadow-sm transition hover:shadow-md"
               >
-                {faq.answer}
+                {/* Question button */}
+                <button
+                  id={btnId}
+                  type="button"
+                  aria-expanded={open}
+                  aria-controls={panelId}
+                  onClick={() => toggleAnswer(index)}
+                  className="w-full flex justify-between items-center p-4 sm:p-6 text-left"
+                >
+                  <h3 className="text-base sm:text-lg lg:text-xl font-medium text-gray-900">
+                    {faq.question}
+                  </h3>
+                  <span className="text-orange-500 text-lg sm:text-xl">
+                    {open ? <FaChevronUp /> : <FaChevronDown />}
+                  </span>
+                </button>
+
+                {/* Answer section */}
+                <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={btnId}
+                  className={`px-4 sm:px-6 transition-all duration-300 grid ${
+                    open
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="text-gray-600 text-sm sm:text-base lg:text-lg pb-4 sm:pb-5">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

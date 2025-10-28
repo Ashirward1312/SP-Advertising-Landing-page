@@ -55,7 +55,7 @@ function Badge({ children, color = "emerald" }) {
     slate: "bg-slate-900/70 text-white",
   };
   return (
-    <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${colors[color]}`}>
+    <span className={`paragraph-font inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${colors[color]}`}>
       {children}
     </span>
   );
@@ -127,7 +127,7 @@ function PropertyCard({ p }) {
 
         <div className="mt-4 flex items-center justify-between">
           <span className="text-xs text-slate-500">Listed {new Date(p.listedAt).toLocaleDateString()}</span>
-          <button className="inline-flex items-center gap-2 text-orange-700 hover:text-orange-800 text-sm font-medium">
+          <button className="paragraph-font inline-flex items-center gap-2 text-orange-700 hover:text-orange-800 text-sm font-medium">
             View details
             <svg width="16" height="16" viewBox="0 0 24 24">
               <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -142,7 +142,8 @@ function PropertyCard({ p }) {
 /* ---------------------------- Main Component --------------------------- */
 export default function PropertySearch() {
   // Shared field classes (height/spacing same rakhe)
-  const fieldBase = "h-11 w-full rounded-lg border border-slate-200 bg-white text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100";
+  const fieldBase =
+    "paragraph-font h-11 w-full rounded-lg border border-slate-200 bg-white text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100";
 
   // Filters state
   const [q, setQ] = useState("");      // Hinglish: Keyword ya Locality dono yahi
@@ -236,12 +237,14 @@ export default function PropertySearch() {
   };
 
   return (
-    <section className="relative z-0 w-full bg-slate-50 py-8 sm:py-10 lg:py-12">
+    <section className="paragraph-font relative z-0 w-full bg-slate-50 py-8 sm:py-10 lg:py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">Search Properties in Raipur, Chhattisgarh</h2>
+            <h2 className="heading-font text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+              Search Properties in Raipur, Chhattisgarh
+            </h2>
             <p className="text-slate-600">Filter by price, locality, size and type. Fully responsive and fast.</p>
           </div>
           <div className="flex items-center gap-2">
@@ -424,13 +427,13 @@ export default function PropertySearch() {
             <div className="flex items-center gap-2">
               <button
                 onClick={clearAll}
-                className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50"
+                className="paragraph-font inline-flex items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50"
               >
                 Reset
               </button>
               <a
                 href="#results"
-                className="inline-flex items-center justify-center rounded-lg bg-orange-500 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-orange-500/20 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300"
+                className="paragraph-font inline-flex items-center justify-center rounded-lg bg-orange-500 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-orange-500/20 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300"
               >
                 View results
               </a>

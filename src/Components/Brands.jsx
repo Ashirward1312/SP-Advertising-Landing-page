@@ -30,36 +30,11 @@ function useReveal(prefersReducedMotion) {
 
 /* ================== DATA: Associates (image path/URL) ================== */
 const ASSOCIATES = [
-  {
-    id: "bni",
-    name: "BNI",
-    image: "https://bansodrealtors.com/wp-content/uploads/2021/05/1-1.jpg",
-    desc: "BNI is the largest business networking organization with members and chapters in 74+ countries.",
-  },
-  {
-    id: "rera",
-    name: "RERA Chhattisgarh",
-    image: "https://bansodrealtors.com/wp-content/uploads/2021/05/2-1.jpg",
-    desc: "RERA brings transparency and efficiency to protect homebuyers’ interests across the real estate sector.",
-  },
-  {
-    id: "cgar",
-    name: "CGAR",
-    image: "https://bansodrealtors.com/wp-content/uploads/2021/05/3-1.jpg",
-    desc: "CGAR is a local association under NAR-INDIA with 50+ members collaborating across Chhattisgarh.",
-  },
-  {
-    id: "honest",
-    name: "Honest Broker",
-    image: "https://bansodrealtors.com/wp-content/uploads/2021/05/4-1.jpg",
-    desc: "India’s highest reliable broker chain with a wide network across 1700+ locations.",
-  },
-  {
-    id: "nar",
-    name: "NAR-India",
-    image: "https://bansodrealtors.com/wp-content/uploads/2021/05/5-1.jpg",
-    desc: "NAR-India promotes the highest professional and ethical standards among real estate professionals.",
-  },
+  { id: "bni",   name: "BNI",             image: "https://bansodrealtors.com/wp-content/uploads/2021/05/1-1.jpg", desc: "BNI is the largest business networking organization with members and chapters in 74+ countries." },
+  { id: "rera",  name: "RERA Chhattisgarh", image: "https://bansodrealtors.com/wp-content/uploads/2021/05/2-1.jpg", desc: "RERA brings transparency and efficiency to protect homebuyers’ interests across the real estate sector." },
+  { id: "cgar",  name: "CGAR",            image: "https://bansodrealtors.com/wp-content/uploads/2021/05/3-1.jpg", desc: "CGAR is a local association under NAR-INDIA with 50+ members collaborating across Chhattisgarh." },
+  { id: "honest",name: "Honest Broker",   image: "https://bansodrealtors.com/wp-content/uploads/2021/05/4-1.jpg", desc: "India’s highest reliable broker chain with a wide network across 1700+ locations." },
+  { id: "nar",   name: "NAR-India",       image: "https://bansodrealtors.com/wp-content/uploads/2021/05/5-1.jpg", desc: "NAR-India promotes the highest professional and ethical standards among real estate professionals." },
 ];
 
 /* ================== DATA: Company facts / stats ================== */
@@ -67,7 +42,7 @@ const YEARS_OF_EXPERIENCE = 10;
 const STATS = [
   { value: "50+", label: "Projects marketed" },
   { value: "20", label: "Projects underway" },
-  { value: "2.50 lakh sq ft", label: "Property ventured", compact: true }, // compact => smaller font
+  { value: "2.50 lakh sq ft", label: "Property ventured", compact: true },
   { value: "150", label: "Joint ventures completed" },
 ];
 
@@ -97,8 +72,12 @@ function AssociateCard({ item }) {
   return (
     <article className="group rounded-2xl bg-white ring-1 ring-slate-200 p-6 sm:p-7 hover:shadow-md transition">
       <ImageBlock name={item.name} image={item.image} />
-      <h3 className="mt-3 text-base sm:text-lg font-semibold text-slate-900 text-center">{item.name}</h3>
-      <p className="mt-2 text-xs sm:text-sm text-slate-600 text-center font-poppins">{item.desc}</p>
+      <h3 className="heading-font mt-3 text-sm sm:text-base font-medium text-slate-900 text-center">
+        {item.name}
+      </h3>
+      <p className="paragraph-font mt-2 text-[13.5px] sm:text-sm text-slate-600 text-center">
+        {item.desc}
+      </p>
     </article>
   );
 }
@@ -120,10 +99,10 @@ export default function AssociatesPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <header className="text-center">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">
+          <h1 className="heading-font text-xl sm:text-2xl lg:text-3xl font-semibold tracking-tight leading-tight text-slate-900">
             Associates & Accreditations
           </h1>
-          <p className="mt-2 text-slate-600 font-poppins">
+          <p className="paragraph-font mt-2 text-[13.5px] sm:text-sm text-slate-600">
             Partnerships that strengthen trust and deliver better outcomes.
           </p>
         </header>
@@ -143,10 +122,10 @@ export default function AssociatesPage() {
         {/* The Fact block */}
         <div className="mt-12 sm:mt-14 text-center">
           <span className="text-[11px] tracking-[0.3em] text-orange-600">THE FACT</span>
-          <h2 className="mt-2 text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900">
+          <h2 className="heading-font mt-2 text-lg sm:text-xl lg:text-2xl font-semibold tracking-tight text-slate-900">
             One of the leading real estate companies
           </h2>
-          <p className="mt-2 text-slate-600 font-poppins max-w-3xl mx-auto">
+          <p className="paragraph-font mt-2 text-[13.5px] sm:text-sm text-slate-600 max-w-3xl mx-auto">
             Our mission is to give direction to your investment dream and turn it into a memorable
             experience for a lifetime.
           </p>
@@ -164,11 +143,15 @@ export default function AssociatesPage() {
             <div className="rounded-2xl bg-white ring-1 ring-slate-200 p-6 sm:p-8 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full grid place-items-center bg-orange-50 ring-2 ring-orange-200">
-                  <span className="text-2xl sm:text-3xl font-bold text-orange-600">{YEARS_OF_EXPERIENCE}</span>
+                  <span className="heading-font text-xl sm:text-2xl font-semibold text-orange-600">
+                    {YEARS_OF_EXPERIENCE}
+                  </span>
                 </div>
                 <div>
-                  <div className="text-lg sm:text-xl font-semibold text-slate-900">Years of Experience</div>
-                  <p className="text-sm text-slate-600 font-poppins">
+                  <div className="heading-font text-base sm:text-lg font-semibold text-slate-900">
+                    Years of Experience
+                  </div>
+                  <p className="paragraph-font text-[13.5px] sm:text-sm text-slate-600">
                     Consistent delivery across marketing, sales and documentation.
                   </p>
                 </div>
@@ -181,14 +164,14 @@ export default function AssociatesPage() {
             {STATS.map((s) => (
               <div key={s.label} className="rounded-2xl bg-white ring-1 ring-slate-200 p-5 text-center hover:shadow-sm">
                 <div
-                  className={`font-semibold text-orange-600 ${
-                    s.compact ? "text-xl sm:text-2xl" : "text-2xl sm:text-3xl"
+                  className={`heading-font font-semibold text-orange-600 ${
+                    s.compact ? "text-base sm:text-lg" : "text-lg sm:text-xl"
                   }`}
                 >
                   {s.label === "Property ventured" ? (
                     <>
                       2.50{" "}
-                      <span className="text-[15px] sm:text-xm font-normal text-orange-500">
+                      <span className="paragraph-font text-[12px] sm:text-[13px] font-normal text-orange-500">
                         lakh sq ft
                       </span>
                     </>
@@ -196,7 +179,9 @@ export default function AssociatesPage() {
                     s.value
                   )}
                 </div>
-                <div className="mt-1 text-xs sm:text-sm text-slate-600 font-poppins">{s.label}</div>
+                <div className="paragraph-font mt-1 text-[12px] sm:text-[13px] text-slate-600">
+                  {s.label}
+                </div>
               </div>
             ))}
           </div>
@@ -206,7 +191,7 @@ export default function AssociatesPage() {
         <div className="mt-10 sm:mt-12 flex items-center justify-center">
           <a
             href="#contact"
-            className="inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-orange-500/20 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="paragraph-font inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-orange-500/20 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300"
           >
             Become a partner
           </a>

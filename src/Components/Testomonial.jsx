@@ -37,12 +37,12 @@ const Testimonial = () => {
     <section className="bg-gradient-to-b from-orange-50 to-white py-16" id="testimonials">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Heading */}
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="heading-font text-4xl font-bold text-gray-900 mb-4">
           What Our <span className="text-orange-500">Clients Say</span>
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto mb-12">
+        <p className="paragraph-font text-gray-600 max-w-2xl mx-auto mb-12">
           Hear from our clients and partners about their experience working with{" "}
-          <span className="text-orange-500 font-semibold">Maheshwari Ventures</span>.
+          <span className="text-orange-500 font-semibold">Mahesh Ventures</span>.
         </p>
 
         {/* Testimonials Grid */}
@@ -58,7 +58,7 @@ const Testimonial = () => {
               </div>
 
               {/* Testimonial Message */}
-              <p className="text-gray-700 mb-6 italic leading-relaxed">
+              <p className="paragraph-font text-gray-700 mb-6 italic leading-relaxed">
                 “{t.message}”
               </p>
 
@@ -70,8 +70,8 @@ const Testimonial = () => {
               />
 
               {/* Client Name & Role */}
-              <h3 className="text-gray-900 font-semibold">{t.name}</h3>
-              <p className="text-gray-500 text-sm">{t.role}</p>
+              <h3 className="heading-font text-gray-900 font-semibold">{t.name}</h3>
+              <p className="paragraph-font text-gray-500 text-sm">{t.role}</p>
             </div>
           ))}
         </div>

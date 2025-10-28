@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react"; 
 
 /* Accessibility: Reduced Motion Hook */
 function usePrefersReducedMotion() {
@@ -60,7 +60,7 @@ export default function About() {
           <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xm font-medium text-orange-700 ring-1 ring-orange-100">
             About us
           </span>
-          <h2 className="mt-3 text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
+          <h2 className="heading-font mt-3 text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
             Built for buyers, sellers and trusted agents
           </h2>
         </div>
@@ -76,10 +76,10 @@ export default function About() {
                 : "opacity-0 translate-y-6"
             }`}
           >
-            <h3 className="text-2xl font-semibold text-slate-900">
+            <h3 className="heading-font text-2xl font-semibold text-slate-900">
               Who we are
             </h3>
-            <p className="mt-3 text-slate-600 leading-relaxed">
+            <p className="paragraph-font mt-3 text-slate-600 leading-relaxed">
               AI-powered insights, real-time updates, and expert assistance —
               ensuring your journey stays transparent, smart, and effortless.
             </p>
@@ -107,7 +107,7 @@ export default function About() {
                       />
                     </svg>
                   </span>
-                  <span className="text-slate-700">{item}</span>
+                  <span className="paragraph-font text-slate-700">{item}</span>
                 </li>
               ))}
             </ul>
@@ -116,12 +116,10 @@ export default function About() {
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300"
+                className="inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300 paragraph-font"
               >
                 Contact us
               </a>
-              
-                
             </div>
           </div>
 
@@ -178,7 +176,7 @@ export default function About() {
               <div className="text-2xl font-bold text-orange-600">
                 {s.value}
               </div>
-              <div className="mt-1 text-xs sm:text-sm text-slate-600">
+              <div className="paragraph-font mt-1 text-xs sm:text-sm text-slate-600">
                 {s.label}
               </div>
             </div>
@@ -256,9 +254,9 @@ export default function About() {
                 <span className="h-9 w-9 inline-flex items-center justify-center rounded-lg bg-orange-50">
                   {v.icon}
                 </span>
-                <h4 className="font-semibold text-slate-900">{v.title}</h4>
+                <h4 className="heading-font font-semibold text-slate-900">{v.title}</h4>
               </div>
-              <p className="mt-2 text-sm text-slate-600">{v.desc}</p>
+              <p className="paragraph-font mt-2 text-sm text-slate-600">{v.desc}</p>
             </div>
           ))}
         </div>
