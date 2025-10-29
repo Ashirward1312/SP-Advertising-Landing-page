@@ -25,14 +25,14 @@ function App() {
       <Whatsapp />
       <Listing />
       <How />
-      <Testimonial />
-
+      <About />
       <Service />
 
 
-      <About />
+
       <Brand />
 
+      <Testimonial />
       <Contact />
       <Faq />
       <Contactus />

@@ -42,7 +42,9 @@ function useReveal(prefersReducedMotion) {
 }
 
 /* ================== Founder Content ================== */
-const FOUNDER_PHOTO = ""; // Add founder image URL here
+const FOUNDER_PHOTO =
+  "https://images.unsplash.com/photo-1502307100811-6bdc0981a85b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJveXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900"; // professional male portrait
+
 const FOUNDER = {
   quote: "We believe we are enablers of people's dreams.",
   name: "Founder Name",
@@ -91,52 +93,55 @@ const HowWeAre = () => {
         {/* ================== HERO Section ================== */}
         <div
           ref={heroRef}
-          className={`relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-slate-900 text-white ring-1 ring-white/10 p-6 sm:p-10 transition-all duration-700 ${
+          className={`relative mx-auto max-w-4xl overflow-hidden rounded-3xl bg-slate-900 text-white ring-1 ring-white/10 p-6 sm:p-10 transition-all duration-700 ${
             heroInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
+          {/* Gradient background */}
           <div
             className="pointer-events-none absolute inset-0 -z-10"
             aria-hidden="true"
             style={{
               backgroundImage:
-                "radial-gradient(700px 320px at 20% 15%, rgba(251,146,60,0.14), transparent 60%), radial-gradient(800px 360px at 85% 80%, rgba(245,158,11,0.12), transparent 60%)",
+                "radial-gradient(600px 300px at 25% 15%, rgba(251,146,60,0.14), transparent 60%), radial-gradient(700px 320px at 85% 80%, rgba(245,158,11,0.12), transparent 60%)",
             }}
           />
 
-          <div className="mb-4">
+          {/* WHO WE ARE Tag */}
+          <div className="mb-4 flex justify-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/85 ring-1 ring-white/15 tracking-wide heading-font">
               WHO WE ARE
             </span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-            {/* Left: Founder Image */}
+          {/* Founder Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
+            {/* Left: Founder Image (slightly right-shifted) */}
             <div className="lg:col-span-5 flex justify-center lg:justify-start">
               {FOUNDER_PHOTO ? (
                 <img
                   src={FOUNDER_PHOTO}
-                  alt="Founder portrait"
-                  className="h-44 w-44 sm:h-56 sm:w-56 lg:h-64 lg:w-64 rounded-full object-cover ring-4 ring-orange-400/80 shadow-2xl"
+                  alt={`${FOUNDER.name || "Founder"} portrait`}
+                  className="h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56 rounded-full object-cover ring-4 ring-orange-400/80 shadow-xl translate-x-[8px] sm:translate-x-[12px] lg:translate-x-[16px]"
                 />
               ) : (
                 <div
-                  className="h-44 w-44 sm:h-56 sm:w-56 lg:h-64 lg:w-64 rounded-full ring-4 ring-orange-400/70 shadow-2xl bg-gradient-to-tr from-slate-800 to-slate-700"
+                  className="h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56 rounded-full ring-4 ring-orange-400/70 shadow-xl bg-gradient-to-tr from-slate-800 to-slate-700 translate-x-[8px] sm:translate-x-[12px] lg:translate-x-[16px]"
                   aria-label="Founder image placeholder"
                 />
               )}
             </div>
 
             {/* Right: Founder Info */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
               <h2 className="heading-font text-xl sm:text-2xl lg:text-3xl font-bold leading-tight">
                 {FOUNDER.quote}
               </h2>
-              <p className="paragraph-font mt-3 text-white/90 text-sm sm:text-base lg:text-[17px] max-w-xl leading-relaxed">
+              <p className="paragraph-font text-white/90 text-sm sm:text-base lg:text-[16px] leading-relaxed max-w-lg mx-auto lg:mx-0">
                 {FOUNDER.bio}
               </p>
               {(FOUNDER.name || FOUNDER.role) && (
-                <div className="mt-5">
+                <div className="pt-2">
                   {FOUNDER.name && (
                     <div className="heading-font text-sm sm:text-base font-semibold">
                       {FOUNDER.name}

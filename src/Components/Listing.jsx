@@ -690,6 +690,12 @@ export default function PropertySlider() {
 
   return (
     <section className="paragraph-font relative z-0 w-full bg-slate-50 py-8 sm:py-10 lg:py-12">
+      {/* CSS to hide scrollbar */}
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-4 flex items-center justify-between">
@@ -720,10 +726,14 @@ export default function PropertySlider() {
           </div>
         </div>
 
-        {/* Slider track */}
+        {/* Slider track - scrollbar hidden */}
         <div
           ref={sliderRef}
-          className="relative -mx-2 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-2 pb-2"
+          className="
+            relative -mx-2 flex snap-x snap-mandatory items-stretch gap-4
+            overflow-x-auto px-2 pb-2 hide-scrollbar
+            [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden
+          "
           style={{ scrollBehavior: "smooth" }}
         >
           {items.map((p) => (

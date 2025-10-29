@@ -23,10 +23,10 @@ const Footer = () => {
                 {/* About Section */}
                 <div>
                     <h2 className="text-xl font-semibold mb-4 text-orange-400">
-                        Maheshwari Ventures
+                        Mahesh Ventures
                     </h2>
                     <p className="text-white/70 text-sm leading-relaxed">
-                        Maheshwari Ventures is your trusted real estate partner — helping
+                        Mahesh Ventures is your trusted real estate partner — helping
                         you discover modern properties, premium offices, and verified homes
                         across India with transparency and ease.
                     </p>
@@ -72,9 +72,9 @@ const Footer = () => {
                         Contact Us
                     </h2>
                     <ul className="space-y-3 text-white/70 text-sm">
-                        <li>📍 Maheshwari Ventures HQ, <br /> Raipur, Chhattisgarh, India</li>
+                        <li>📍 Mahesh Ventures HQ, <br /> Raipur, Chhattisgarh, India</li>
                         <li>📞 +91 98765 43210</li>
-                        <li>📧 contact@maheshwariventures.com</li>
+                        <li>📧 contact@maheshventures.com</li>
                     </ul>
                 </div>
 
@@ -122,7 +122,7 @@ const Footer = () => {
 
             {/* Divider */}
             <div className="mt-10 border-t border-white/10 pt-6 text-center text-white/60 text-sm">
-                © {new Date().getFullYear()} Maheshwari Ventures. All rights reserved.
+                © {new Date().getFullYear()} Mahesh Ventures. All rights reserved.
             </div>
 
             {/* Scroll to top button */}
