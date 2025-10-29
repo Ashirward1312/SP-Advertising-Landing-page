@@ -460,27 +460,23 @@
 //     </section>
 //   );
 // }
-
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 /* ----------------------------- Settings ----------------------------- */
-const DETAIL_BASE_PATH = "/property"; // change to your route, e.g. "/listing"
+const DETAIL_BASE_PATH = "/property"; // apne route ke hisaab se change kar lo
 
-/* ----------------------------- Raipur Listings (stable images) ----------------------------- */
+/* ----------------------------- Raipur Listings (property-safe images) ----------------------------- */
 const PROPERTIES = [
-  // Land / Plots
+  // Land / Plots (empty land, no people)
   {
     id: "RPR-PL-2101",
     title: "Residential Plot in Kamal Vihar (Sector 4)",
     type: "Land",
     city: "Kamal Vihar",
     location: "Sector 4, Kamal Vihar, Raipur",
-    price: 3000000,
     area: 1500,
-    featured: true,
     images: [
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
+      "https://media.istockphoto.com/id/1311356176/photo/modern-luxury-home-interior.webp?a=1&b=1&s=612x612&w=0&k=20&c=i28Whix-e5PXAiFrLEc_Oh0y36Qn9ehCjZu1auyz-y4=", // green field
     ],
   },
   {
@@ -489,12 +485,9 @@ const PROPERTIES = [
     type: "Land",
     city: "Telibandha",
     location: "Marine Drive Road, Telibandha, Raipur",
-    price: 4200000,
     area: 1200,
-    featured: true,
     images: [
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80", // open ground
     ],
   },
   {
@@ -503,12 +496,9 @@ const PROPERTIES = [
     type: "Land",
     city: "Naya Raipur (Atal Nagar)",
     location: "Sector 19, Atal Nagar, Raipur",
-    price: 2600000,
     area: 1200,
-    featured: false,
     images: [
-      "https://images.unsplash.com/photo-1482192505345-5655af888cc4?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80", // plain land
     ],
   },
   {
@@ -517,12 +507,9 @@ const PROPERTIES = [
     type: "Land",
     city: "Saddu",
     location: "Saddu, Vidhan Sabha Road, Raipur",
-    price: 3200000,
     area: 1800,
-    featured: false,
     images: [
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80", // brown land
     ],
   },
   {
@@ -531,12 +518,9 @@ const PROPERTIES = [
     type: "Land",
     city: "Sejbahar",
     location: "AIIMS Road, Sejbahar, Raipur",
-    price: 2400000,
     area: 1000,
-    featured: false,
     images: [
-      "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80",
+      "https://plus.unsplash.com/premium_photo-1663126298656-33616be83c32?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGFwYXJ0bWVudCUyMGludGVyaW9yfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
     ],
   },
   {
@@ -545,28 +529,22 @@ const PROPERTIES = [
     type: "Land",
     city: "VIP Road",
     location: "VIP Road, Raipur",
-    price: 5500000,
     area: 1400,
-    featured: true,
     images: [
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1482192505345-5655af888cc4?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1675279200694-8529c73b1fd0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50JTIwaW50ZXJpb3J8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
     ],
   },
 
-  // Apartments / Flats
+  // Apartments / Flats (exteriors, building facades — no people)
   {
     id: "RPR-AP-2201",
     title: "3BHK near Marine Drive, Telibandha",
     type: "Apartment",
     city: "Telibandha",
     location: "Marine Drive, Telibandha, Raipur",
-    price: 7500000,
     area: 1280,
-    featured: true,
     images: [
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1600&q=80",
+      "https://media.istockphoto.com/id/1254330782/photo/aerial-view-of-land-and-positioning-point-area.webp?a=1&b=1&s=612x612&w=0&k=20&c=sAJX4H38JB2Ue0lKBvHL277MjWS0IrcLrS_dxyIaO5Q=", // modern facade
     ],
   },
   {
@@ -575,107 +553,26 @@ const PROPERTIES = [
     type: "Apartment",
     city: "Avanti Vihar",
     location: "Avanti Vihar, Raipur",
-    price: 5800000,
     area: 1050,
-    featured: false,
     images: [
-      "https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1600&q=80",
-    ],
-  },
-  {
-    id: "RPR-AP-2203",
-    title: "3BHK in New Rajendra Nagar",
-    type: "Apartment",
-    city: "New Rajendra Nagar",
-    location: "New Rajendra Nagar, Raipur",
-    price: 6800000,
-    area: 1200,
-    featured: false,
-    images: [
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1600&q=80",
-    ],
-  },
-  {
-    id: "RPR-AP-2204",
-    title: "2BHK in Mowa (Ring Road No.1)",
-    type: "Apartment",
-    city: "Mowa",
-    location: "Mowa, Ring Road No.1, Raipur",
-    price: 5200000,
-    area: 950,
-    featured: false,
-    images: [
-      "https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1600&q=80",
-    ],
-  },
-
-  // Houses / Villas
-  {
-    id: "RPR-HS-2301",
-    title: "Independent House in Shankar Nagar",
-    type: "House",
-    city: "Shankar Nagar",
-    location: "Shankar Nagar, Raipur",
-    price: 13500000,
-    area: 1800,
-    featured: true,
-    images: [
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1600&q=80",
-    ],
-  },
-  {
-    id: "RPR-VL-2401",
-    title: "Premium Villa on VIP Road",
-    type: "Villa",
-    city: "VIP Road",
-    location: "VIP Road, Raipur",
-    price: 21000000,
-    area: 3200,
-    featured: true,
-    images: [
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1641544125844-f38413b4dbbe?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbmQlMjBpbWFnZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900", // apartment walkway
     ],
   },
 ];
 
 /* ------------------------------ Utilities ------------------------------ */
-function formatINRShort(n) {
-  if (n >= 1e7) return `₹${(n / 1e7).toFixed(n % 1e7 === 0 ? 0 : 1)} Cr`;
-  if (n >= 1e5) return `₹${(n / 1e5).toFixed(n % 1e5 === 0 ? 0 : 1)} L`;
-  return `₹${n.toLocaleString("en-IN")}`;
-}
 function withCommas(n) {
   return n.toLocaleString("en-IN");
 }
 const FALLBACK_BY_TYPE = {
-  Land: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80",
-  Apartment: "https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1600&q=80",
+  Land: "https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?auto=format&fit=crop&w=1600&q=80",
+  Apartment: "https://images.unsplash.com/photo-1505691723518-36a5ac3b2d95?auto=format&fit=crop&w=1600&q=80",
   House: "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1600&q=80",
   Villa: "https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?auto=format&fit=crop&w=1600&q=80",
   default: "https://placehold.co/1600x1000?text=No+Image",
 };
 
-/* ------------------------------ Components ----------------------------- */
-function Badge({ children, color = "amber" }) {
-  const colors = {
-    emerald: "bg-emerald-500/90 text-white",
-    sky: "bg-sky-500/90 text-white",
-    violet: "bg-violet-500/90 text-white",
-    amber: "bg-amber-500/90 text-white",
-    slate: "bg-slate-900/70 text-white",
-  };
-  return (
-    <span className={`paragraph-font inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${colors[color]}`}>
-      {children}
-    </span>
-  );
-}
-
+/* ------------------------------ Internal: image with fallback ------------------------------ */
 function ImgWithFallback({ src, alt, type }) {
   const [imgSrc, setImgSrc] = useState(src);
   const firstFallback = FALLBACK_BY_TYPE[type] || FALLBACK_BY_TYPE.default;
@@ -699,103 +596,139 @@ function ImgWithFallback({ src, alt, type }) {
   );
 }
 
+/* ------------------------------ Card (only location + sq ft + single CTA, uniform size) ------------------------------ */
 function PropertyCard({ p }) {
-  const typeColor =
-    p.type === "Apartment" ? "emerald" :
-    p.type === "House" ? "sky" :
-    p.type === "Villa" ? "violet" : "amber";
-
   const img0 = p.images?.[0];
-  const img1 = p.images?.[1] || img0;
 
   return (
-    <article className="group relative h-full flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm hover:shadow-xl transition-all">
-      <div className="relative aspect-[16/10] overflow-hidden">
-        {/* Hover swap with fallback */}
-        <div className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0">
-          <ImgWithFallback src={img0} alt={p.title} type={p.type} />
-        </div>
-        <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-          <ImgWithFallback src={img1} alt={p.title} type={p.type} />
-        </div>
-
-        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-        <div className="absolute left-3 top-3 flex gap-2">
-          {p.featured && <Badge color="slate">Featured</Badge>}
-          <Badge color={typeColor}>{p.type}</Badge>
-        </div>
-        <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
-          <div className="flex flex-col">
-            <span className="text-white text-lg sm:text-xl font-semibold drop-shadow">{formatINRShort(p.price)}</span>
-            <span className="text-white/85 text-xs sm:text-sm">{p.title}</span>
+    <article
+      className="
+        flex-shrink-0
+        w-[85vw] sm:w-[60vw] md:w-[44vw] lg:w-[30vw] xl:w-[24vw]
+        h-[520px] md:h-[560px] lg:h-[580px]
+        snap-start
+      "
+    >
+      <div className="group relative h-full flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm hover:shadow-xl transition-all">
+        {/* Bigger image area - consistent height for all cards; removed hover-swap to avoid off-topic images */}
+        <div className="relative h-[360px] md:h-[380px] lg:h-[400px] overflow-hidden">
+          <div className="absolute inset-0">
+            <ImgWithFallback src={img0} alt={p.title} type={p.type} />
           </div>
         </div>
-      </div>
 
-      {/* Content fills height, CTA pinned bottom */}
-      <div className="p-4 sm:p-5 flex flex-col flex-1">
-        <div className="flex items-center gap-2 text-slate-600">
-          <svg width="16" height="16" viewBox="0 0 24 24" className="text-emerald-600">
-            <path d="M12 21s-7-4.35-7-10a7 7 0 1 1 14 0c0 5.65-7 10-7 10z" fill="none" stroke="currentColor" strokeWidth="1.8" />
-            <circle cx="12" cy="11" r="2" fill="currentColor" />
-          </svg>
-          <span className="text-sm">{p.location}</span>
-        </div>
+        {/* Only location and sq ft */}
+        <div className="p-4 sm:p-5 flex flex-col flex-1">
+          <div className="flex items-center gap-2 text-slate-700">
+            <svg width="16" height="16" viewBox="0 0 24 24" className="text-orange-600">
+              <path d="M12 21s-7-4.35-7-10a7 7 0 1 1 14 0c0 5.65-7 10-7 10z" fill="none" stroke="currentColor" strokeWidth="1.8" />
+              <circle cx="12" cy="11" r="2" fill="currentColor" />
+            </svg>
+            <span className="text-sm font-medium truncate" title={p.location}>
+              {p.location}
+            </span>
+          </div>
 
-        <div className="mt-3 grid grid-cols-1 gap-2 text-slate-700">
-          <div className="flex items-center gap-2">
+          <div className="mt-3 flex items-center gap-2 text-slate-700">
             <svg width="18" height="18" viewBox="0 0 24 24" className="text-slate-500">
               <path d="M4 4h16v16H4z" fill="none" stroke="currentColor" strokeWidth="1.8" />
             </svg>
             <span className="text-sm">{withCommas(p.area)} sq ft</span>
           </div>
-        </div>
 
-        {/* CTA pinned to bottom and aligned across cards */}
-        <div className="mt-auto pt-4 flex items-center justify-end">
-          <a
-            href={`${DETAIL_BASE_PATH}/${p.id}`}
-            className="paragraph-font inline-flex items-center rounded-lg bg-orange-500 px-4 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-orange-600"
-          >
-            Contact Us
-          </a>
+          {/* Single CTA - LEFT aligned and pinned bottom */}
+          <div className="mt-auto pt-4 flex items-center justify-start">
+            <a
+              href={`${DETAIL_BASE_PATH}/${p.id}`}
+              className="paragraph-font inline-flex items-center rounded-lg bg-orange-500 px-4 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-orange-600"
+            >
+              Contact Us
+            </a>
+          </div>
         </div>
       </div>
     </article>
   );
 }
 
-/* ---------------------------- Main Component --------------------------- */
-export default function PropertySearch() {
+/* ------------------------------ Slider ------------------------------ */
+export default function PropertySlider() {
+  const sliderRef = useRef(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+  // exactly 8 cards
+  const items = PROPERTIES.slice(0, 8);
+
+  const updateEdges = () => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const { scrollLeft, clientWidth, scrollWidth } = el;
+    setAtStart(scrollLeft <= 4);
+    setAtEnd(scrollLeft + clientWidth >= scrollWidth - 4);
+  };
+
+  const scrollByAmount = (dir = 1) => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const amount = Math.round(el.clientWidth * 0.9);
+    el.scrollBy({ left: dir * amount, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    updateEdges();
+    const el = sliderRef.current;
+    if (!el) return;
+    const onScroll = () => updateEdges();
+    el.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateEdges);
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", updateEdges);
+    };
+  }, []);
+
   return (
     <section className="paragraph-font relative z-0 w-full bg-slate-50 py-8 sm:py-10 lg:py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h2 className="heading-font text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-              Properties in Raipur
-            </h2>
-          </div>
-          <div className="text-sm text-slate-600">
-            Showing <span className="font-semibold text-slate-800">{PROPERTIES.length}</span> listings
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="heading-font text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+            Properties in Raipur
+          </h2>
+          <div className="flex items-center gap-2">
+            <button
+              aria-label="Previous"
+              onClick={() => scrollByAmount(-1)}
+              disabled={atStart}
+              className="h-10 w-10 rounded-full border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" className="mx-auto">
+                <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <button
+              aria-label="Next"
+              onClick={() => scrollByAmount(1)}
+              disabled={atEnd}
+              className="h-10 w-10 rounded-full border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" className="mx-auto">
+                <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
 
-        {/* Results */}
-        <div id="results" className="mt-6">
-          {PROPERTIES.length === 0 ? (
-            <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center">
-              <p className="text-slate-700 font-medium">No results found</p>
-              <p className="text-slate-500 text-sm mt-1">Please check back later.</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-stretch gap-4 sm:gap-6">
-              {PROPERTIES.map((p) => (
-                <PropertyCard key={p.id} p={p} />
-              ))}
-            </div>
-          )}
+        {/* Slider track */}
+        <div
+          ref={sliderRef}
+          className="relative -mx-2 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-2 pb-2"
+          style={{ scrollBehavior: "smooth" }}
+        >
+          {items.map((p) => (
+            <PropertyCard key={p.id} p={p} />
+          ))}
         </div>
       </div>
     </section>
