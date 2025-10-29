@@ -476,7 +476,7 @@ const PROPERTIES = [
     location: "Sector 4, Kamal Vihar, Raipur",
     area: 1500,
     images: [
-      "https://media.istockphoto.com/id/1311356176/photo/modern-luxury-home-interior.webp?a=1&b=1&s=612x612&w=0&k=20&c=i28Whix-e5PXAiFrLEc_Oh0y36Qn9ehCjZu1auyz-y4=", // green field
+      "https://media.istockphoto.com/id/1311356176/photo/modern-luxury-home-interior.webp?a=1&b=1&s=612x612&w=0&k=20&c=i28Whix-e5PXAiFrLEc_Oh0y36Qn9ehCjZu1auyz-y4=",
     ],
   },
   {
@@ -487,7 +487,7 @@ const PROPERTIES = [
     location: "Marine Drive Road, Telibandha, Raipur",
     area: 1200,
     images: [
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80", // open ground
+      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80",
     ],
   },
   {
@@ -498,7 +498,7 @@ const PROPERTIES = [
     location: "Sector 19, Atal Nagar, Raipur",
     area: 1200,
     images: [
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80", // plain land
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80",
     ],
   },
   {
@@ -509,7 +509,7 @@ const PROPERTIES = [
     location: "Saddu, Vidhan Sabha Road, Raipur",
     area: 1800,
     images: [
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80", // brown land
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
     ],
   },
   {
@@ -544,7 +544,7 @@ const PROPERTIES = [
     location: "Marine Drive, Telibandha, Raipur",
     area: 1280,
     images: [
-      "https://media.istockphoto.com/id/1254330782/photo/aerial-view-of-land-and-positioning-point-area.webp?a=1&b=1&s=612x612&w=0&k=20&c=sAJX4H38JB2Ue0lKBvHL277MjWS0IrcLrS_dxyIaO5Q=", // modern facade
+      "https://media.istockphoto.com/id/1254330782/photo/aerial-view-of-land-and-positioning-point-area.webp?a=1&b=1&s=612x612&w=0&k=20&c=sAJX4H38JB2Ue0lKBvHL277MjWS0IrcLrS_dxyIaO5Q=",
     ],
   },
   {
@@ -555,7 +555,7 @@ const PROPERTIES = [
     location: "Avanti Vihar, Raipur",
     area: 1050,
     images: [
-      "https://images.unsplash.com/photo-1641544125844-f38413b4dbbe?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbmQlMjBpbWFnZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900", // apartment walkway
+      "https://images.unsplash.com/photo-1641544125844-f38413b4dbbe?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbmQlMjBpbWFnZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
     ],
   },
 ];
@@ -569,7 +569,7 @@ const FALLBACK_BY_TYPE = {
   Apartment: "https://images.unsplash.com/photo-1505691723518-36a5ac3b2d95?auto=format&fit=crop&w=1600&q=80",
   House: "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1600&q=80",
   Villa: "https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?auto=format&fit=crop&w=1600&q=80",
-  default: "https://placehold.co/1600x1000?text=No+Image",
+  default: "https://placehold.co/900x900?text=No+Image",
 };
 
 /* ------------------------------ Internal: image with fallback ------------------------------ */
@@ -596,7 +596,7 @@ function ImgWithFallback({ src, alt, type }) {
   );
 }
 
-/* ------------------------------ Card (only location + sq ft + single CTA, uniform size) ------------------------------ */
+/* ------------------------------ Card (square image + location + sq ft + left CTA) ------------------------------ */
 function PropertyCard({ p }) {
   const img0 = p.images?.[0];
 
@@ -605,20 +605,20 @@ function PropertyCard({ p }) {
       className="
         flex-shrink-0
         w-[85vw] sm:w-[60vw] md:w-[44vw] lg:w-[30vw] xl:w-[24vw]
-        h-[520px] md:h-[560px] lg:h-[580px]
         snap-start
       "
     >
       <div className="group relative h-full flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm hover:shadow-xl transition-all">
-        {/* Bigger image area - consistent height for all cards; removed hover-swap to avoid off-topic images */}
-        <div className="relative h-[360px] md:h-[380px] lg:h-[400px] overflow-hidden">
-          <div className="absolute inset-0">
-            <ImgWithFallback src={img0} alt={p.title} type={p.type} />
-          </div>
+        {/* Square image: width == height (aspect 1:1) */}
+        <div
+          className="relative w-full aspect-square overflow-hidden"
+          style={{ aspectRatio: "1 / 1" }} // fallback if Tailwind aspect-square not available
+        >
+          <ImgWithFallback src={img0} alt={p.title} type={p.type} />
         </div>
 
         {/* Only location and sq ft */}
-        <div className="p-4 sm:p-5 flex flex-col flex-1">
+        <div className="p-4 sm:p-5 flex flex-col">
           <div className="flex items-center gap-2 text-slate-700">
             <svg width="16" height="16" viewBox="0 0 24 24" className="text-orange-600">
               <path d="M12 21s-7-4.35-7-10a7 7 0 1 1 14 0c0 5.65-7 10-7 10z" fill="none" stroke="currentColor" strokeWidth="1.8" />
@@ -636,8 +636,8 @@ function PropertyCard({ p }) {
             <span className="text-sm">{withCommas(p.area)} sq ft</span>
           </div>
 
-          {/* Single CTA - LEFT aligned and pinned bottom */}
-          <div className="mt-auto pt-4 flex items-center justify-start">
+          {/* Single CTA - LEFT aligned */}
+          <div className="pt-4 flex items-center justify-start">
             <a
               href={`${DETAIL_BASE_PATH}/${p.id}`}
               className="paragraph-font inline-flex items-center rounded-lg bg-orange-500 px-4 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-orange-600"
