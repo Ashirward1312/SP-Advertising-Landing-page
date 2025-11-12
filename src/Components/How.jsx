@@ -6,6 +6,7 @@ import {
   FaBolt,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import founderImg from "../images/c.jpeg";
 
 /* ================== Accessibility Hooks ================== */
 function usePrefersReducedMotion() {
@@ -31,8 +32,7 @@ function useReveal(prefersReducedMotion) {
   useEffect(() => {
     if (prefersReducedMotion) return;
     const io = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => e.isIntersecting && setInView(true)),
+      (entries) => entries.forEach((e) => e.isIntersecting && setInView(true)),
       { threshold: 0.15 }
     );
     if (ref.current) io.observe(ref.current);
@@ -42,14 +42,12 @@ function useReveal(prefersReducedMotion) {
 }
 
 /* ================== Founder Content ================== */
-const FOUNDER_PHOTO =
-  "https://images.unsplash.com/photo-1502307100811-6bdc0981a85b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJveXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900"; // professional male portrait
+const FOUNDER_PHOTO = founderImg;
 
 const FOUNDER = {
-  quote: "We believe we are enablers of people's dreams.",
-  name: "Founder Name",
-  role: "Founder, Your Brand",
-  bio: "We’re a modern real estate team focused on verified data, transparent pricing and fast closures — so every client can move with confidence.",
+  quote: "Strategy first. People always. Real estate done right.",
+  name: "Pradeep Maheshwari",
+  role: "Founder • Executive Vice President, CAIT Chhattisgarh",
 };
 
 /* ================== Features ================== */
@@ -57,27 +55,27 @@ const features = [
   {
     icon: <FaUsers size={26} aria-hidden="true" />,
     title: "Trusted Team",
-    desc: "Verified experts ensuring reliability and professionalism in every deal.",
+    desc: "KYC‑verified owners and agents. Ethical, professional, responsive.",
   },
   {
     icon: <FaHandsHelping size={26} aria-hidden="true" />,
     title: "Customer First",
-    desc: "We prioritize your needs, offering guidance every step of the way.",
+    desc: "Guidance from discovery to possession with dedicated support.",
   },
   {
     icon: <FaCheckCircle size={26} aria-hidden="true" />,
     title: "Transparent Process",
-    desc: "Clear pricing, honest insights, and end-to-end support for peace of mind.",
+    desc: "Clear pricing, no hidden fees, real updates at every step.",
   },
   {
     icon: <FaBolt size={26} aria-hidden="true" />,
     title: "Fast Closures",
-    desc: "Streamlined paperwork and coordination to close deals quickly and smoothly.",
+    desc: "Streamlined paperwork, coordinated site visits and timely approvals.",
   },
   {
     icon: <FaMapMarkerAlt size={26} aria-hidden="true" />,
     title: "Local Expertise",
-    desc: "Neighborhood insights, pricing trends, and guidance you can trust.",
+    desc: "Strong network across Chhattisgarh & pan‑India with neighborhood insights.",
   },
 ];
 
@@ -107,7 +105,7 @@ const HowWeAre = () => {
             }}
           />
 
-          {/* WHO WE ARE Tag */}
+          {/* WHO WE ARE Tag — WHITE */}
           <div className="mb-4 flex justify-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/85 ring-1 ring-white/15 tracking-wide heading-font">
               WHO WE ARE
@@ -116,17 +114,17 @@ const HowWeAre = () => {
 
           {/* Founder Section */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
-            {/* Left: Founder Image (slightly right-shifted) */}
+            {/* Left: Founder Image — alignment fix */}
             <div className="lg:col-span-5 flex justify-center lg:justify-start">
               {FOUNDER_PHOTO ? (
                 <img
                   src={FOUNDER_PHOTO}
                   alt={`${FOUNDER.name || "Founder"} portrait`}
-                  className="h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56 rounded-full object-cover ring-4 ring-orange-400/80 shadow-xl translate-x-[8px] sm:translate-x-[12px] lg:translate-x-[16px]"
+                  className="h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56 rounded-full object-cover object-center ring-4 ring-orange-400/80 shadow-xl"
                 />
               ) : (
                 <div
-                  className="h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56 rounded-full ring-4 ring-orange-400/70 shadow-xl bg-gradient-to-tr from-slate-800 to-slate-700 translate-x-[8px] sm:translate-x-[12px] lg:translate-x-[16px]"
+                  className="h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56 rounded-full ring-4 ring-orange-400/70 shadow-xl bg-gradient-to-tr from-slate-800 to-slate-700"
                   aria-label="Founder image placeholder"
                 />
               )}
@@ -134,16 +132,21 @@ const HowWeAre = () => {
 
             {/* Right: Founder Info */}
             <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
-              <h2 className="heading-font text-xl sm:text-2xl lg:text-3xl font-bold leading-tight">
+              {/* Quote in ORANGE */}
+              <h2 className="heading-font text-xl sm:text-2xl lg:text-3xl font-bold leading-tight text-orange-400">
                 {FOUNDER.quote}
               </h2>
+
+              {/* Bio with "Over two decades" highlighted ORANGE */}
               <p className="paragraph-font text-white/90 text-sm sm:text-base lg:text-[16px] leading-relaxed max-w-lg mx-auto lg:mx-0">
-                {FOUNDER.bio}
+                <span className="">Over Two decades</span> in real estate strategy, sales, and marketing. From large‑scale builder planning to pan‑India broker networks, Pradeep has led innovative models that accelerate closures and create long‑term value.
               </p>
+
+              {/* Name in ORANGE and Role normal */}
               {(FOUNDER.name || FOUNDER.role) && (
                 <div className="pt-2">
                   {FOUNDER.name && (
-                    <div className="heading-font text-sm sm:text-base font-semibold">
+                    <div className="heading-font text-sm sm:text-base font-semibold text-orange-400">
                       {FOUNDER.name}
                     </div>
                   )}
@@ -165,8 +168,7 @@ const HowWeAre = () => {
             <span className="block w-14 h-1 bg-orange-500 rounded mt-2 mx-auto" />
           </h3>
           <p className="paragraph-font text-gray-600 max-w-2xl mx-auto text-sm sm:text-base lg:text-[17px] leading-relaxed">
-            We focus on transparency, trust, and excellent service for our
-            clients and partners.
+            <span className="font-semibold text-orange-600">With over Two decades</span> of hands‑on real estate leadership, we help buyers, sellers, and trusted agents close with confidence. KYC‑verified owners and brokers, transparent pricing, live market data, and end‑to‑end support — from first call to documentation — keep every step simple, fast, and reliable.
           </p>
         </div>
 
