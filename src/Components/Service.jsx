@@ -36,7 +36,7 @@ const SERVICES = [
   },
   {
     id: "other_services",
-    title: "Architect, Interiors, Vastu & Turnkey Solutions",
+    title: "Turnkey Solutions",
     desc: "Other services like sub-contracts, furniture shops, and interiors.",
     icon: <FaDraftingCompass size={22} aria-hidden="true" />,
   },
@@ -75,7 +75,7 @@ function useReveal(prefersReducedMotion) {
     if (ref.current) io.observe(ref.current);
     return () => io.disconnect();
   }, [prefersReducedMotion]);
-    return [ref, inView];
+  return [ref, inView];
 }
 
 /* ------------------- Single Service Card ------------------- */
@@ -154,10 +154,10 @@ export default function Services() {
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xm font-medium text-orange-700 ring-1 ring-orange-200">
-            Our Services
+            OUR SERVICES
           </span>
           <h2 className="heading-font mt-3 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
-            Everything you need for a smooth property journey
+            EVERYTHING YOU NEED FOR A SMOOTH PROPERTY JOURNEY
           </h2>
           <p className="paragraph-font mt-2 text-slate-600">
             From discovery to documentation — we handle it all with transparency and speed.

@@ -45,8 +45,8 @@ function useReveal(prefersReducedMotion) {
 const FOUNDER_PHOTO = founderImg;
 
 const FOUNDER = {
-  quote: "Strategy first. People always. Real estate done right.",
-  name: "Pradeep Maheshwari",
+  quote: "STRATEGY FIRST. PEOPLE ALWAYS. REAL ESTATE DONE RIGHT.",
+  name: "PRADEEP MAHESHWARI",
   role: "Founder • Executive Vice President, CAIT Chhattisgarh",
 };
 
@@ -164,7 +164,7 @@ const HowWeAre = () => {
         {/* ================== Section Header ================== */}
         <div className="text-center mt-12 sm:mt-16">
           <h3 className="heading-font text-2xl sm:text-3xl font-bold text-gray-900 mb-2 inline-block">
-            Who We Are
+            WHO WE ARE
             <span className="block w-14 h-1 bg-orange-500 rounded mt-2 mx-auto" />
           </h3>
           <p className="paragraph-font text-gray-600 max-w-2xl mx-auto text-sm sm:text-base lg:text-[17px] leading-relaxed">

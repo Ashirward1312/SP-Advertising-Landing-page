@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"; 
+import { useEffect, useRef, useState } from "react";
 
 /* Accessibility: Reduced Motion Hook */
 function usePrefersReducedMotion() {
@@ -40,10 +40,10 @@ export default function About() {
   const [rightRef, rightInView] = useReveal(prefersReducedMotion);
 
   const STATS = [
-    { label: "Active Listings", value: "12k+" },
-    { label: "Cities Covered", value: "24+" },
-    { label: "Verified Agents", value: "1.5k+" },
-    { label: "Avg. Days to Sell", value: "21" },
+    // { label: "Active Listings", value: "12k+" },
+    // { label: "Cities Covered", value: "24+" },
+    // { label: "Verified Agents", value: "1.5k+" },
+    // { label: "Avg. Days to Sell", value: "21" },
   ];
 
   return (
@@ -58,10 +58,9 @@ export default function About() {
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xm font-medium text-orange-700 ring-1 ring-orange-100">
-            About us
-          </span>
+            ABOUT US          </span>
           <h2 className="heading-font mt-3 text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
-            Built for buyers, sellers and trusted agents
+            BUILT FOR BUYERS, SELLERS AND TRUSTED AGENTS
           </h2>
         </div>
 
@@ -70,14 +69,13 @@ export default function About() {
           {/* Left Content */}
           <div
             ref={leftRef}
-            className={`lg:col-span-6 transition-all duration-700 ${
-              leftInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
-            }`}
+            className={`lg:col-span-6 transition-all duration-700 ${leftInView
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-6"
+              }`}
           >
             <h3 className="heading-font text-2xl font-semibold text-slate-900">
-              Who we are
+              WHO WE ARE
             </h3>
             <p className="paragraph-font mt-3 text-slate-600 leading-relaxed">
               AI-powered insights, real-time updates, and expert assistance —
@@ -126,11 +124,10 @@ export default function About() {
           {/* Right Images */}
           <div
             ref={rightRef}
-            className={`lg:col-span-6 transition-all duration-700 ${
-              rightInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
-            }`}
+            className={`lg:col-span-6 transition-all duration-700 ${rightInView
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-6"
+              }`}
           >
             <div className="relative">
               <div
@@ -183,7 +180,7 @@ export default function About() {
           ))}
         </div>
 
-       
+
       </div>
     </section>
   );

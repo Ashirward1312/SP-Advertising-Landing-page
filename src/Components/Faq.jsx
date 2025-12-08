@@ -37,7 +37,7 @@ const FAQ = () => {
       <div className="mx-auto max-w-4xl w-full text-center">
         {/* Header */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
-          Frequently Asked Questions
+          FREQUENTLY ASKED QUESTIONS
           <span className="block w-20 h-1 bg-orange-400 rounded mt-3 mx-auto"></span>
         </h2>
 

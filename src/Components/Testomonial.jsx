@@ -38,7 +38,7 @@ const Testimonial = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Heading */}
         <h2 className="heading-font text-4xl font-bold text-gray-900 mb-4">
-          What Our <span className="text-orange-500">Clients Say</span>
+          WHAT OUR <span className="text-orange-500">CLIENTS SAYS</span>
         </h2>
         <p className="paragraph-font text-gray-600 max-w-2xl mx-auto mb-12">
           Hear from our clients and partners about their experience working with{" "}

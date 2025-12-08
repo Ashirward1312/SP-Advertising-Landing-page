@@ -201,9 +201,9 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl">
         <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-6 leading-tight">
-          Your Dream Home
+          YOUR DREAM HOME
           <br />
-          <span className="text-amber-400">Awaits in Raipur</span>
+          <span className="text-amber-400">AWAITS IN RAIPUR</span>
         </h1>
 
         <p className="text-lg sm:text-xl text-white/95 mb-8 max-w-2xl mx-auto">

@@ -460,286 +460,527 @@
 //     </section>
 //   );
 // }
-import React, { useEffect, useRef, useState } from "react";
 
-/* ----------------------------- Settings ----------------------------- */
-const DETAIL_BASE_PATH = "/property"; // apne route ke hisaab se change kar lo
 
-/* ----------------------------- Raipur Listings (property-safe images) ----------------------------- */
-const PROPERTIES = [
-  // Land / Plots (empty land, no people)
-  {
-    id: "RPR-PL-2101",
-    title: "Residential Plot in Kamal Vihar (Sector 4)",
-    type: "Land",
-    city: "Kamal Vihar",
-    location: "Sector 4, Kamal Vihar, Raipur",
-    area: 1500,
-    images: [
-      "https://media.istockphoto.com/id/1311356176/photo/modern-luxury-home-interior.webp?a=1&b=1&s=612x612&w=0&k=20&c=i28Whix-e5PXAiFrLEc_Oh0y36Qn9ehCjZu1auyz-y4=",
-    ],
-  },
-  {
-    id: "RPR-PL-2102",
-    title: "Open Plot near Marine Drive, Telibandha",
-    type: "Land",
-    city: "Telibandha",
-    location: "Marine Drive Road, Telibandha, Raipur",
-    area: 1200,
-    images: [
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80",
-    ],
-  },
-  {
-    id: "RPR-PL-2103",
-    title: "Corner Plot in Naya Raipur (Sector 19)",
-    type: "Land",
-    city: "Naya Raipur (Atal Nagar)",
-    location: "Sector 19, Atal Nagar, Raipur",
-    area: 1200,
-    images: [
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80",
-    ],
-  },
-  {
-    id: "RPR-PL-2104",
-    title: "Plot on Vidhan Sabha Road (Saddu)",
-    type: "Land",
-    city: "Saddu",
-    location: "Saddu, Vidhan Sabha Road, Raipur",
-    area: 1800,
-    images: [
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
-    ],
-  },
-  {
-    id: "RPR-PL-2105",
-    title: "Residential Plot in Sejbahar (AIIMS Road)",
-    type: "Land",
-    city: "Sejbahar",
-    location: "AIIMS Road, Sejbahar, Raipur",
-    area: 1000,
-    images: [
-      "https://plus.unsplash.com/premium_photo-1663126298656-33616be83c32?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGFwYXJ0bWVudCUyMGludGVyaW9yfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
-    ],
-  },
-  {
-    id: "RPR-PL-2106",
-    title: "Premium Plot near VIP Road",
-    type: "Land",
-    city: "VIP Road",
-    location: "VIP Road, Raipur",
-    area: 1400,
-    images: [
-      "https://images.unsplash.com/photo-1675279200694-8529c73b1fd0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50JTIwaW50ZXJpb3J8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
-    ],
-  },
+// import React, { useEffect, useRef, useState } from "react";
 
-  // Apartments / Flats (exteriors, building facades — no people)
-  {
-    id: "RPR-AP-2201",
-    title: "3BHK near Marine Drive, Telibandha",
-    type: "Apartment",
-    city: "Telibandha",
-    location: "Marine Drive, Telibandha, Raipur",
-    area: 1280,
-    images: [
-      "https://media.istockphoto.com/id/1254330782/photo/aerial-view-of-land-and-positioning-point-area.webp?a=1&b=1&s=612x612&w=0&k=20&c=sAJX4H38JB2Ue0lKBvHL277MjWS0IrcLrS_dxyIaO5Q=",
-    ],
-  },
-  {
-    id: "RPR-AP-2202",
-    title: "2BHK in Avanti Vihar",
-    type: "Apartment",
-    city: "Avanti Vihar",
-    location: "Avanti Vihar, Raipur",
-    area: 1050,
-    images: [
-      "https://images.unsplash.com/photo-1641544125844-f38413b4dbbe?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbmQlMjBpbWFnZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
-    ],
-  },
+// /* ----------------------------- Settings ----------------------------- */
+// const DETAIL_BASE_PATH = "/property"; // apne route ke hisaab se change kar lo
+
+// /* ----------------------------- Raipur Listings (property-safe images) ----------------------------- */
+// const PROPERTIES = [
+//   // Land / Plots (empty land, no people)
+//   {
+//     id: "RPR-PL-2101",
+//     title: "Residential Plot in Kamal Vihar (Sector 4)",
+//     type: "Land",
+//     city: "Kamal Vihar",
+//     location: "Sector 4, Kamal Vihar, Raipur",
+//     area: 1500,
+//     images: [
+//       "https://media.istockphoto.com/id/1311356176/photo/modern-luxury-home-interior.webp?a=1&b=1&s=612x612&w=0&k=20&c=i28Whix-e5PXAiFrLEc_Oh0y36Qn9ehCjZu1auyz-y4=",
+//     ],
+//   },
+//   {
+//     id: "RPR-PL-2102",
+//     title: "Open Plot near Marine Drive, Telibandha",
+//     type: "Land",
+//     city: "Telibandha",
+//     location: "Marine Drive Road, Telibandha, Raipur",
+//     area: 1200,
+//     images: [
+//       "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80",
+//     ],
+//   },
+//   {
+//     id: "RPR-PL-2103",
+//     title: "Corner Plot in Naya Raipur (Sector 19)",
+//     type: "Land",
+//     city: "Naya Raipur (Atal Nagar)",
+//     location: "Sector 19, Atal Nagar, Raipur",
+//     area: 1200,
+//     images: [
+//       "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80",
+//     ],
+//   },
+//   {
+//     id: "RPR-PL-2104",
+//     title: "Plot on Vidhan Sabha Road (Saddu)",
+//     type: "Land",
+//     city: "Saddu",
+//     location: "Saddu, Vidhan Sabha Road, Raipur",
+//     area: 1800,
+//     images: [
+//       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
+//     ],
+//   },
+//   {
+//     id: "RPR-PL-2105",
+//     title: "Residential Plot in Sejbahar (AIIMS Road)",
+//     type: "Land",
+//     city: "Sejbahar",
+//     location: "AIIMS Road, Sejbahar, Raipur",
+//     area: 1000,
+//     images: [
+//       "https://plus.unsplash.com/premium_photo-1663126298656-33616be83c32?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGFwYXJ0bWVudCUyMGludGVyaW9yfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
+//     ],
+//   },
+//   {
+//     id: "RPR-PL-2106",
+//     title: "Premium Plot near VIP Road",
+//     type: "Land",
+//     city: "VIP Road",
+//     location: "VIP Road, Raipur",
+//     area: 1400,
+//     images: [
+//       "https://images.unsplash.com/photo-1675279200694-8529c73b1fd0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50JTIwaW50ZXJpb3J8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
+//     ],
+//   },
+
+//   // Apartments / Flats (exteriors, building facades — no people)
+//   {
+//     id: "RPR-AP-2201",
+//     title: "3BHK near Marine Drive, Telibandha",
+//     type: "Apartment",
+//     city: "Telibandha",
+//     location: "Marine Drive, Telibandha, Raipur",
+//     area: 1280,
+//     images: [
+//       "https://media.istockphoto.com/id/1254330782/photo/aerial-view-of-land-and-positioning-point-area.webp?a=1&b=1&s=612x612&w=0&k=20&c=sAJX4H38JB2Ue0lKBvHL277MjWS0IrcLrS_dxyIaO5Q=",
+//     ],
+//   },
+//   {
+//     id: "RPR-AP-2202",
+//     title: "2BHK in Avanti Vihar",
+//     type: "Apartment",
+//     city: "Avanti Vihar",
+//     location: "Avanti Vihar, Raipur",
+//     area: 1050,
+//     images: [
+//       "https://images.unsplash.com/photo-1641544125844-f38413b4dbbe?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbmQlMjBpbWFnZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
+//     ],
+//   },
+// ];
+
+// /* ------------------------------ Utilities ------------------------------ */
+// function withCommas(n) {
+//   return n.toLocaleString("en-IN");
+// }
+// const FALLBACK_BY_TYPE = {
+//   Land: "https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?auto=format&fit=crop&w=1600&q=80",
+//   Apartment: "https://images.unsplash.com/photo-1505691723518-36a5ac3b2d95?auto=format&fit=crop&w=1600&q=80",
+//   House: "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1600&q=80",
+//   Villa: "https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?auto=format&fit=crop&w=1600&q=80",
+//   default: "https://placehold.co/900x900?text=No+Image",
+// };
+
+// /* ------------------------------ Internal: image with fallback ------------------------------ */
+// function ImgWithFallback({ src, alt, type }) {
+//   const [imgSrc, setImgSrc] = useState(src);
+//   const firstFallback = FALLBACK_BY_TYPE[type] || FALLBACK_BY_TYPE.default;
+//   const finalFallback = FALLBACK_BY_TYPE.default;
+
+//   const handleError = () => {
+//     if (imgSrc !== firstFallback) setImgSrc(firstFallback);
+//     else if (imgSrc !== finalFallback) setImgSrc(finalFallback);
+//   };
+
+//   return (
+//     <img
+//       src={imgSrc}
+//       alt={alt}
+//       onError={handleError}
+//       loading="lazy"
+//       decoding="async"
+//       referrerPolicy="no-referrer"
+//       className="absolute inset-0 h-full w-full object-cover"
+//     />
+//   );
+// }
+
+// /* ------------------------------ Card (square image + location + sq ft + left CTA) ------------------------------ */
+// function PropertyCard({ p }) {
+//   const img0 = p.images?.[0];
+
+//   return (
+//     <article
+//       className="
+//         flex-shrink-0
+//         w-[85vw] sm:w-[60vw] md:w-[44vw] lg:w-[30vw] xl:w-[24vw]
+//         snap-start
+//       "
+//     >
+//       <div className="group relative h-full flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm hover:shadow-xl transition-all">
+//         {/* Square image: width == height (aspect 1:1) */}
+//         <div
+//           className="relative w-full aspect-square overflow-hidden"
+//           style={{ aspectRatio: "1 / 1" }} // fallback if Tailwind aspect-square not available
+//         >
+//           <ImgWithFallback src={img0} alt={p.title} type={p.type} />
+//         </div>
+
+//         {/* Only location and sq ft */}
+//         <div className="p-4 sm:p-5 flex flex-col">
+//           <div className="flex items-center gap-2 text-slate-700">
+//             <svg width="16" height="16" viewBox="0 0 24 24" className="text-orange-600">
+//               <path d="M12 21s-7-4.35-7-10a7 7 0 1 1 14 0c0 5.65-7 10-7 10z" fill="none" stroke="currentColor" strokeWidth="1.8" />
+//               <circle cx="12" cy="11" r="2" fill="currentColor" />
+//             </svg>
+//             <span className="text-sm font-medium truncate" title={p.location}>
+//               {p.location}
+//             </span>
+//           </div>
+
+//           <div className="mt-3 flex items-center gap-2 text-slate-700">
+//             <svg width="18" height="18" viewBox="0 0 24 24" className="text-slate-500">
+//               <path d="M4 4h16v16H4z" fill="none" stroke="currentColor" strokeWidth="1.8" />
+//             </svg>
+//             <span className="text-sm">{withCommas(p.area)} sq ft</span>
+//           </div>
+
+//           {/* Single CTA - LEFT aligned */}
+//           <div className="pt-4 flex items-center justify-start">
+//             <a
+//               href={`${DETAIL_BASE_PATH}/${p.id}`}
+//               className="paragraph-font inline-flex items-center rounded-lg bg-orange-500 px-4 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-orange-600"
+//             >
+//               Contact Us
+//             </a>
+//           </div>
+//         </div>
+//       </div>
+//     </article>
+//   );
+// }
+
+// /* ------------------------------ Slider ------------------------------ */
+// export default function PropertySlider() {
+//   const sliderRef = useRef(null);
+//   const [atStart, setAtStart] = useState(true);
+//   const [atEnd, setAtEnd] = useState(false);
+
+//   // exactly 8 cards
+//   const items = PROPERTIES.slice(0, 8);
+
+//   const updateEdges = () => {
+//     const el = sliderRef.current;
+//     if (!el) return;
+//     const { scrollLeft, clientWidth, scrollWidth } = el;
+//     setAtStart(scrollLeft <= 4);
+//     setAtEnd(scrollLeft + clientWidth >= scrollWidth - 4);
+//   };
+
+//   const scrollByAmount = (dir = 1) => {
+//     const el = sliderRef.current;
+//     if (!el) return;
+//     const amount = Math.round(el.clientWidth * 0.9);
+//     el.scrollBy({ left: dir * amount, behavior: "smooth" });
+//   };
+
+//   useEffect(() => {
+//     updateEdges();
+//     const el = sliderRef.current;
+//     if (!el) return;
+//     const onScroll = () => updateEdges();
+//     el.addEventListener("scroll", onScroll, { passive: true });
+//     window.addEventListener("resize", updateEdges);
+//     return () => {
+//       el.removeEventListener("scroll", onScroll);
+//       window.removeEventListener("resize", updateEdges);
+//     };
+//   }, []);
+
+//   return (
+//     <section className="paragraph-font relative z-0 w-full bg-slate-50 py-8 sm:py-10 lg:py-12">
+//       {/* CSS to hide scrollbar */}
+//       <style>{`
+//         .hide-scrollbar::-webkit-scrollbar { display: none; }
+//         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+//       `}</style>
+
+//       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+//         {/* Header */}
+//         <div className="mb-4 flex items-center justify-between">
+//           <h2 className="heading-font text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+//             Properties in Raipur
+//           </h2>
+//           <div className="flex items-center gap-2">
+//             <button
+//               aria-label="Previous"
+//               onClick={() => scrollByAmount(-1)}
+//               disabled={atStart}
+//               className="h-10 w-10 rounded-full border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+//             >
+//               <svg width="20" height="20" viewBox="0 0 24 24" className="mx-auto">
+//                 <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+//               </svg>
+//             </button>
+//             <button
+//               aria-label="Next"
+//               onClick={() => scrollByAmount(1)}
+//               disabled={atEnd}
+//               className="h-10 w-10 rounded-full border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+//             >
+//               <svg width="20" height="20" viewBox="0 0 24 24" className="mx-auto">
+//                 <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+//               </svg>
+//             </button>
+//           </div>
+//         </div>
+
+//         {/* Slider track - scrollbar hidden */}
+//         <div
+//           ref={sliderRef}
+//           className="
+//             relative -mx-2 flex snap-x snap-mandatory items-stretch gap-4
+//             overflow-x-auto px-2 pb-2 hide-scrollbar
+//             [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden
+//           "
+//           style={{ scrollBehavior: "smooth" }}
+//         >
+//           {items.map((p) => (
+//             <PropertyCard key={p.id} p={p} />
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// src/components/CategoriesSection.jsx
+"use client";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Factory as FactoryIcon,
+  Hospital as HospitalIcon,
+  GraduationCap as GraduationCapIcon,
+  Building as BuildingIcon,
+  Gem as GemIcon,
+  ShoppingBag as ShoppingBagIcon,
+  Trees as TreesIcon,
+  Hotel as HotelIcon,
+  Boxes as BoxesIcon,
+  FerrisWheel as FerrisWheelIcon,
+  LineChart as LineChartIcon,
+  MoreHorizontal as MoreHorizontalIcon,
+} from "lucide-react";
+
+const CATS = [
+  { id: "industry", label: "Industries", icon: FactoryIcon },
+  { id: "hospital", label: "Hospital", icon: HospitalIcon },
+  { id: "education", label: "Education", icon: GraduationCapIcon },
+  { id: "realestate", label: "Real Estate", icon: BuildingIcon },
+
+  { id: "luxuryplots", label: "Premium Luxury Plots", icon: GemIcon },
+  { id: "malls", label: "Malls", icon: ShoppingBagIcon },
+  { id: "weddinglawns", label: "Wedding Lawns", icon: TreesIcon },
+  { id: "resorts", label: "Resorts", icon: HotelIcon },
+  { id: "warehouse", label: "Ware House", icon: BoxesIcon },
+  { id: "amusementpark", label: "Amusement Park", icon: FerrisWheelIcon },
+
+  { id: "investment", label: "Investment", icon: LineChartIcon },
+  { id: "landplot", label: "Land/Plot", icon: LineChartIcon },
+
+  { id: "others", label: "Others", icon: MoreHorizontalIcon },
 ];
 
-/* ------------------------------ Utilities ------------------------------ */
-function withCommas(n) {
-  return n.toLocaleString("en-IN");
-}
-const FALLBACK_BY_TYPE = {
-  Land: "https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?auto=format&fit=crop&w=1600&q=80",
-  Apartment: "https://images.unsplash.com/photo-1505691723518-36a5ac3b2d95?auto=format&fit=crop&w=1600&q=80",
-  House: "https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1600&q=80",
-  Villa: "https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?auto=format&fit=crop&w=1600&q=80",
-  default: "https://placehold.co/900x900?text=No+Image",
+// tumhara orange theme
+const BRAND = {
+  base: "#f54900",
+  soft: "#ff9b2e",
+  ring: "rgba(245,73,0,0.65)",
+  glow: "rgba(245,73,0,0.50)",
 };
 
-/* ------------------------------ Internal: image with fallback ------------------------------ */
-function ImgWithFallback({ src, alt, type }) {
-  const [imgSrc, setImgSrc] = useState(src);
-  const firstFallback = FALLBACK_BY_TYPE[type] || FALLBACK_BY_TYPE.default;
-  const finalFallback = FALLBACK_BY_TYPE.default;
+export default function CategoriesSection() {
+  const navigate = useNavigate();
+  const [selected, setSelected] = useState(null);
 
-  const handleError = () => {
-    if (imgSrc !== firstFallback) setImgSrc(firstFallback);
-    else if (imgSrc !== finalFallback) setImgSrc(finalFallback);
+  const handleCategoryClick = (id) => {
+    // Direct navigations
+    if (id === "hospital") {
+      navigate("/Hospital");
+      return;
+    }
+
+    if (id === "landplot" || id === "luxuryplots") {
+      navigate("/land");
+      return;
+    }
+
+    if (id === "others") {
+      navigate("/others");
+      return;
+    }
+
+    // Real Estate & Investment -> submenus toggle
+    if (id === "realestate" || id === "investment") {
+      setSelected((s) => (s === id ? null : id));
+      return;
+    }
+
+    // Baaki categories future ke liye toggle only
+    setSelected((s) => (s === id ? null : id));
+  };
+
+  const handleRealEstateOptionClick = (type) => {
+    if (type === "residential") {
+      navigate("/residential"); // ensure App.jsx me /residential route ho
+    } else if (type === "commercial") {
+      navigate("/commercial");
+    }
+  };
+
+  const handleInvestmentOptionClick = (type) => {
+    if (type === "realestate") {
+      navigate("/commercial"); // ya /residential tumhari routing ke hisaab se
+    } else if (type === "land") {
+      navigate("/land");
+    }
   };
 
   return (
-    <img
-      src={imgSrc}
-      alt={alt}
-      onError={handleError}
-      loading="lazy"
-      decoding="async"
-      referrerPolicy="no-referrer"
-      className="absolute inset-0 h-full w-full object-cover"
-    />
-  );
-}
-
-/* ------------------------------ Card (square image + location + sq ft + left CTA) ------------------------------ */
-function PropertyCard({ p }) {
-  const img0 = p.images?.[0];
-
-  return (
-    <article
-      className="
-        flex-shrink-0
-        w-[85vw] sm:w-[60vw] md:w-[44vw] lg:w-[30vw] xl:w-[24vw]
-        snap-start
-      "
+    <section
+      id="categories"
+      className="relative bg-slate-950 text-slate-100 py-12 sm:py-16"
     >
-      <div className="group relative h-full flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm hover:shadow-xl transition-all">
-        {/* Square image: width == height (aspect 1:1) */}
-        <div
-          className="relative w-full aspect-square overflow-hidden"
-          style={{ aspectRatio: "1 / 1" }} // fallback if Tailwind aspect-square not available
-        >
-          <ImgWithFallback src={img0} alt={p.title} type={p.type} />
-        </div>
+      {/* soft orange glow */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-56 max-w-4xl bg-gradient-to-b from-[#f54900]/22 via-transparent to-transparent blur-3xl opacity-80"
+        aria-hidden="true"
+      />
 
-        {/* Only location and sq ft */}
-        <div className="p-4 sm:p-5 flex flex-col">
-          <div className="flex items-center gap-2 text-slate-700">
-            <svg width="16" height="16" viewBox="0 0 24 24" className="text-orange-600">
-              <path d="M12 21s-7-4.35-7-10a7 7 0 1 1 14 0c0 5.65-7 10-7 10z" fill="none" stroke="currentColor" strokeWidth="1.8" />
-              <circle cx="12" cy="11" r="2" fill="currentColor" />
-            </svg>
-            <span className="text-sm font-medium truncate" title={p.location}>
-              {p.location}
-            </span>
-          </div>
-
-          <div className="mt-3 flex items-center gap-2 text-slate-700">
-            <svg width="18" height="18" viewBox="0 0 24 24" className="text-slate-500">
-              <path d="M4 4h16v16H4z" fill="none" stroke="currentColor" strokeWidth="1.8" />
-            </svg>
-            <span className="text-sm">{withCommas(p.area)} sq ft</span>
-          </div>
-
-          {/* Single CTA - LEFT aligned */}
-          <div className="pt-4 flex items-center justify-start">
-            <a
-              href={`${DETAIL_BASE_PATH}/${p.id}`}
-              className="paragraph-font inline-flex items-center rounded-lg bg-orange-500 px-4 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-orange-600"
-            >
-              Contact Us
-            </a>
-          </div>
-        </div>
-      </div>
-    </article>
-  );
-}
-
-/* ------------------------------ Slider ------------------------------ */
-export default function PropertySlider() {
-  const sliderRef = useRef(null);
-  const [atStart, setAtStart] = useState(true);
-  const [atEnd, setAtEnd] = useState(false);
-
-  // exactly 8 cards
-  const items = PROPERTIES.slice(0, 8);
-
-  const updateEdges = () => {
-    const el = sliderRef.current;
-    if (!el) return;
-    const { scrollLeft, clientWidth, scrollWidth } = el;
-    setAtStart(scrollLeft <= 4);
-    setAtEnd(scrollLeft + clientWidth >= scrollWidth - 4);
-  };
-
-  const scrollByAmount = (dir = 1) => {
-    const el = sliderRef.current;
-    if (!el) return;
-    const amount = Math.round(el.clientWidth * 0.9);
-    el.scrollBy({ left: dir * amount, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    updateEdges();
-    const el = sliderRef.current;
-    if (!el) return;
-    const onScroll = () => updateEdges();
-    el.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", updateEdges);
-    return () => {
-      el.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", updateEdges);
-    };
-  }, []);
-
-  return (
-    <section className="paragraph-font relative z-0 w-full bg-slate-50 py-8 sm:py-10 lg:py-12">
-      {/* CSS to hide scrollbar */}
-      <style>{`
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
-
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6">
         {/* Header */}
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="heading-font text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-            Properties in Raipur
+        <header className="mb-8 text-center">
+         
+          <h2 className="mt-3 text-2xl md:text-3xl font-extrabold tracking-tight uppercase">
+            Browse by{" "}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(135deg, ${BRAND.soft}, ${BRAND.base} 70%)`,
+              }}
+            >
+              Category
+            </span>
           </h2>
-          <div className="flex items-center gap-2">
-            <button
-              aria-label="Previous"
-              onClick={() => scrollByAmount(-1)}
-              disabled={atStart}
-              className="h-10 w-10 rounded-full border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" className="mx-auto">
-                <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-            <button
-              aria-label="Next"
-              onClick={() => scrollByAmount(1)}
-              disabled={atEnd}
-              className="h-10 w-10 rounded-full border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" className="mx-auto">
-                <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
+      
+          <div
+            className="mx-auto mt-3 h-[3px] w-24 rounded-full"
+            style={{
+              background: `linear-gradient(90deg, transparent, ${BRAND.base}, ${BRAND.soft}, transparent)`,
+            }}
+          />
+        </header>
+
+        {/* Category grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 justify-center">
+          {CATS.map(({ id, label, icon: Icon }) => {
+            const isActive = selected === id;
+            return (
+              <button
+                type="button"
+                key={id}
+                onClick={() => handleCategoryClick(id)}
+                className="group relative flex items-center gap-3 rounded-xl bg-slate-900/90 px-4 py-3 ring-1 ring-slate-800/80 transition hover:bg-slate-900 hover:ring-slate-300/50 cursor-pointer"
+                style={
+                  isActive
+                    ? {
+                        boxShadow: `0 0 0 1px ${BRAND.ring}, 0 10px 30px -12px ${BRAND.glow}`,
+                      }
+                    : undefined
+                }
+              >
+                <span
+                  className="grid h-9 w-9 place-items-center rounded-lg ring-1 bg-white/5 ring-slate-700/70"
+                  style={
+                    isActive
+                      ? {
+                          boxShadow: `0 0 0 1px ${BRAND.ring}`,
+                          background:
+                            "radial-gradient(circle at 30% 20%, rgba(255,255,255,0.16), transparent 60%)",
+                        }
+                      : undefined
+                  }
+                >
+                  <Icon
+                    className="h-5 w-5"
+                    style={{ color: isActive ? BRAND.soft : "#d1d5db" }}
+                  />
+                </span>
+                <span
+                  className="text-sm font-semibold"
+                  style={{ color: isActive ? "#fff" : "#e5e7eb" }}
+                >
+                  {label}
+                </span>
+                <span
+                  className="ml-auto h-6 w-6 grid place-items-center rounded-md text-xs ring-1 ring-slate-700/70 bg-slate-950/90"
+                  style={{
+                    boxShadow: isActive
+                      ? `0 0 0 1px ${BRAND.ring}`
+                      : undefined,
+                    color: isActive ? "#fff" : "#9ca3af",
+                  }}
+                >
+                  {isActive ? "−" : "+"}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Slider track - scrollbar hidden */}
-        <div
-          ref={sliderRef}
-          className="
-            relative -mx-2 flex snap-x snap-mandatory items-stretch gap-4
-            overflow-x-auto px-2 pb-2 hide-scrollbar
-            [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden
-          "
-          style={{ scrollBehavior: "smooth" }}
-        >
-          {items.map((p) => (
-            <PropertyCard key={p.id} p={p} />
-          ))}
-        </div>
+        {/* Real Estate sub menu */}
+        {selected === "realestate" && (
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              type="button"
+              onClick={() => handleRealEstateOptionClick("residential")}
+              className="w-full sm:w-auto rounded-full px-6 py-3 text-sm font-semibold shadow-lg transition-all"
+              style={{
+                background: `linear-gradient(135deg, ${BRAND.soft}, ${BRAND.base} 70%)`,
+                color: "#111827",
+                boxShadow: `0 14px 36px ${BRAND.glow}`,
+              }}
+            >
+              RESIDENTIAL REAL ESTATE
+            </button>
+            <button
+              type="button"
+              onClick={() => handleRealEstateOptionClick("commercial")}
+              className="w-full sm:w-auto rounded-full px-6 py-3 text-sm font-semibold bg-slate-900 ring-1 ring-slate-600 text-slate-50 hover:bg-slate-800 transition-all"
+            >
+              COMMERCIAL REAL ESTATE
+            </button>
+          </div>
+        )}
+
+        {/* Investment sub menu (Real Estate + Land/Plot) */}
+        {selected === "investment" && (
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              type="button"
+              onClick={() => handleInvestmentOptionClick("realestate")}
+              className="w-full sm:w-auto rounded-full px-6 py-3 text-sm font-semibold shadow-lg transition-all"
+              style={{
+                background: `linear-gradient(135deg, ${BRAND.soft}, ${BRAND.base} 70%)`,
+                color: "#111827",
+                boxShadow: `0 14px 36px ${BRAND.glow}`,
+              }}
+            >
+              REAL ESTATE INVESTMENT
+            </button>
+            <button
+              type="button"
+              onClick={() => handleInvestmentOptionClick("land")}
+              className="w-full sm:w-auto rounded-full px-6 py-3 text-sm font-semibold bg-slate-900 ring-1 ring-slate-600 text-slate-50 hover:bg-slate-800 transition-all"
+            >
+              LAND / PLOT INVESTMENT
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
