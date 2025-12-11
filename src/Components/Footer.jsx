@@ -74,8 +74,8 @@ const Footer = () => {
           </h2>
           <ul className="space-y-3 text-white/70 text-sm">
             <li>
-              📍  Mahesh Ventures, LK Logistic Park, Kursi, 3rd Floor, Near Kamal
-                  Vihar, Raipur (C.G.)
+              📍 Mahesh Ventures, LK Logistic Park, Kursi, 3rd Floor, Near Kamal
+              Vihar, Raipur (C.G.)
             </li>
             <li>📞 +91 88710 90476</li>
             {/* <li>📧 contact@maheshventures.com</li> */}
@@ -108,18 +108,6 @@ const Footer = () => {
               <FaInstagram />
             </a>
 
-            {/* LinkedIn removed as requested */}
-            {/*
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-orange-400 transition transform hover:scale-110"
-            >
-              <FaLinkedinIn />
-            </a>
-            */}
-
             {/* Twitter / X */}
             <a
               href="https://x.com/maheshwari95189"
@@ -136,7 +124,15 @@ const Footer = () => {
       {/* Divider */}
       <div className="border-t border-white/10 py-6 text-center text-sm text-neutral-400 mt-10">
         Copyright © {year}. All rights reserved, Designed and Developed by{" "}
-        <span className="text-neutral-100 font-semibold">SP ADVERTISING </span>.
+        <a
+          href="https://spadvertising.in/"
+          target="_blank"
+          rel="noreferrer"
+          className="text-neutral-100 font-semibold hover:text-orange-300 transition-colors"
+        >
+          SP ADVERTISING
+        </a>
+        .
       </div>
 
       {/* Scroll to top button */}

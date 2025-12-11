@@ -18,32 +18,33 @@ export default function Others() {
       />
 
       <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-        {/* Back button */}
+        {/* Back button – dark blue with gold/orange text */}
         <div className="mb-4 flex items-center justify-between">
           <button
             type="button"
             onClick={() => navigate("/")}
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-neutral-200 hover:bg-black/90 hover:border-white/40 transition"
+            className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-[#020617] px-3.5 py-1.5 text-xs md:text-sm font-medium text-amber-300 shadow-sm hover:bg-[#020617]/90 hover:border-orange-400 hover:text-orange-300 transition-colors"
           >
             <span className="text-base md:text-lg">←</span>
             <span>Back to Home</span>
           </button>
         </div>
 
-        {/* Heading */}
+        {/* Heading – dark blue pill + orange gradient text */}
         <header className="mb-6 text-left md:text-center">
           <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  "linear-gradient(135deg, #F3D98E, #D4AF37 70%)",
-              }}
-            >
-              Premium Video Showcase
+            <span className="inline-block rounded-2xl bg-[#020617]/90 px-4 py-2 shadow-md shadow-black/40">
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, #fb923c, #facc15)",
+                }}
+              >
+                Premium Video Showcase
+              </span>
             </span>
           </h1>
-       
         </header>
 
         {/* Smaller video frame */}
@@ -56,7 +57,6 @@ export default function Others() {
             }}
           >
             <div className="relative rounded-[1.4rem] bg-black overflow-hidden">
-              {/* Thoda chhota height: 16:9 with max height */}
               <div className="relative w-full aspect-video max-h-[360px] md:max-h-[420px] mx-auto">
                 <video
                   src={sampleVideo}
@@ -67,8 +67,6 @@ export default function Others() {
                   controls={false}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-
-                {/* Optional overlay for future text */}
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               </div>
             </div>
