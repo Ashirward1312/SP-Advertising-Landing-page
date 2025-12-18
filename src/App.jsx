@@ -20,13 +20,25 @@ import Contactus from "./Components/Contactus";
 import Brand from "./Components/Brands";
 import B2B from "./Components/Bab";
 import Prelaunch from "./Components/Prelaunch";
+import Carrer from "./Components/Carrer";
+import Gallery from "./Components/Gallery"; // ✅ Gallery page
 
 // ✅ Land, Commercial, Residential pages
-import Land from "./Components/Listing/Land"; // jahan tumne LandListings dala hai
-import CommercialListings from "./Components/Listing/Commercial"; // VB Tower / commercial wala
-import ResidentialListings from "./Components/Listing/Residence"; // residential cards wala
-import Others from "./Components/Listing/Others"; // premium video showcase wala
+import Land from "./Components/Listing/Land";
+import CommercialListings from "./Components/Listing/Commercial";
+import ResidentialListings from "./Components/Listing/Residence";
+import Others from "./Components/Listing/Others";
 import Hospital from "./Components/Listing/Hospital";
+import MallListings from "./Components/Listing/Mall"; // Malls page (JV for malls)
+
+// ✅ Joint Ventures page
+import Jointventures from "./Components/Listing/Jointventures";
+import FarmhouseListings from "./Components/Listing/Farmhouse";
+import WarehouseListings from "./Components/Listing/Warehouse";
+import BestBuyListings from "./Components/Listing/Bestbuy";
+import ResortListings from "./Components/Listing/Resort";
+import EducationListings from "./Components/Listing/Education";
+import LandInvestmentListings from "./Components/Listing/Landinvesment";
 
 function App() {
   return (
@@ -50,6 +62,7 @@ function App() {
                 <About />
                 <Service />
                 <Brand />
+                {/* 🚫 Yahan se Gallery hata diya – ab ye alag page hoga */}
                 <Testimonial />
                 <Contact />
                 <Faq />
@@ -58,11 +71,17 @@ function App() {
             }
           />
 
+          {/* ✅ GALLERY PAGE (alag route) */}
+          <Route path="/gallery" element={<Gallery />} />
+
           {/* B2B Page */}
           <Route path="/b2b" element={<B2B />} />
 
           {/* Pre-Launch Page */}
           <Route path="/prelaunch" element={<Prelaunch />} />
+
+          {/* Career Page */}
+          <Route path="/career" element={<Carrer />} />
 
           {/* LAND PAGE */}
           <Route path="/land" element={<Land />} />
@@ -70,20 +89,26 @@ function App() {
           {/* COMMERCIAL REAL ESTATE PAGE */}
           <Route path="/commercial" element={<CommercialListings />} />
 
-         
-          {/* ✅ RESIDENTIAL REAL ESTATE PAGE */}
+          {/* RESIDENTIAL REAL ESTATE PAGE */}
           <Route path="/residential" element={<ResidentialListings />} />
-
 
           {/* OTHERS / PREMIUM VIDEO SHOWCASE PAGE */}
           <Route path="/others" element={<Others />} />
 
-          {/* Agar direct contact page chahiye */}
-          {/* <Route path="/contact" element={<Contactus />} /> */}
-
           {/* HOSPITAL PAGE */}
           <Route path="/hospital" element={<Hospital />} />
-          
+
+          {/* ✅ JOINT VENTURES PAGE */}
+          <Route path="/jointventures" element={<Jointventures />} />
+
+          {/* ✅ MALLS JV PAGE */}
+          <Route path="/malls" element={<MallListings />} />
+          <Route path="/farmhouse" element={<FarmhouseListings />} />
+          <Route path="/warehouse" element={<WarehouseListings />} />
+          <Route path="/bestbuy" element={<BestBuyListings />} />
+          <Route path="/resorts-wedding" element={<ResortListings />} />
+          <Route path="/education" element={<EducationListings />} />
+          <Route path="/land-investment" element={<LandInvestmentListings />} />
         </Routes>
 
         {/* Footer sab pages pe */}

@@ -11,26 +11,23 @@ export default function LandingForm() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  // 👉 Page load pe sirf ek hi baar popup dikhana (per browser)
+  // 👉 Page pe ek hi baar popup dikhana (per tab / session)
   useEffect(() => {
     try {
-      const alreadyShown = localStorage.getItem("landingFormShown");
+      const alreadyShown = sessionStorage.getItem("landingFormShown");
       if (!alreadyShown) {
-        setOpen(true);
-        localStorage.setItem("landingFormShown", "true");
+        setOpen(true); // pehli baar tab me page open hua → popup dikhao
+        sessionStorage.setItem("landingFormShown", "true");
       }
     } catch (e) {
-      // agar localStorage available na ho (rare case), normal open
+      // agar sessionStorage available na ho, normal open
       setOpen(true);
     }
   }, []);
 
   const handleClose = () => {
     setOpen(false);
-    // optional: yahan bhi flag set kar sakte ho, par upar useEffect already kar raha hai
-    try {
-      localStorage.setItem("landingFormShown", "true");
-    } catch {}
+    // yahan kuch store karne ki zarurat nahi, sessionStorage already set ho chuka hoga
   };
 
   const handleChange = (e) => {
@@ -62,7 +59,8 @@ export default function LandingForm() {
         setSubmitted(true);
         setFormData({ name: "", email: "", number: "", address: "" });
         try {
-          localStorage.setItem("landingFormShown", "true");
+          // optional: agar ensure karna ho ki submit ke baad bhi dobara na aaye
+          sessionStorage.setItem("landingFormShown", "true");
         } catch {}
       } else {
         alert("Failed to submit. Please try again.");

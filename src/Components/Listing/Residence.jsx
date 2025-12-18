@@ -2,12 +2,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import R1Img from "../../images/VB9.jpeg";
-import R2Img from "../../images/VB10.jpeg";
-import R3Img from "../../images/VB11.jpeg";
-import R4Img from "../../images/VB12.png";
-
-// theme colors – B2B / Prelaunch jaisa
 const BRAND = {
   base: "#f54900",
   soft: "#ff9b2e",
@@ -16,87 +10,242 @@ const BRAND = {
 const CTA_COLOR = "#f97316";
 const CTA_HOVER = "#fb923c";
 
-// ---------- PRICE FORMAT (Approx ₹X Cr) ----------
-function formatINR(val) {
-  if (!val) return "Price on request";
+/* -------------------- RESIDENTIAL DATA (NO IMAGES) -------------------- */
 
-  const crore = val / 10000000;
-  if (crore >= 1) {
-    return `Approx ₹${crore.toFixed(1)} Cr`;
-  }
-
-  return `Approx ${new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  }).format(val)}`;
-}
-
-/* -------------------- RESIDENTIAL DATA (4 CARDS) -------------------- */
-const RESIDENTIAL_PROPERTIES = [
+const RESIDENCE_OPTIONS = [
   {
-    id: "res1",
-    title: "Premium Residential Apartments – Raipur",
+    id: "at-classic",
+    project: "AT Classic",
     city: "Raipur",
-    image: R1Img,
+    title: "AT CLASSIC – 2 BHK READY POSITION",
+    location: "AT Classic, Raipur",
+    config: "2 BHK – Ready position",
+    priceInfo: "Approx ₹55–65 Lakh* (2 BHK)",
+    note: "Good for end use and investment in a developed residential belt.",
+    statusTag: "2 BHK • Ready Position",
+    priceTag: "Approx ₹55–65 Lakh • Price on Request",
   },
   {
-    id: "res2",
-    title: "Premium Residential Apartments – Raipur",
+    id: "aditya-heights",
+    project: "Aditya Heights",
     city: "Raipur",
-    image: R2Img,
+    title: "ADITYA HEIGHTS – 2 BHK READY POSITION",
+    location: "Aditya Heights, Raipur",
+    config: "2 BHK – Ready position",
+    priceInfo: "Approx ₹55–65 Lakh* (2 BHK)",
+    note: "Modern 2 BHK apartments with ready possession – suitable for small families.",
+    statusTag: "2 BHK • Ready Position",
+    priceTag: "Approx ₹55–65 Lakh • Price on Request",
   },
   {
-    id: "res3",
-    title: "Premium Residential Apartments – Raipur",
+    id: "vardhman-elements",
+    project: "Vardhman Elements",
     city: "Raipur",
-    image: R3Img,
+    title: "VARDHMAN ELEMENTS – 2 BHK READY POSITION",
+    location: "Vardhman Elements, Raipur",
+    config: "2 BHK – Ready position",
+    priceInfo: "Approx ₹55–65 Lakh* (2 BHK)",
+    note: "Well-planned residential project with good connectivity and amenities.",
+    statusTag: "2 BHK • Ready Position",
+    priceTag: "Approx ₹55–65 Lakh • Price on Request",
   },
   {
-    id: "res4",
-    title: "Premium Residential Apartments – Raipur",
+    id: "richmond-park-kachna",
+    project: "Richmond Park",
     city: "Raipur",
-    image: R4Img,
+    title: "RICHMOND PARK – 2 BHK READY POSITION (KACHNA)",
+    location: "Richmond Park, Kachna, Raipur",
+    config: "2 BHK – Ready position",
+    priceInfo: "Approx ₹55–65 Lakh* (2 BHK)",
+    note: "Located in the Kachna belt – upcoming residential corridor with good future potential.",
+    statusTag: "2 BHK • Ready Position",
+    priceTag: "Approx ₹55–65 Lakh • Price on Request",
+  },
+
+  // ✅ Additional projects – "Residence Available • Price on Request"
+  {
+    id: "ambience-kachna",
+    project: "Ambience",
+    city: "Raipur",
+    title: "AMBIENCE – RESIDENTIAL APARTMENTS (KACHNA)",
+    location: "Ambience, Kachna, Raipur",
+    config: "Residential apartments – available",
+    priceInfo: "Price on Request",
+    note: "Premium residential apartments in the Kachna area – availability as per inventory.",
+    statusTag: "Residence Available",
+    priceTag: "Price on Request",
+  },
+  {
+    id: "humming-residential",
+    project: "Humming Residential",
+    city: "Raipur",
+    title: "HUMMING RESIDENTIAL – APARTMENTS",
+    location: "Humming Residential, Raipur",
+    config: "Residential apartments – available",
+    priceInfo: "Price on Request",
+    note: "Modern residential development – suitable for families and investors.",
+    statusTag: "Residence Available",
+    priceTag: "Price on Request",
+  },
+  {
+    id: "rishabh-parksyde",
+    project: "Rishabh The Parksyde",
+    city: "Raipur",
+    title: "RISHABH THE PARKSYDE – RESIDENTIAL APARTMENTS",
+    location: "Rishabh The Parksyde, Raipur",
+    config: "2 & 3 BHK apartments – available as per inventory",
+    priceInfo: "Price on Request",
+    note: "Lifestyle apartments with park-facing options (subject to availability).",
+    statusTag: "Residence Available",
+    priceTag: "Price on Request",
+  },
+  {
+    id: "classic-tower-amlidih",
+    project: "Classic Tower",
+    city: "Raipur",
+    title: "CLASSIC TOWER – AMLIDIH",
+    location: "Classic Tower, Amlidih, Raipur",
+    config: "Residential apartments – available",
+    priceInfo: "Price on Request",
+    note: "Located in the Amlidih area – convenient access to nearby social infrastructure.",
+    statusTag: "Residence Available",
+    priceTag: "Price on Request",
+  },
+  {
+    id: "classic-castle-kachna",
+    project: "Classic Castle",
+    city: "Raipur",
+    title: "CLASSIC CASTLE – KACHNA",
+    location: "Classic Castle, Kachna, Raipur",
+    config: "Residential apartments – available",
+    priceInfo: "Price on Request",
+    note: "Residential project in Kachna with scope for future appreciation.",
+    statusTag: "Residence Available",
+    priceTag: "Price on Request",
   },
 ];
 
-/* -------------------- FILTER LOGIC (optional) -------------------- */
-function applyResidentialFilters(list, filters = {}) {
-  if (!filters || Object.keys(filters).length === 0) return list;
+/* -------------------- CARD COMPONENT -------------------- */
 
-  const { category, locations = [], minBudget, maxBudget } = filters;
+function ResidenceCard({ item, index }) {
+  const { title, city, location, config, priceInfo, note, statusTag, priceTag } =
+    item;
 
-  return list.filter((item) => {
-    if (category && category !== "residential") return false;
+  return (
+    <article className="group relative flex flex-col rounded-3xl bg-gradient-to-b from-slate-900/90 via-slate-950 to-black ring-1 ring-white/10 shadow-[0_20px_60px_-35px_rgba(0,0,0,1)] hover:ring-[#f97316]/80 hover:shadow-[0_30px_90px_-45px_rgba(0,0,0,1)] hover:-translate-y-[2px] transition-all duration-200 overflow-hidden">
+      {/* Top gradient line */}
+      <div
+        className="absolute inset-x-0 top-0 h-[3px] opacity-90"
+        style={{
+          background: `linear-gradient(90deg, transparent, ${BRAND.base}, ${BRAND.soft}, transparent)`,
+        }}
+      />
 
-    if (locations.length) {
-      const locStr = `${item.city || ""}`.toLowerCase();
-      const match = locations.some((l) =>
-        locStr.includes(String(l).toLowerCase())
-      );
-      if (!match) return false;
-    }
+      <div className="p-5 md:p-6 space-y-4 flex-1 flex flex-col">
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 text-[11px] font-semibold">
+          <span className="rounded-full bg-black/80 px-3 py-1 text-slate-100 ring-1 ring-white/15">
+            Residential • Raipur
+          </span>
+          <span className="rounded-full bg-white/10 px-3 py-1 text-slate-100 ring-1 ring-white/15">
+            {city}
+          </span>
+          <span className="rounded-full bg-emerald-500/95 px-3 py-1 text-black ring-1 ring-emerald-300/80">
+            {statusTag}
+          </span>
+          <span className="rounded-full bg-[#f97316]/15 px-3 py-1 text-[#fed7aa] ring-1 ring-[#f97316]/40">
+            {priceTag}
+          </span>
+        </div>
 
-    if (minBudget && item.price < Number(minBudget)) return false;
-    if (maxBudget && item.price > Number(maxBudget)) return false;
+        {/* Title */}
+        <div className="space-y-1">
+          <h2 className="text-sm sm:text-base md:text-lg font-bold text-white leading-snug">
+            {title}
+          </h2>
+          <p className="text-[11px] uppercase tracking-[0.22em] text-[#f54900]">
+            RESIDENTIAL APARTMENTS
+          </p>
+        </div>
 
-    return true;
-  });
+        {/* Details box */}
+        <div className="mt-1 rounded-2xl border border-white/5 bg-black/50 px-3 py-3 space-y-1.5">
+          <p className="text-xs text-slate-400 uppercase tracking-[0.16em]">
+            KEY DETAILS
+          </p>
+          <p className="text-sm text-slate-300">
+            <span className="font-semibold text-slate-100">Location:</span>{" "}
+            {location}
+          </p>
+          <p className="text-sm text-slate-300">
+            <span className="font-semibold text-slate-100">
+              Configuration:
+            </span>{" "}
+            {config}
+          </p>
+          <p className="text-sm text-slate-300">
+            <span className="font-semibold text-slate-100">Price Band:</span>{" "}
+            {priceInfo}
+          </p>
+          {note && (
+            <p className="text-xs text-slate-400">
+              <span className="font-semibold text-slate-100">Note:</span> {note}
+            </p>
+          )}
+        </div>
+      </div>
+
+      {/* Bottom CTA */}
+      <div className="border-t border-white/5 px-5 md:px-6 py-4 bg-black/70">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+          <span className="text-xs text-slate-400 sm:flex-1">
+            Share your{" "}
+            <span className="font-semibold text-slate-100">
+              budget and preferred project
+            </span>{" "}
+            – we&apos;ll share exact availability, floor plans and negotiation
+            room for these{" "}
+            <span className="font-semibold text-slate-100">
+              residential options (Price on Request)
+            </span>
+            .
+          </span>
+
+          <a
+            href="/#contact"
+            className="inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2 text-xs md:text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition-colors duration-200"
+            style={{ backgroundColor: CTA_COLOR }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = CTA_HOVER;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = CTA_COLOR;
+            }}
+          >
+            ENQUIRE RESIDENTIAL
+          </a>
+        </div>
+      </div>
+    </article>
+  );
 }
 
-/* -------------------- COMPONENT -------------------- */
+/* -------------------- MAIN COMPONENT -------------------- */
 
 export default function ResidentialListings({ filters }) {
   const navigate = useNavigate();
-  const properties = applyResidentialFilters(RESIDENTIAL_PROPERTIES, filters);
+
+  const properties =
+    !filters || !filters.category || filters.category === "residential"
+      ? RESIDENCE_OPTIONS
+      : [];
 
   if (!properties.length) {
     return (
       <section className="bg-slate-950 text-slate-100 pt-24 pb-10 md:pt-28 md:pb-12">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <p className="text-center text-slate-400 text-sm">
-            No residential listings in Raipur match the selected filters right
-            now.
+            No residential listings match the selected filters right now.
           </p>
         </div>
       </section>
@@ -104,16 +253,7 @@ export default function ResidentialListings({ filters }) {
   }
 
   return (
-    <section className="relative bg-slate-950 text-slate-100 pt-24 pb-14 md:pt-28 md:pb-16">
-      {/* Subtle orange aura */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64"
-        style={{
-          background:
-            "radial-gradient(60% 60% at 50% 0%, rgba(245,73,0,0.20) 0%, rgba(0,0,0,0) 70%)",
-        }}
-      />
-
+    <section className="bg-slate-950 text-slate-100 pt-24 pb-12 md:pt-28 md:pb-16">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         {/* Back button */}
         <div className="mb-6 flex items-center justify-between">
@@ -128,116 +268,17 @@ export default function ResidentialListings({ filters }) {
         </div>
 
         {/* Heading */}
-        <div className="mb-6 md:mb-8">
+        <header className="mb-8 text-center">
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
             RESIDENTIAL • RAIPUR
           </p>
-          <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-white uppercase">
-            Premium Residential Properties In Raipur
-          </h2>
-          <p className="text-sm md:text-base text-slate-300 mt-2 leading-relaxed max-w-2xl">
-            Handpicked premium residences in Raipur – designed for comfort,
-            lifestyle and long‑term value for serious home‑buyers and investors.
-          </p>
-          <div
-            className="mt-3 h-[3px] w-24 rounded-full"
-            style={{
-              background: `linear-gradient(90deg, transparent, ${BRAND.base}, ${BRAND.soft}, transparent)`,
-            }}
-          />
-        </div>
+     
+        </header>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {properties.map((prop, index) => (
-            <article
-              key={prop.id}
-              className="group relative rounded-3xl bg-slate-900/95 border border-slate-800/80 shadow-[0_22px_65px_rgba(15,23,42,0.9)] overflow-hidden transition-all duration-300 hover:border-[#f54900]/80 hover:shadow-[0_26px_80px_rgba(15,23,42,1)]"
-            >
-              {/* Image */}
-              <div className="relative w-full aspect-[4/3] overflow-hidden">
-                <img
-                  src={prop.image}
-                  alt={prop.title}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-
-                {/* gradient overlay bottom */}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-                {/* Top-left tag */}
-                <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                  <span className="inline-flex items-center rounded-full bg-black/80 px-2.5 py-1 text-[10px] font-semibold text-slate-100 ring-1 ring-white/20">
-                    Residential • Raipur
-                  </span>
-                  <span className="inline-flex items-center rounded-full bg-black/70 px-2.5 py-1 text-[10px] font-semibold text-slate-200 ring-1 ring-white/15">
-                    Premium Living
-                  </span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-5 md:p-6 flex flex-col gap-3">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <h3 className="font-semibold text-[17px] md:text-[18px] text-white leading-tight line-clamp-2">
-                      {prop.title}
-                    </h3>
-                    <p className="text-slate-300 text-xs md:text-[13px] mt-1">
-                      Available in Raipur – your next residential address.
-                    </p>
-                  </div>
-
-                  {/* Price pill */}
-                  <span className="inline-flex items-center rounded-full px-3 py-1 text-[11px] md:text-[12px] font-bold whitespace-nowrap flex-shrink-0 bg-black/60 text-slate-100 ring-1 ring-slate-600/80">
-                    {formatINR(prop.price)}
-                  </span>
-                </div>
-
-                {/* Small meta line */}
-                <div className="flex items-center gap-2 text-[11px] md:text-xs text-slate-400">
-                  <span className="inline-flex h-1.5 w-1.5 rounded-full bg-[#f54900]" />
-                  <span>
-                    Gated community • Modern elevation • Developed Raipur
-                    locality
-                  </span>
-                </div>
-
-                {/* CTA row */}
-                <div className="mt-3 flex items-center justify-between gap-3">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[12px] text-emerald-400 font-semibold">
-                      Limited premium inventory available.
-                    </span>
-                    <span className="text-[11px] text-slate-400">
-                      Share your requirement and ticket size, we&apos;ll suggest
-                      the right options.
-                    </span>
-                  </div>
-
-                  <a
-                    href="/#contact"
-                    className="inline-flex items-center justify-center rounded-full px-4 py-2 text-[11px] md:text-xs font-semibold text-white shadow-md transition-colors duration-200"
-                    style={{ backgroundColor: CTA_COLOR }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = CTA_HOVER;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = CTA_COLOR;
-                    }}
-                  >
-                    Contact Us
-                  </a>
-                </div>
-              </div>
-
-              {/* index badge */}
-              <div className="absolute -top-3 right-5 hidden sm:flex h-7 w-7 items-center justify-center rounded-full bg-black/80 text-[11px] text-slate-200 ring-1 ring-white/20">
-                {index + 1}
-              </div>
-            </article>
+        <div className="grid gap-6 md:grid-cols-2">
+          {properties.map((item, index) => (
+            <ResidenceCard key={item.id} item={item} index={index} />
           ))}
         </div>
       </div>

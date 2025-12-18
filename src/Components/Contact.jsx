@@ -59,8 +59,8 @@ export default function Contact() {
             WE’D LOVE TO HEAR FROM YOU
           </h1>
           <p className="paragraph-font mt-2 text-slate-600">
-            Have a question or want to book a site visit? Send us a message and our team
-            will respond soon.
+            Have A Question Or Want To Book A Site Visit? Send Us A Message And Our Team
+            Will Respond Soon.
           </p>
         </div>
 
@@ -69,10 +69,10 @@ export default function Contact() {
           {/* Info card */}
           <div className="lg:col-span-1 rounded-2xl bg-white ring-1 ring-slate-200 p-5 sm:p-6">
             <h2 className="heading-font text-lg font-semibold text-slate-900">
-              Get in touch
+              GET IN TOUCH
             </h2>
             <p className="paragraph-font mt-1 text-sm text-slate-600">
-              Reach out via phone, or visit our office during working hours.
+              Reach Out Via Phone, Or Visit Our Office During Working Hours.
             </p>
 
             <div className="mt-4 space-y-4">
@@ -317,7 +317,7 @@ export default function Contact() {
                     </>
                   ) : (
                     <>
-                      Send message
+                      SEND MESSAGE
                       <svg width="16" height="16" viewBox="0 0 24 24">
                         <path
                           d="M5 12h14M13 5l7 7-7 7"

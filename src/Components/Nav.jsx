@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { jsPDF } from "jspdf";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -23,17 +24,16 @@ const Header = () => {
     if (!el) return;
     const headerH = headerRef.current?.offsetHeight || 0;
     const top =
-      window.scrollY + el.getBoundingClientRect().top - headerH - 8; // 8px padding
+      window.scrollY + el.getBoundingClientRect().top - headerH - 8;
     window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
-    // Update hash
-    history.pushState(null, "", `#${id}`);
+    window.history.pushState(null, "", `#${id}`);
   };
 
   // On route or hash change, if there is a hash, scroll to it
   useEffect(() => {
     const hash = window.location.hash?.replace("#", "");
     if (hash) {
-      setTimeout(() => scrollToId(hash), 0);
+      setTimeout(() => scrollToId(hash), 100);
     }
   }, [location]);
 
@@ -42,13 +42,11 @@ const Header = () => {
     e.preventDefault();
     setMenuOpen(false);
 
-    // If we are NOT on the home route, go to home with hash
     if (location.pathname !== "/") {
       navigate(`/#${id}`);
       return;
     }
 
-    // If already on home, just smooth scroll
     scrollToId(id);
   };
 
@@ -57,42 +55,15 @@ const Header = () => {
   // Function to generate and download PDF
   const downloadQuotePDF = () => {
     const doc = new jsPDF();
-
     doc.setFontSize(18);
     doc.text("Mahesh Ventures - Property Quote", 20, 20);
-
     doc.setFontSize(12);
-    doc.text(
-      "Get your dream house and premium plots in prime locations.",
-      20,
-      40
-    );
-    doc.text(
-      "Residential and commercial properties available for sale and investment.",
-      20,
-      50
-    );
-    doc.text(
-      "Premium plots for secure investment, future growth and high returns.",
-      20,
-      60
-    );
-    doc.text(
-      "Whether you want a home, a premium plot or property for investment,",
-      20,
-      75
-    );
-    doc.text(
-      "Mahesh Ventures (by Pradeep Maheshwari) is here to guide you.",
-      20,
-      85
-    );
-    doc.text(
-      "For buying, selling or investing in real estate, contact us today.",
-      20,
-      100
-    );
-
+    doc.text("Get your dream house and premium plots in prime locations.", 20, 40);
+    doc.text("Residential and commercial properties available for sale and investment.", 20, 50);
+    doc.text("Premium plots for secure investment, future growth and high returns.", 20, 60);
+    doc.text("Whether you want a home, a premium plot or property for investment,", 20, 75);
+    doc.text("Mahesh Ventures (by Pradeep Maheshwari) is here to guide you.", 20, 85);
+    doc.text("For buying, selling or investing in real estate, contact us today.", 20, 100);
     doc.save("Mahesh_Ventures_Quote.pdf");
   };
 
@@ -106,32 +77,37 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-white tracking-wide">
-          <span className="text-orange-400">Mahesh </span>Ventures
+          <span className="text-orange-400">MAHESH </span>VENTURES
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          {/* Navigation Links */}
           <nav className="flex space-x-6 text-white/90 text-sm font-medium">
-            {/* Home (scroll to #home on main page) */}
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, "home")}
               className="hover:text-orange-400 transition"
             >
-              Home
+              HOME
             </a>
 
-            {/* Service section on home */}
             <a
               href="#service"
               onClick={(e) => handleNavClick(e, "service")}
               className="hover:text-orange-400 transition"
             >
-              Service
+              SERVICE
             </a>
 
-            {/* B2B -> separate route /b2b */}
+            {/* ✅ FIXED: Gallery is now a separate route */}
+            <Link
+              to="/gallery"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-orange-400 transition"
+            >
+              GALLERY
+            </Link>
+
             <Link
               to="/b2b"
               onClick={() => setMenuOpen(false)}
@@ -140,32 +116,30 @@ const Header = () => {
               B2B
             </Link>
 
-            {/* Pre-Launch -> separate route /prelaunch */}
             <Link
               to="/prelaunch"
               onClick={() => setMenuOpen(false)}
               className="hover:text-orange-400 transition"
             >
-              Pre-Launch
+              PRE-LAUNCH
             </Link>
 
-            {/* Contact section on home */}
+            <Link
+              to="/career"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-orange-400 transition"
+            >
+              CAREER
+            </Link>
+
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "contact")}
               className="hover:text-orange-400 transition"
             >
-              Contact
+              CONTACT
             </a>
           </nav>
-
-          {/* CTA Button */}
-          <button
-            onClick={downloadQuotePDF}
-            className="ml-6 bg-orange-500 hover:bg-orange-400 text-white px-4 py-2 rounded-full font-semibold text-sm shadow-md transition"
-          >
-            Get a Quote
-          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -225,6 +199,16 @@ const Header = () => {
           >
             Service
           </a>
+          
+          {/* ✅ FIXED: Gallery is now a separate route */}
+          <Link
+            to="/gallery"
+            onClick={() => setMenuOpen(false)}
+            className="block hover:text-orange-400 transition"
+          >
+            Gallery
+          </Link>
+
           <Link
             to="/b2b"
             onClick={() => setMenuOpen(false)}
@@ -238,6 +222,13 @@ const Header = () => {
             className="block hover:text-orange-400 transition"
           >
             Pre-Launch
+          </Link>
+          <Link
+            to="/career"
+            onClick={() => setMenuOpen(false)}
+            className="block hover:text-orange-400 transition"
+          >
+            Career
           </Link>
           <a
             href="#contact"

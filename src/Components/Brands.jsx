@@ -259,7 +259,7 @@ function useReveal(prefersReducedMotion) {
 const ASSOCIATES = [
   {
     id: "rera",
-    name: "RERA Chhattisgarh",
+    name: "RERA CHHATTISGARH",
     image:
       "https://bansodrealtors.com/wp-content/uploads/2021/05/2-1.jpg",
     desc: "RERA brings transparency and efficiency to protect homebuyers’ interests across the real estate sector.",
@@ -272,7 +272,7 @@ const ASSOCIATES = [
   },
   {
     id: "hq",
-    name: "India’s First Real Estate Community HQ & Co‑Working",
+    name: "INDIA’S FIRST REAL ESTATE COMMUNITY HQ & CO‑WORKING",
     image: hq,
     desc: "A community-led real estate HQ and co‑working space where investors, brokers and developers collaborate, learn and build long-term relationships.",
   },
@@ -282,11 +282,11 @@ const ASSOCIATES = [
 const YEARS_OF_EXPERIENCE = 20;
 
 const STATS = [
-  { value: 50, suffix: "+", label: "Projects marketed" },
-  { value: 20, suffix: "+", label: "Projects underway" },
-  { value: 10, suffix: " lakh sq ft", label: "Property ventured" },
-  { value: 2000, suffix: "+", label: "People trained for real estate (C.G)" },
-  { value: 2500, suffix: "+", label: "Network of more than 2500 people" },
+  { value: 50, suffix: "+", label: "PROJECTS MARKETED" },
+  { value: 20, suffix: "+", label: "PROJECTS UNDERWAY" },
+  { value: 10, suffix: " lakh sq ft", label: "PROPERTY VENTURED" },
+  { value: 2000, suffix: "+", label: "PEOPLE TRAINED FOR REAL ESTATE (C.G)" },
+  { value: 2500, suffix: "+", label: "NETWORK OF MORE THAN 2500 PEOPLE" },
 ];
 
 /* ================== Image block ================== */
@@ -378,7 +378,7 @@ export default function AssociatesPage() {
             ASSOCIATES & ACCREDITATIONS
           </h1>
           <p className="paragraph-font mt-2 text-[13.5px] sm:text-sm text-slate-600">
-            Partnerships that strengthen trust and deliver better outcomes.
+            Partnerships That Strengthen Trust And Deliver Better Outcomes.
           </p>
         </header>
 
@@ -402,8 +402,8 @@ export default function AssociatesPage() {
             ONE OF THE LEADING REAL ESTATE COMPANIES IN CHHATTISGARH
           </h2>
           <p className="paragraph-font mt-2 text-[13.5px] sm:text-sm text-slate-600 max-w-3xl mx-auto">
-            Our mission is to give direction to your investment dream and turn
-            it into a memorable experience for a lifetime.
+            Our Mission Is To Give Direction To Your Investment Dream And Turn
+            It Into A Memorable Experience For A Lifetime.
           </p>
         </div>
 
@@ -428,11 +428,11 @@ export default function AssociatesPage() {
                 </div>
                 <div>
                   <div className="heading-font text-sm sm:text-base font-semibold text-slate-900">
-                    Years of Experience
+                    YEARS OF EXPERIENCE
                   </div>
                   <p className="paragraph-font mt-1 text-[12.5px] sm:text-[13px] text-slate-600">
-                    Consistent delivery across marketing, sales and
-                    documentation.
+                    Consistent Delivery Across Marketing,Sales And
+                    Documentation.
                   </p>
                 </div>
               </div>
@@ -472,7 +472,7 @@ export default function AssociatesPage() {
             href="#contact"
             className="paragraph-font inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-orange-500/20 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300"
           >
-            Become a partner
+            BECOME A PARTNER
           </a>
         </div>
       </div>

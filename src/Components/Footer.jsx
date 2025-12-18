@@ -24,7 +24,7 @@ const Footer = () => {
         {/* About Section */}
         <div>
           <h2 className="text-xl font-semibold mb-4 text-orange-400">
-            Mahesh Ventures
+            MAHESH VENTURES
           </h2>
           <p className="text-white/70 text-sm leading-relaxed">
             Mahesh Ventures is your trusted real estate partner — helping
@@ -41,27 +41,27 @@ const Footer = () => {
           <ul className="space-y-2 text-white/70 text-sm">
             <li>
               <a href="#home" className="hover:text-orange-400 transition duration-300">
-                Home
+                HOME
               </a>
             </li>
             <li>
               <a href="#service" className="hover:text-orange-400 transition duration-300">
-                Service
+                SERVICE
               </a>
             </li>
             <li>
               <a href="#about" className="hover:text-orange-400 transition duration-300">
-                About
+                ABOUT
               </a>
             </li>
             <li>
               <a href="#testimonials" className="hover:text-orange-400 transition duration-300">
-                Testimonials
+                TESTIMONIALS
               </a>
             </li>
             <li>
               <a href="#contact" className="hover:text-orange-400 transition duration-300">
-                Contact
+                CONTACT
               </a>
             </li>
           </ul>
@@ -70,7 +70,7 @@ const Footer = () => {
         {/* Contact Info */}
         <div>
           <h2 className="text-lg font-semibold mb-4 text-orange-400">
-            Contact Us
+            CONTACT US
           </h2>
           <ul className="space-y-3 text-white/70 text-sm">
             <li>
@@ -85,7 +85,7 @@ const Footer = () => {
         {/* Social Media */}
         <div>
           <h2 className="text-lg font-semibold mb-4 text-orange-400">
-            Follow Us
+            FOLLOW US
           </h2>
           <div className="flex space-x-4 text-white/80 text-xl">
             {/* Facebook */}

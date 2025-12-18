@@ -150,7 +150,7 @@ const B2B = () => {
           </h1>
 
           <p className="mt-2 text-base sm:text-lg font-medium text-orange-100">
-            For Investors, Developers & Institutions.
+            FOR INVESTORS, DEVELOPERS & INSTITUTIONS.
           </p>
 
           <p className="mt-5 mx-auto max-w-3xl text-sm sm:text-base leading-relaxed text-slate-100/90">
@@ -165,10 +165,10 @@ const B2B = () => {
 
           <div className="mt-6 flex flex-wrap justify-center gap-2">
             {[
-              "Ready Land",
-              "Joint Ventures",
-              "Pre-rented Assets",
-              "Institutional Land",
+              "READY LAND",
+              "JOINT VENTURES",
+              "PRE-RENTED ASSETS",
+              "INSTITUTIONAL LAND",
             ].map((item) => (
               <span
                 key={item}
@@ -185,7 +185,7 @@ const B2B = () => {
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f54900] to-[#ff9b2e] px-9 py-3.5 text-base font-semibold text-white shadow-2xl shadow-[#f54900]/40 transition-all duration-300 hover:scale-[1.03] hover:from-[#ff9b2e] hover:to-[#f54900] focus:outline-none focus:ring-2 focus:ring-[#f54900] focus:ring-offset-2 focus:ring-offset-slate-900"
             >
-              <span>Share Your Requirement</span>
+              <span>SHARE YOUR REQUIREMENTS</span>
               <svg
                 className="h-5 w-5"
                 fill="none"
@@ -205,7 +205,7 @@ const B2B = () => {
               href="#focus"
               className="inline-flex items-center gap-2 rounded-full ring-2 ring-white/70 px-9 py-3.5 text-base font-semibold text-white/90 shadow-lg transition-all duration-300 hover:bg-white/10 hover:ring-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900"
             >
-              <span>View Focus Areas</span>
+              <span>VIEW FOCUS AREAS</span>
               <svg
                 className="h-5 w-5"
                 fill="none"

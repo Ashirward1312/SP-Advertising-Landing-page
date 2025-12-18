@@ -47,34 +47,34 @@ const FOUNDER_PHOTO = founderImg;
 const FOUNDER = {
   quote: "STRATEGY FIRST. PEOPLE ALWAYS. REAL ESTATE DONE RIGHT.",
   name: "PRADEEP MAHESHWARI",
-  role: "Founder • Executive Vice President, CAIT Chhattisgarh",
+  role: "Founder • Executive Vice President YUVA CAIT Chhattisgarh",
 };
 
 /* ================== Features ================== */
 const features = [
   {
     icon: <FaUsers size={26} aria-hidden="true" />,
-    title: "Trusted Team",
+    title:"TRUSTED TEAM",
     desc: "KYC‑verified owners and agents. Ethical, professional, responsive.",
   },
   {
     icon: <FaHandsHelping size={26} aria-hidden="true" />,
-    title: "Customer First",
+    title:"CUSTOMER FIRST",
     desc: "Guidance from discovery to possession with dedicated support.",
   },
   {
     icon: <FaCheckCircle size={26} aria-hidden="true" />,
-    title: "Transparent Process",
+    title:"TRANSPARENT PROCESS",
     desc: "Clear pricing, no hidden fees, real updates at every step.",
   },
   {
     icon: <FaBolt size={26} aria-hidden="true" />,
-    title: "Fast Closures",
+    title:"FAST CLOSURES",
     desc: "Streamlined paperwork, coordinated site visits and timely approvals.",
   },
   {
     icon: <FaMapMarkerAlt size={26} aria-hidden="true" />,
-    title: "Local Expertise",
+    title:"LOCAL EXPERTISE",
     desc: "Strong network across Chhattisgarh & pan‑India with neighborhood insights.",
   },
 ];

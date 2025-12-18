@@ -1,78 +1,48 @@
 "use client";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import sampleVideo from "../../images/PM1.mp4"; // 👈 apna path lagao
+import { ArrowLeft, Play } from "lucide-react";
+import sampleVideo from "../../images/PM1.mp4";
 
 export default function Others() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative bg-neutral-950 text-neutral-100 pt-24 pb-16 md:pt-28 md:pb-20">
-      {/* Background glow */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64"
-        style={{
-          background:
-            "radial-gradient(60% 60% at 50% 0%, rgba(148,163,184,0.22) 0%, rgba(0,0,0,0) 70%)",
-        }}
-      />
+    <section className="bg-black text-white min-h-screen pt-20 pb-12">
+      <div className="max-w-4xl mx-auto px-4">
+        
+        {/* Back Button */}
+        <button
+          onClick={() => navigate("/")}
+          className="flex items-center gap-2 text-sm text-neutral-400 hover:text-orange-400 mb-6 transition-colors"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          BACK TO HOME
+        </button>
 
-      <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-        {/* Back button – dark blue with gold/orange text */}
-        <div className="mb-4 flex items-center justify-between">
-          <button
-            type="button"
-            onClick={() => navigate("/")}
-            className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-[#020617] px-3.5 py-1.5 text-xs md:text-sm font-medium text-amber-300 shadow-sm hover:bg-[#020617]/90 hover:border-orange-400 hover:text-orange-300 transition-colors"
-          >
-            <span className="text-base md:text-lg">←</span>
-            <span>Back to Home</span>
-          </button>
-        </div>
-
-        {/* Heading – dark blue pill + orange gradient text */}
-        <header className="mb-6 text-left md:text-center">
-          <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-            <span className="inline-block rounded-2xl bg-[#020617]/90 px-4 py-2 shadow-md shadow-black/40">
-              <span
-                className="bg-clip-text text-transparent"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(135deg, #fb923c, #facc15)",
-                }}
-              >
-                Premium Video Showcase
-              </span>
-            </span>
+        {/* Heading */}
+        <div className="text-center mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold">
+            <span className="text-orange-400">PREMIUM</span> VIDEO SHOWCASE
           </h1>
-        </header>
-
-        {/* Smaller video frame */}
-        <div className="flex justify-center">
-          <div
-            className="relative w-full max-w-[720px] md:max-w-[800px] rounded-3xl bg-gradient-to-br from-white/25 via-white/10 to-white/20 p-[1.7px] shadow-[0_20px_60px_-36px_rgba(0,0,0,0.95)]"
-            style={{
-              boxShadow:
-                "0 20px 60px -36px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.05)",
-            }}
-          >
-            <div className="relative rounded-[1.4rem] bg-black overflow-hidden">
-              <div className="relative w-full aspect-video max-h-[360px] md:max-h-[420px] mx-auto">
-                <video
-                  src={sampleVideo}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls={false}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-              </div>
-            </div>
-          </div>
+          <p className="mt-2 text-sm text-neutral-500">
+            Explore our exclusive property collection
+          </p>
         </div>
-      </div>
+
+        {/* Video */}
+        <div className="rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900">
+          <video
+            src={sampleVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            className="w-full aspect-video object-cover"
+          />
+        </div>
+    </div>
     </section>
   );
 }

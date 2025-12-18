@@ -116,7 +116,7 @@ export default function About() {
                 href="#contact"
                 className="inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300 paragraph-font"
               >
-                Contact us
+                CONTACT US
               </a>
             </div>
           </div>

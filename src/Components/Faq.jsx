@@ -42,7 +42,7 @@ const FAQ = () => {
         </h2>
 
         <p className="text-gray-600 mb-8 sm:mb-10 text-sm sm:text-base lg:text-lg">
-          Answers to the most common questions our clients ask. Click to reveal details.
+          Answers To The Most Common Questions Our Clients Ask. Click To Reveal Details.
         </p>
 
         {/* FAQ List */}

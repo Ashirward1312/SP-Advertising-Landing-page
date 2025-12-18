@@ -41,8 +41,8 @@ const Testimonial = () => {
           WHAT OUR <span className="text-orange-500">CLIENTS SAYS</span>
         </h2>
         <p className="paragraph-font text-gray-600 max-w-2xl mx-auto mb-12">
-          Hear from our clients and partners about their experience working with{" "}
-          <span className="text-orange-500 font-semibold">Mahesh Ventures</span>.
+          Hear From Our Clients And Partners About Their Experience Working With{" "}
+          <span className="text-orange-500 font-semibold">MAHESH VENTURES</span>.
         </p>
 
         {/* Testimonials Grid */}
