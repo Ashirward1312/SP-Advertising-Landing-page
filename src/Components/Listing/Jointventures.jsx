@@ -193,23 +193,26 @@ export default function JVListings() {
         </div>
 
         {/* Heading */}
-        <header className="mb-8 space-y-3">
+        <header className="mb-8 space-y-3 text-center flex flex-col items-center">
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
             JOINT VENTURE (JV) • LAND • COMMERCIAL
           </p>
-          <h1 className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight uppercase">
+
+          {/* <h1 className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight uppercase">
             JV Land & Prime Commercial Opportunities – Raipur
-          </h1>
+          </h1> */}
+
           <p className="max-w-2xl text-sm sm:text-base text-slate-300 leading-relaxed">
-            JV (Joint Venture / Partnership) is an{" "}
+            JV (Joint Venture) is an{" "}
             <span className="font-semibold text-slate-100">
               agreement and mutual understanding
             </span>{" "}
-            between the client (developer / investor) and the land owner to
+            between the client and the land owner to
             develop a project together and share profits, revenue or developed
             area as per agreed terms.
           </p>
         </header>
+
 
         {/* Cards grid */}
         <div className="grid gap-6 md:grid-cols-2">

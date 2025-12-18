@@ -2,10 +2,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-// Consistent Orange color for the entire website
-const PRIMARY_ORANGE = "#FF8904";
-const GRADIENT_FROM = "#FF8904";
-const GRADIENT_TO = "#ff9b2e";
+// Hospital jaisa color theme
+const PRIMARY_ORANGE = "#f54900";   // BRAND.base
+const GRADIENT_FROM = "#f54900";    // BRAND.base
+const GRADIENT_TO = "#ff9b2e";      // BRAND.soft
 
 const LAND_CARDS = [
   {
@@ -38,7 +38,6 @@ const LAND_CARDS = [
     locationTag: "Tagore Nagar, Raipur",
     size: "Size as per requirement",
   },
-
 ];
 
 export default function LandListings() {
@@ -46,7 +45,7 @@ export default function LandListings() {
 
   return (
     <section className="relative bg-slate-950 text-slate-100 pt-24 pb-16 md:pt-28 md:pb-20">
-      {/* Soft orange glow */}
+      {/* Soft orange glow – hospital jaise tone */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64"
         style={{
@@ -84,15 +83,6 @@ export default function LandListings() {
           <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
             PREMIUM LAND IN RAIPUR
           </h1>
-          <p className="mt-4 max-w-3xl mx-auto text-base text-slate-300 leading-relaxed">
-            Curated, clear-title land options across VIP Road, near Magneto,
-            near Sayaji and key Raipur micro-markets – suitable for end use as
-            well as long-term investment. All details are shared on a{" "}
-            <span className="font-semibold text-slate-100">
-              Price on Request
-            </span>{" "}
-            basis.
-          </p>
         </header>
 
         {/* Cards grid */}
@@ -100,7 +90,7 @@ export default function LandListings() {
           {LAND_CARDS.map((land, index) => (
             <article
               key={land.id}
-              className="group rounded-2xl bg-slate-900/95 ring-1 ring-slate-800/80 overflow-hidden shadow-[0_15px_40px_rgba(15,23,42,0.9)] transition-all duration-300 hover:ring-2 hover:ring-[#FF8904] hover:shadow-[0_25px_70px_rgba(255,137,4,0.15)]"
+              className="group rounded-2xl bg-slate-900/95 ring-1 ring-slate-800/80 overflow-hidden shadow-[0_15px_40px_rgba(15,23,42,0.9)] transition-all duration-300 hover:ring-2 hover:ring-[#f97316] hover:shadow-[0_25px_70px_rgba(249,115,22,0.25)]"
             >
               {/* Top small accent line + option badge */}
               <div className="flex items-center justify-between px-6 pt-4">
@@ -127,11 +117,11 @@ export default function LandListings() {
                 </span>
 
                 {/* Title */}
-                <h2 className="text-xl sm:text-2xl font-bold text-white transition-colors duration-200 group-hover:text-[#FF8904]">
+                <h2 className="text-xl sm:text-2xl font-bold text-white transition-colors duration-200 group-hover:text-[#f54900]">
                   {land.title}
                 </h2>
 
-                {/* Simple details (no long description) */}
+                {/* Simple details */}
                 <div className="mt-2 space-y-1.5 text-sm text-slate-300">
                   <p>
                     <span className="font-semibold text-slate-100">

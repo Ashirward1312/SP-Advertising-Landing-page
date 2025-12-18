@@ -20,7 +20,10 @@ import {
 
 const CATS = [
   { id: "bestbuy", label: "Best Buy", icon: FactoryIcon },
-  { id: "joint ventures", label: "Joint Ventures", icon: FactoryIcon },
+
+  // ✅ ID fixed: "jointventures" (no space)
+  { id: "jointventures", label: "Joint Ventures", icon: FactoryIcon },
+
   { id: "hospital", label: "Hospital", icon: HospitalIcon },
   { id: "education", label: "Education", icon: GraduationCapIcon },
 
@@ -68,85 +71,85 @@ export default function CategoriesSection() {
   const [selected, setSelected] = useState(null);
 
   const handleCategoryClick = (id) => {
-  // BEST BUY
-  if (id === "bestbuy") {
-    navigate("/bestbuy");
-    return;
-  }
+    // BEST BUY
+    if (id === "bestbuy") {
+      navigate("/bestbuy");
+      return;
+    }
 
-  // Joint Ventures
-  if (id === "joint ventures") {
-    navigate("/jointventures");
-    return;
-  }
+    // ✅ Joint Ventures – ID updated
+    if (id === "jointventures") {
+      navigate("/jointventures");
+      return;
+    }
 
-  if (id === "hospital") {
-    navigate("/hospital");
-    return;
-  }
+    if (id === "hospital") {
+      navigate("/hospital");
+      return;
+    }
 
-  if (id === "education") {
-    navigate("/education");
-    return;
-  }
+    if (id === "education") {
+      navigate("/education");
+      return;
+    }
 
-  // Real Estate pages
-  if (id === "residential") {
-    navigate("/residential");
-    return;
-  }
+    // Real Estate pages
+    if (id === "residential") {
+      navigate("/residential");
+      return;
+    }
 
-  if (id === "commercial") {
-    navigate("/commercial");
-    return;
-  }
+    if (id === "commercial") {
+      navigate("/commercial");
+      return;
+    }
 
-  // Premium plots / land (normal listing page)
-  if (id === "landplot" || id === "luxuryplots") {
-    navigate("/land");
-    return;
-  }
+    // Premium plots / land (normal listing page)
+    if (id === "landplot" || id === "luxuryplots") {
+      navigate("/land");
+      return;
+    }
 
-  // Malls
-  if (id === "malls") {
-    navigate("/malls");
-    return;
-  }
+    // Malls
+    if (id === "malls") {
+      navigate("/malls");
+      return;
+    }
 
-  // Resorts + Wedding Lawns
-  if (id === "resortswedding") {
-    navigate("/resorts-wedding");
-    return;
-  }
+    // Resorts + Wedding Lawns
+    if (id === "resortswedding") {
+      navigate("/resorts-wedding");
+      return;
+    }
 
-  // Premium Farm House
-  if (id === "farmhouse") {
-    navigate("/farmhouse");
-    return;
-  }
+    // Premium Farm House
+    if (id === "farmhouse") {
+      navigate("/farmhouse");
+      return;
+    }
 
-  // Warehouse
-  if (id === "warehouse") {
-    navigate("/warehouse");
-    return;
-  }
+    // Warehouse
+    if (id === "warehouse") {
+      navigate("/warehouse");
+      return;
+    }
 
-  // ✅ Investment – alag-alag
-  if (id === "invest-realestate") {
-    navigate("/commercial"); // ya dedicated investment-realestate route
-    return;
-  }
+    // ✅ Investment – alag-alag
+    if (id === "invest-realestate") {
+      navigate("/commercial"); // ya dedicated investment-realestate route
+      return;
+    }
 
-  if (id === "invest-land") {
-    navigate("/land-investment"); // ✅ naya LandInvestment page
-    return;
-  }
+    if (id === "invest-land") {
+      navigate("/land-investment"); // ✅ naya LandInvestment page
+      return;
+    }
 
-  // Others
-  if (id === "others") {
-    navigate("/others");
-    return;
-  }
+    // Others
+    if (id === "others") {
+      navigate("/others");
+      return;
+    }
 
     // Baaki (lease etc.) abhi sirf highlight / toggle
     setSelected((s) => (s === id ? null : id));
