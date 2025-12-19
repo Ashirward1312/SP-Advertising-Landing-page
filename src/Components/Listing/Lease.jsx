@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
+  ChevronLeft,
   IndianRupee,
   MapPin,
   Ruler,
@@ -77,6 +79,8 @@ const properties = [
 ];
 
 export default function LandOnLease() {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#020617] via-slate-950 to-slate-900 text-neutral-50">
       {/* Background glows */}
@@ -88,6 +92,15 @@ export default function LandOnLease() {
       </div>
 
       <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+        {/* Back Button */}
+        <button
+          onClick={() => navigate("/")}
+          className="group mb-4 inline-flex w-max items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-neutral-300 backdrop-blur transition-all duration-300 hover:border-orange-400/60 hover:bg-orange-500/10 hover:text-orange-200"
+        >
+          <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+          BACK TO HOME
+        </button>
+
         {/* Header */}
         <motion.header
           variants={stagger}
