@@ -101,27 +101,6 @@ const Prelaunch = () => {
           </div>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            {/* CTA 1 */}
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f54900] to-[#ff9b2e] px-9 py-3.5 text-base font-semibold text-white shadow-2xl shadow-[#f54900]/40 transition-all duration-300 hover:scale-[1.03] hover:from-[#ff9b2e] hover:to-[#f54900] focus:outline-none focus:ring-2 focus:ring-[#f54900] focus:ring-offset-2 focus:ring-offset-slate-900"
-            >
-              <span>SHARE YOUR PRE-LAUNCH REQUIREMENT</span>
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </a>
-
             {/* CTA 2 */}
             <a
               href="#why-prelaunch"

@@ -39,6 +39,7 @@ import BestBuyListings from "./Components/Listing/Bestbuy";
 import ResortListings from "./Components/Listing/Resort";
 import EducationListings from "./Components/Listing/Education";
 import LandInvestmentListings from "./Components/Listing/Landinvesment";
+import Lease from "./Components/Listing/Lease";
 
 function App() {
   return (
@@ -109,6 +110,7 @@ function App() {
           <Route path="/resorts-wedding" element={<ResortListings />} />
           <Route path="/education" element={<EducationListings />} />
           <Route path="/land-investment" element={<LandInvestmentListings />} />
+          <Route path="/lease" element={<Lease />} />
         </Routes>
 
         {/* Footer sab pages pe */}

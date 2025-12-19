@@ -1,15 +1,11 @@
+"use client";
+
 import { useState, useEffect } from "react";
 
 export default function LandingForm() {
   const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    number: "",
-    address: "",
-  });
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [result, setResult] = useState("");
 
   // 👉 Page pe ek hi baar popup dikhana (per tab / session)
   useEffect(() => {
@@ -27,48 +23,44 @@ export default function LandingForm() {
 
   const handleClose = () => {
     setOpen(false);
-    // yahan kuch store karne ki zarurat nahi, sessionStorage already set ho chuka hoga
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (event) => {
+    event.preventDefault();
     setLoading(true);
+    setResult("");
+
+    const formData = new FormData(event.target);
+    // 👇 yahan naya access_key use kar rahe hain
+    formData.append(
+      "access_key",
+      "363556af-2a82-49cc-84f0-1f8851f273ab"
+    );
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: "5086a787-47c0-416a-8498-f6751f82a234",
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: "New Landing Form Submission",
-          message: `Name: ${formData.name}\nEmail: ${formData.email}\nNumber: ${formData.number}\nAddress: ${formData.address}`,
-          sender_name: formData.name,
-          reply_to: formData.email,
-        }),
+        body: formData,
       });
 
       const data = await response.json();
+      console.log("WEB3FORMS RESPONSE:", data);
+
       if (data.success) {
-        setSubmitted(true);
-        setFormData({ name: "", email: "", number: "", address: "" });
+        setResult("Thank you! We’ll get in touch with you soon.");
+        event.target.reset();
+
         try {
-          // optional: agar ensure karna ho ki submit ke baad bhi dobara na aaye
           sessionStorage.setItem("landingFormShown", "true");
         } catch {}
       } else {
-        alert("Failed to submit. Please try again.");
+        setResult(data.message || "Error submitting the form. Please try again.");
       }
     } catch (err) {
       console.error(err);
-      alert("Error submitting the form.");
+      setResult("Error submitting the form. Please try again.");
     }
+
     setLoading(false);
   };
 
@@ -85,101 +77,77 @@ export default function LandingForm() {
           ✕
         </button>
 
-        {!submitted ? (
-          <>
-            <h2 className="text-3xl font-bold text-center mb-2 text-orange-600">
-              Let’s Connect 🚀
-            </h2>
-            <p className="text-center text-gray-500 mb-8">
-              Fill in your details below — we’ll reach out shortly!
-            </p>
+        <h2 className="text-3xl font-bold text-center mb-2 text-orange-600">
+          Let’s Connect
+        </h2>
+        <p className="text-center text-gray-500 mb-8">
+          Fill in your details below — we’ll reach out shortly!
+        </p>
 
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              <div className="flex flex-col gap-2">
-                <label className="text-sm text-gray-600 font-medium">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="John Doe"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-orange-300 bg-white focus:ring-2 focus:ring-orange-400 outline-none transition"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label className="text-sm text-gray-600 font-medium">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="example@email.com"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-orange-300 bg-white focus:ring-2 focus:ring-orange-400 outline-none transition"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label className="text-sm text-gray-600 font-medium">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  name="number"
-                  value={formData.number}
-                  onChange={handleChange}
-                  placeholder="+91 98765 43210"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-orange-300 bg-white focus:ring-2 focus:ring-orange-400 outline-none transition"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label className="text-sm text-gray-600 font-medium">
-                  Address
-                </label>
-                <input
-                  type="text"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  placeholder="Your full address"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-orange-300 bg-white focus:ring-2 focus:ring-orange-400 outline-none transition"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-orange-500 hover:bg-orange-400 text-white py-3 rounded-lg font-semibold transition-all shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {loading ? "Submitting..." : "Send Message"}
-              </button>
-            </form>
-          </>
-        ) : (
-          <div className="text-center py-10">
-            <h2 className="text-3xl font-bold mb-4 text-orange-600">
-              🎉 Thank You!
-            </h2>
-            <p className="text-gray-600">
-              Your details have been submitted successfully. <br />
-              We’ll get in touch with you soon!
-            </p>
-            <button
-              onClick={handleClose}
-              className="mt-8 bg-orange-500 hover:bg-orange-400 text-white px-8 py-3 rounded-lg font-semibold transition shadow-md"
-            >
-              Close
-            </button>
+        <form className="space-y-5" onSubmit={onSubmit}>
+          <div className="flex flex-col gap-2">
+            <label className="text-sm text-gray-600 font-medium">
+              Full Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="John Doe"
+              required
+              className="w-full px-4 py-3 rounded-lg border border-orange-300 bg-white focus:ring-2 focus:ring-orange-400 outline-none transition"
+            />
           </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-sm text-gray-600 font-medium">
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="example@email.com"
+              required
+              className="w-full px-4 py-3 rounded-lg border border-orange-300 bg-white focus:ring-2 focus:ring-orange-400 outline-none transition"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-sm text-gray-600 font-medium">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              name="number"
+              placeholder="+91 98765 43210"
+              required
+              className="w-full px-4 py-3 rounded-lg border border-orange-300 bg-white focus:ring-2 focus:ring-orange-400 outline-none transition"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-sm text-gray-600 font-medium">
+              Address
+            </label>
+            <input
+              type="text"
+              name="address"
+              placeholder="Your full address"
+              required
+              className="w-full px-4 py-3 rounded-lg border border-orange-300 bg-white focus:ring-2 focus:ring-orange-400 outline-none transition"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-orange-500 hover:bg-orange-400 text-white py-3 rounded-lg font-semibold transition-all shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {loading ? "Submitting..." : "Send Message"}
+          </button>
+        </form>
+
+        {result && (
+          <p className="mt-4 text-center text-sm text-gray-700">{result}</p>
         )}
       </div>
     </div>

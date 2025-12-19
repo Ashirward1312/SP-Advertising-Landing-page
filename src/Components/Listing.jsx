@@ -145,6 +145,10 @@ export default function CategoriesSection() {
       return;
     }
 
+    if (id === "lease") {
+      navigate("/lease");
+      return;
+    } 
     // Others
     if (id === "others") {
       navigate("/others");

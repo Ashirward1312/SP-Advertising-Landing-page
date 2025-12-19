@@ -31,12 +31,45 @@ export default function Contact() {
     setSending(true);
     setStatus({ type: "", msg: "" });
 
-    // Simulate request
-    await new Promise((r) => setTimeout(r, 1000));
+    try {
+      // 👇 Simple Web3Forms style: FormData + access_key
+      const formData = new FormData(e.target);
+      formData.append(
+        "access_key",
+        "363556af-2a82-49cc-84f0-1f8851f273ab"
+      );
+      formData.append("subject", "New Contact Form Submission");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      console.log("WEB3FORMS RESPONSE:", data);
+
+      if (data.success) {
+        setStatus({
+          type: "success",
+          msg: "Thanks! We’ll get back to you shortly.",
+        });
+        setForm({ name: "", phone: "", message: "" });
+        e.target.reset();
+      } else {
+        setStatus({
+          type: "error",
+          msg: data.message || "Something went wrong. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus({
+        type: "error",
+        msg: "Error submitting the form. Please try again later.",
+      });
+    }
 
     setSending(false);
-    setStatus({ type: "success", msg: "Thanks! We’ll get back to you shortly." });
-    setForm({ name: "", /* email: "" */ phone: "", message: "" });
   };
 
   return (
@@ -99,25 +132,7 @@ export default function Contact() {
                 </span>
               </a>
 
-              {/* Email option – commented out */}
-              {/*
-              <a
-                href="mailto:hello@pradeepmaheshwari.com"
-                className="flex items-center gap-3 rounded-xl p-3 hover:bg-slate-50 transition"
-              >
-                <span className="h-9 w-9 inline-flex items-center justify-center rounded-lg bg-orange-50">
-                  <svg width="18" height="18" viewBox="0 0 24 24" className="text-orange-600">
-                    <path d="M4 4h16v16H4z" fill="none" stroke="currentColor" strokeWidth="1.6" />
-                    <path d="M4 6l8 6 8-6" stroke="currentColor" strokeWidth="1.6" fill="none" />
-                  </svg>
-                </span>
-                <span className="paragraph-font text-sm text-slate-800">
-                  hello@pradeepmaheshwari.com
-                </span>
-              </a>
-              */}
-
-              {/* Address – footer wala address */}
+              {/* Address */}
               <div className="flex items-center gap-3 rounded-xl p-3">
                 <span className="h-9 w-9 inline-flex items-center justify-center rounded-lg bg-orange-50">
                   <svg
@@ -204,35 +219,6 @@ export default function Contact() {
                     </p>
                   )}
                 </div>
-
-                {/* Email field – commented out */}
-                {/*
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="heading-font block text-sm font-medium text-slate-800"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    className={`paragraph-font mt-1 w-full rounded-lg border bg-white px-3 py-2.5 text-slate-800 placeholder-slate-400 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 ${
-                      errors.email ? "border-red-300" : "border-slate-200"
-                    }`}
-                    placeholder="you@example.com"
-                    aria-invalid={!!errors.email}
-                  />
-                  {errors.email && (
-                    <p className="paragraph-font mt-1 text-xs text-red-600">
-                      {errors.email}
-                    </p>
-                  )}
-                </div>
-                */}
 
                 {/* Phone */}
                 <div>
