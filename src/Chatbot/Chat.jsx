@@ -5,7 +5,7 @@ import { FaComments, FaPaperPlane } from "react-icons/fa";
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
 export default function ChatBot({
-  accessKey = "5086a787-47c0-416a-8498-f6751f82a234", // aapka Web3Forms access key
+  accessKey = "363556af-2a82-49cc-84f0-1f8851f273ab", // NEW Web3Forms access key
   subject = "Chatbot Lead",                             // email subject
   brand = "Assistant",                                  // bot ka naam
   startOpen = false,                                    // true karoge to pehle se open hoga
@@ -71,8 +71,7 @@ export default function ChatBot({
   const isValidAddress = (s) => s.trim().length >= 6;
 
   /* ------------------------------- Submit Lead --------------------------------
-     - Web3Forms ko minimal reliable payload bhej rahe (name, email, message)
-     - message me summary likh di jati hai
+     - Ab Web3Forms ko FormData ke through submit kar rahe
   ----------------------------------------------------------------------------- */
   const submitLead = async () => {
     setSending(true);
@@ -88,31 +87,29 @@ export default function ChatBot({
         .filter(Boolean)
         .join("\n");
 
-      const payload = {
-        access_key: accessKey,
-        subject,
-        name: lead.name,
-        email: lead.email,
-        message,
-        // Extra fields bhi include ho jayenge email me:
-        ...lead,
-      };
+      // Web3Forms example jaisa FormData use kar rahe
+      const formData = new FormData();
+      formData.append("access_key", accessKey);
+      formData.append("subject", subject);
+      formData.append("name", lead.name);
+      formData.append("email", lead.email);
+      formData.append("message", message);
+      // extra fields
+      if (lead.address) formData.append("address", lead.address);
 
-      const res = await fetch(WEB3FORMS_ENDPOINT, {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
+        body: formData,
       });
 
-      let data = {};
-      try {
-        data = await res.json();
-      } catch (_) {}
+      const data = await res.json();
 
       if (!res.ok || !data?.success) {
         const err = data?.message || `HTTP ${res.status}: ${res.statusText}`;
         console.error("Web3Forms error:", err);
-        await botSay(`Submission failed: ${err}. Type "retry" to try again or "edit" to restart.`);
+        await botSay(
+          `Submission failed: ${err}. Type "retry" to try again or "edit" to restart.`
+        );
         setStep("error");
       } else {
         await botSay("Perfect! I’ve submitted your details successfully.");
@@ -167,12 +164,16 @@ export default function ChatBot({
 
     if (step === "askEmail") {
       if (!isValidEmail(text)) {
-        await botSay("That doesn’t look like a valid email. Please try again (e.g., you@example.com).");
+        await botSay(
+          "That doesn’t look like a valid email. Please try again (e.g., you@example.com)."
+        );
         return;
       }
       setLead((l) => ({ ...l, email: text }));
       await botSay(
-        `Please confirm:\n• Name: ${lead.name || "(updating...)"}\n• Address: ${lead.address || "(updating...)"}\n• Email: ${text}\n\nType "yes" to confirm or "edit" to start over.`
+        `Please confirm:\n• Name: ${lead.name || "(updating...)"}\n• Address: ${
+          lead.address || "(updating...)"
+        }\n• Email: ${text}\n\nType "yes" to confirm or "edit" to start over.`
       );
       setStep("confirm");
       return;
@@ -218,11 +219,7 @@ export default function ChatBot({
     }
   };
 
-  /* ------------------------------- UI Rendering ------------------------------
-     - Launcher: bottom-right pe floating button (isko bhi upar shift kiya gaya)
-     - Chat window: fixed container (right-4) aur style.bottom = bottomOffset
-     - bottomOffset PX me hai; aap is prop ko change karke aur upar/neeche set kar sakte ho
-  ----------------------------------------------------------------------------- */
+  /* ------------------------------- UI Rendering ------------------------------ */
 
   return (
     <>
@@ -250,8 +247,12 @@ export default function ChatBot({
             <div className="relative bg-slate-900 text-white px-4 py-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-sm tracking-wide text-white/80">Chat with us</div>
-                  <div className="text-lg font-semibold">Property Assistant</div>
+                  <div className="text-sm tracking-wide text-white/80">
+                    Chat with us
+                  </div>
+                  <div className="text-lg font-semibold">
+                    Property Assistant
+                  </div>
                 </div>
                 <button
                   onClick={() => setOpen(false)}
@@ -275,10 +276,17 @@ export default function ChatBot({
             {/* Messages area */}
             <div className="flex-1 overflow-y-auto bg-slate-50 px-3 py-3">
               {messages.map((m, idx) => (
-                <div key={idx} className={`mb-2 flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
+                <div
+                  key={idx}
+                  className={`mb-2 flex ${
+                    m.role === "user" ? "justify-end" : "justify-start"
+                  }`}
+                >
                   <div
                     className={`max-w-[80%] whitespace-pre-line rounded-2xl px-3 py-2 text-sm shadow-sm ${
-                      m.role === "user" ? "bg-orange-500 text-white" : "bg-white text-slate-800 ring-1 ring-slate-200"
+                      m.role === "user"
+                        ? "bg-orange-500 text-white"
+                        : "bg-white text-slate-800 ring-1 ring-slate-200"
                     }`}
                   >
                     {m.text}
@@ -317,7 +325,9 @@ export default function ChatBot({
                       onClick={() => {
                         userSay("Edit");
                         setLead({ name: "", address: "", email: "" });
-                        botSay("No problem. Let’s start again. What’s your name?");
+                        botSay(
+                          "No problem. Let’s start again. What’s your name?"
+                        );
                         setStep("askName");
                       }}
                       className="rounded-full px-3 py-1.5 text-sm ring-1 shadow-sm hover:bg-slate-100 transition-colors bg-white text-slate-700 ring-slate-200"
