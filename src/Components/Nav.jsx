@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { jsPDF } from "jspdf";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import mvLogo from "../images/mm.jpg"
+import mvLogo from "../images/Mm.jpg"
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
