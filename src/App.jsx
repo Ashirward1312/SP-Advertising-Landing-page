@@ -23,6 +23,9 @@ import Prelaunch from "./Components/Prelaunch";
 import Carrer from "./Components/Carrer";
 import Gallery from "./Components/Gallery"; // ✅ Gallery page
 
+// ✅ EXPO page (NEW)
+import Expo from "./Components/Expo";
+
 // ✅ Land, Commercial, Residential pages
 import Land from "./Components/Listing/Land";
 import CommercialListings from "./Components/Listing/Commercial";
@@ -63,7 +66,6 @@ function App() {
                 <About />
                 <Service />
                 <Brand />
-                {/* 🚫 Yahan se Gallery hata diya – ab ye alag page hoga */}
                 <Testimonial />
                 <Contact />
                 <Faq />
@@ -71,6 +73,9 @@ function App() {
               </>
             }
           />
+
+          {/* ✅ EXPO PAGE (alag route) */}
+          <Route path="/expo" element={<Expo />} />
 
           {/* ✅ GALLERY PAGE (alag route) */}
           <Route path="/gallery" element={<Gallery />} />

@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { jsPDF } from "jspdf";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
+import mvLogo from "../images/mm.jpg";
+
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -58,12 +60,36 @@ const Header = () => {
     doc.setFontSize(18);
     doc.text("Mahesh Ventures - Property Quote", 20, 20);
     doc.setFontSize(12);
-    doc.text("Get your dream house and premium plots in prime locations.", 20, 40);
-    doc.text("Residential and commercial properties available for sale and investment.", 20, 50);
-    doc.text("Premium plots for secure investment, future growth and high returns.", 20, 60);
-    doc.text("Whether you want a home, a premium plot or property for investment,", 20, 75);
-    doc.text("Mahesh Ventures (by Pradeep Maheshwari) is here to guide you.", 20, 85);
-    doc.text("For buying, selling or investing in real estate, contact us today.", 20, 100);
+    doc.text(
+      "Get your dream house and premium plots in prime locations.",
+      20,
+      40
+    );
+    doc.text(
+      "Residential and commercial properties available for sale and investment.",
+      20,
+      50
+    );
+    doc.text(
+      "Premium plots for secure investment, future growth and high returns.",
+      20,
+      60
+    );
+    doc.text(
+      "Whether you want a home, a premium plot or property for investment,",
+      20,
+      75
+    );
+    doc.text(
+      "Mahesh Ventures (by Pradeep Maheshwari) is here to guide you.",
+      20,
+      85
+    );
+    doc.text(
+      "For buying, selling or investing in real estate, contact us today.",
+      20,
+      100
+    );
     doc.save("Mahesh_Ventures_Quote.pdf");
   };
 
@@ -76,13 +102,18 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-white tracking-wide">
-          <span className="text-orange-400">MAHESH </span>VENTURES
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src={mvLogo}
+            alt="Mahesh Ventures"
+            className="h-10 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          <nav className="flex space-x-6 text-white/90 text-sm font-medium">
+          <nav className="flex items-center space-x-6 text-white/90 text-sm font-medium">
+            {/* Left side normal links */}
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, "home")}
@@ -99,7 +130,6 @@ const Header = () => {
               SERVICE
             </a>
 
-            {/* ✅ FIXED: Gallery is now a separate route */}
             <Link
               to="/gallery"
               onClick={() => setMenuOpen(false)}
@@ -132,13 +162,25 @@ const Header = () => {
               CAREER
             </Link>
 
-            <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, "contact")}
-              className="hover:text-orange-400 transition"
-            >
-              CONTACT
-            </a>
+            {/* Right side: CONTACT + highlighted EXPO */}
+            <div className="flex items-center gap-4 ml-4">
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, "contact")}
+                className="hover:text-orange-400 transition"
+              >
+                CONTACT
+              </a>
+
+              {/* ✅ Highlighted EXPO button */}
+              <Link
+                to="/expo"
+                onClick={() => setMenuOpen(false)}
+                className="px-4 py-1.5 rounded-full bg-orange-500 text-white font-semibold shadow-md border border-orange-400 hover:bg-orange-400 hover:shadow-lg transition transform hover:-translate-y-0.5"
+              >
+                EXPO
+              </Link>
+            </div>
           </nav>
         </div>
 
@@ -199,8 +241,7 @@ const Header = () => {
           >
             Service
           </a>
-          
-          {/* ✅ FIXED: Gallery is now a separate route */}
+
           <Link
             to="/gallery"
             onClick={() => setMenuOpen(false)}
@@ -238,12 +279,14 @@ const Header = () => {
             Contact
           </a>
 
-          <button
-            onClick={downloadQuotePDF}
-            className="bg-orange-500 hover:bg-orange-400 text-white px-6 py-2 rounded-full font-semibold text-sm shadow-md transition"
+          {/* ✅ Mobile me EXPO ko alag se bada button jaisa */}
+          <Link
+            to="/expo"
+            onClick={() => setMenuOpen(false)}
+            className="block mx-auto w-40 bg-orange-500 text-white font-semibold py-2 rounded-full shadow-md hover:bg-orange-400 hover:shadow-lg transition"
           >
-            Get a Quote
-          </button>
+            Expo
+          </Link>
         </div>
       )}
     </header>
