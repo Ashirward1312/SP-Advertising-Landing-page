@@ -94,12 +94,15 @@ export default function LandOnLease() {
       <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
         {/* Back Button */}
         <button
-          onClick={() => navigate("/")}
-          className="group mb-4 inline-flex w-max items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-neutral-300 backdrop-blur transition-all duration-300 hover:border-orange-400/60 hover:bg-orange-500/10 hover:text-orange-200"
-        >
-          <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
-          BACK TO HOME
-        </button>
+            type="button"
+            onClick={() => navigate("/#categories")}
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
+          >
+            <span className="text-base md:text-lg">←</span>
+            <span>
+              BACK TO CATEGORIES
+            </span>
+          </button>
 
         {/* Header */}
         <motion.header

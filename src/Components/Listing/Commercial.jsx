@@ -157,7 +157,7 @@ export default function CommercialListings({ filters }) {
         {/* Heading */}
         <header className="mb-8 text-center">
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            COMMERCIAL • OFFICES • SHOPS • TOWERS
+            COMMERCIAL SPACE AVAILABLE FOR  OFFICES • SHOPS • TOWERS
           </p>
         </header>
 

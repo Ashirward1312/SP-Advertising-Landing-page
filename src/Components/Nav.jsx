@@ -178,7 +178,7 @@ const Header = () => {
                 onClick={() => setMenuOpen(false)}
                 className="px-4 py-1.5 rounded-full bg-orange-500 text-white font-semibold shadow-md border border-orange-400 hover:bg-orange-400 hover:shadow-lg transition transform hover:-translate-y-0.5"
               >
-                EXPO
+                COSMO EXPO
               </Link>
             </div>
           </nav>

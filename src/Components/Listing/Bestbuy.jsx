@@ -143,20 +143,22 @@ export default function BestBuyListings() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         {/* Back button */}
         <div className="mb-6 flex items-center justify-between">
-          <button
+         <button
             type="button"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/#categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
-            <span>Back to Home</span>
+            <span>
+              BACK TO CATEGORIES
+            </span>
           </button>
         </div>
 
         {/* Heading */}
         <header className="mb-8 space-y-3 text-center">
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            BEST BUY • OFFICE • LUXURY PLOTS
+            BEST BUY FOR • OFFICE • LUXURY PLOTS
           </p>
           {/* <h1 className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight uppercase">
             BEST BUY OFFICE & LUXURY PLOT DEALS – RAIPUR

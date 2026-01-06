@@ -136,11 +136,13 @@ export default function MallsListings() {
         <div className="mb-6 flex items-center justify-between">
           <button
             type="button"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/#categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
-            <span>Back to Home</span>
+            <span>
+              BACK TO CATEGORIES
+            </span>
           </button>
         </div>
 

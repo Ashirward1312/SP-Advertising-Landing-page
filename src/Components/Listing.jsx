@@ -21,7 +21,7 @@ import {
 const CATS = [
   { id: "bestbuy", label: "Best Buy", icon: FactoryIcon },
 
-  // ✅ ID fixed: "jointventures" (no space)
+  // ✅ Joint Ventures
   { id: "jointventures", label: "Joint Ventures", icon: FactoryIcon },
 
   { id: "hospital", label: "Hospital", icon: HospitalIcon },
@@ -50,11 +50,11 @@ const CATS = [
   // Land on Lease
   { id: "lease", label: "Land on Lease", icon: MapPinIcon },
 
-  // Investment bhi alag-alag
-  // { id: "invest-realestate", label: "Real Estate Investment", icon: LineChartIcon },
+  // Investment
   { id: "invest-land", label: "Land / Plot Investment", icon: LineChartIcon },
 
-  { id: "landplot", label: "Land/Plot", icon: LineChartIcon },
+  // 🔹 yahan pe pehle "Land/Plot" tha, ab "Stand Alone"
+  { id: "standalone", label: "Stand Alone", icon: LineChartIcon },
 
   { id: "others", label: "Others", icon: MoreHorizontalIcon },
 ];
@@ -77,7 +77,7 @@ export default function CategoriesSection() {
       return;
     }
 
-    // ✅ Joint Ventures – ID updated
+    // ✅ Joint Ventures
     if (id === "jointventures") {
       navigate("/jointventures");
       return;
@@ -105,8 +105,14 @@ export default function CategoriesSection() {
     }
 
     // Premium plots / land (normal listing page)
-    if (id === "landplot" || id === "luxuryplots") {
+    if (id === "luxuryplots") {
       navigate("/land");
+      return;
+    }
+
+    // 🔹 Stand Alone
+    if (id === "standalone") {
+      navigate("/standalone"); // yahan apna route laga sakte ho
       return;
     }
 
@@ -134,12 +140,7 @@ export default function CategoriesSection() {
       return;
     }
 
-    // ✅ Investment – alag-alag
-    if (id === "invest-realestate") {
-      navigate("/commercial"); // ya dedicated investment-realestate route
-      return;
-    }
-
+    // ✅ Investment – land
     if (id === "invest-land") {
       navigate("/land-investment"); // ✅ naya LandInvestment page
       return;
@@ -148,14 +149,15 @@ export default function CategoriesSection() {
     if (id === "lease") {
       navigate("/lease");
       return;
-    } 
+    }
+
     // Others
     if (id === "others") {
       navigate("/others");
       return;
     }
 
-    // Baaki (lease etc.) abhi sirf highlight / toggle
+    // Baaki (toggle highlight)
     setSelected((s) => (s === id ? null : id));
   };
 

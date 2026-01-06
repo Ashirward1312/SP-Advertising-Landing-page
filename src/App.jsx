@@ -44,6 +44,9 @@ import EducationListings from "./Components/Listing/Education";
 import LandInvestmentListings from "./Components/Listing/Landinvesment";
 import Lease from "./Components/Listing/Lease";
 
+// ✅ Stand Alone page (NEW)
+import StandAloneListings from "./Components/Listing/Standalone";
+
 function App() {
   return (
     <Router>
@@ -109,6 +112,7 @@ function App() {
 
           {/* ✅ MALLS JV PAGE */}
           <Route path="/malls" element={<MallListings />} />
+
           <Route path="/farmhouse" element={<FarmhouseListings />} />
           <Route path="/warehouse" element={<WarehouseListings />} />
           <Route path="/bestbuy" element={<BestBuyListings />} />
@@ -116,6 +120,9 @@ function App() {
           <Route path="/education" element={<EducationListings />} />
           <Route path="/land-investment" element={<LandInvestmentListings />} />
           <Route path="/lease" element={<Lease />} />
+
+          {/* ✅ STAND ALONE PAGE */}
+          <Route path="/standalone" element={<StandAloneListings />} />
         </Routes>
 
         {/* Footer sab pages pe */}

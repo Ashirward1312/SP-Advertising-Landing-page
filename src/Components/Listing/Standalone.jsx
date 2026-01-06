@@ -10,38 +10,73 @@ const BRAND = {
 const CTA_COLOR = "#f97316";
 const CTA_HOVER = "#fb923c";
 
-/* -------------------- WAREHOUSE DATA -------------------- */
+/* -------------------- STAND ALONE DATA -------------------- */
 
-const WAREHOUSE_OPTIONS = [
+const STANDALONE_ITEMS = [
   {
-    id: "rasni-arang-20-40-acre",
-    type: "WAREHOUSE ",
-    title: " WAREHOUSE – RASNI / ARANG",
-    location: "Near Rasni – Arang Belt, Raipur (Chhattisgarh)",
-    size: "Approx 20 to 40 acres (flexible combination possible)",
-    note: "Suitable for large warehouse, logistics park or industrial use.",
+    id: "standalone-colors-mall",
+    type: "STAND ALONE COMMERCIAL BUILDING",
+    city: "Raipur",
+    deal: "SALE",
+    title: "Standalone Commercial Building – Approx 40,000 sq ft Construction",
+    location: "Near Colors Mall, Raipur",
+    priceInfo: "For Sale • Approx 40,000 sq ft constructed area. Pricing on request.",
+    note: "On sell near Colors Mall – suitable for showroom, corporate office, or multi-brand commercial use in a high visibility belt.",
+  },
+  {
+    id: "standalone-mahadev-ghat",
+    type: "STAND ALONE BUILDING",
+    city: "Raipur",
+    deal: "SALE",
+    title: "Standalone Building – Approx 6,000–7,000 sq ft (Approx)",
+    location: "Near Mahadev Ghat, Raipur",
+    priceInfo: "For Sale • Approx 6,000–7,000 sq ft constructed area. Pricing on request.",
+    note: "On sell near Mahadev Ghat – ideal for own use or investment as a mid-size independent building.",
+  },
+  {
+    id: "standalone-ivy-hotel-rent",
+    type: "STAND ALONE COMMERCIAL / RETAIL",
+    city: "Raipur",
+    deal: "RENT",
+    title: "Standalone Commercial Space on Rent – Near Ivy Hotel",
+    location: "Near Ivy Hotel, Pachpedi Naka, Raipur",
+    priceInfo: "On Rent • Multiple floor / unit options possible. Rent on request.",
+    note: "On rent near Ivy Hotel, Pachpedi Naka – suitable for clinic, diagnostics, office, or retail with good traffic.",
+  },
+  {
+    id: "standalone-aiims-rent",
+    type: "STAND ALONE COMMERCIAL / MEDICAL SUPPORT",
+    city: "Raipur",
+    deal: "RENT",
+    title: "Standalone Commercial / Retail on Rent – Near AIIMS",
+    location: "Near AIIMS, Raipur",
+    priceInfo: "On Rent • Ideal for medical-support services, retail, or office use. Rent on request.",
+    note: "Near AIIMS on rent – strong catchment of students, staff, and patients in the immediate vicinity.",
   },
 ];
 
 /* -------------------- CARD COMPONENT -------------------- */
 
-function WarehouseCard({ item, index }) {
-  const { type, city, title, location, size, note } = item;
+function StandAloneCard({ item, index }) {
+  const { type, city, title, location, priceInfo, note, deal } = item;
+
+  const dealIsRent = deal === "RENT";
+  const dealLabel = dealIsRent ? "ON RENT" : "FOR SALE";
+  const dealBadgeClass = dealIsRent
+    ? "bg-sky-500/95 ring-sky-300/80"
+    : "bg-emerald-500/95 ring-emerald-300/80";
 
   return (
     <article className="group relative flex flex-col rounded-3xl bg-gradient-to-b from-slate-900/90 via-slate-950 to-black ring-1 ring-white/10 shadow-[0_20px_60px_-35px_rgba(0,0,0,1)] hover:ring-[#f97316]/80 hover:shadow-[0_30px_90px_-45px_rgba(0,0,0,1)] hover:-translate-y-[2px] transition-all duration-200 overflow-hidden">
       {/* Top gradient line */}
       <div
-        className="absolute inset-x-0 top-0 h-[3px] opacity-80"
+        className="absolute inset-x-0 top-0 h-[3px] opacity-90"
         style={{
           background: `linear-gradient(90deg, transparent, ${BRAND.base}, ${BRAND.soft}, transparent)`,
         }}
       />
 
-      {/* Option badge */}
-      <div className="absolute right-4 top-4 rounded-full bg-black/80 px-3 py-1 text-[11px] font-semibold text-slate-200 ring-1 ring-white/15">
-        OPTION {index + 1}
-      </div>
+
 
       <div className="p-5 md:p-6 space-y-4 flex-1 flex flex-col">
         {/* Tags */}
@@ -49,19 +84,18 @@ function WarehouseCard({ item, index }) {
           <span className="rounded-full bg-black/80 px-3 py-1 text-slate-100 ring-1 ring-white/15">
             {type} • {city}
           </span>
-          <span className="rounded-full bg-emerald-500/95 px-3 py-1 text-black ring-1 ring-emerald-300/80">
-            Price on Request
+          <span
+            className={`rounded-full px-3 py-1 text-black ring-1 ${dealBadgeClass}`}
+          >
+            STAND ALONE • {dealLabel}
           </span>
         </div>
 
         {/* Title */}
         <div className="space-y-1">
-          <h2 className="text-lg md:text-xl font-bold text-white leading-snug uppercase">
+          <h2 className="text-sm sm:text-base md:text-lg font-bold text-white leading-snug uppercase">
             {title}
           </h2>
-          <p className="text-[11px] uppercase tracking-[0.22em] text-[#f54900]">
-            LARGE WAREHOUSE 
-          </p>
         </div>
 
         {/* Details box */}
@@ -74,8 +108,8 @@ function WarehouseCard({ item, index }) {
             {location}
           </p>
           <p className="text-sm text-slate-300">
-            <span className="font-semibold text-slate-100">Land Size:</span>{" "}
-            {size}
+            <span className="font-semibold text-slate-100">Deal:</span>{" "}
+            {priceInfo}
           </p>
           {note && (
             <p className="text-xs text-slate-400">
@@ -89,9 +123,16 @@ function WarehouseCard({ item, index }) {
       <div className="border-t border-white/5 px-5 md:px-6 py-4 bg-black/70">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           <span className="text-xs text-slate-400 sm:flex-1">
-            Share your requirement (warehouse size, number of sheds, power
-            load, etc.) – we&apos;ll share exact location, site access details
-            and commercial terms for this Rasni / Arang land.
+            Share whether you are looking for{" "}
+            <span className="font-semibold text-slate-100">
+              sale or rent
+            </span>{" "}
+            – we&apos;ll share exact availability, floor plans, and deal
+            structure for this{" "}
+            <span className="font-semibold text-slate-100">
+              Stand Alone
+            </span>{" "}
+            option.
           </span>
 
           <a
@@ -105,7 +146,7 @@ function WarehouseCard({ item, index }) {
               e.currentTarget.style.backgroundColor = CTA_COLOR;
             }}
           >
-            ENQUIRE WAREHOUSE LAND
+            ENQUIRE STAND ALONE
           </a>
         </div>
       </div>
@@ -115,7 +156,7 @@ function WarehouseCard({ item, index }) {
 
 /* -------------------- MAIN COMPONENT -------------------- */
 
-export default function WarehouseListings() {
+export default function StandAloneListings() {
   const navigate = useNavigate();
 
   return (
@@ -132,7 +173,7 @@ export default function WarehouseListings() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         {/* Back button */}
         <div className="mb-6 flex items-center justify-between">
-          <button
+       <button
             type="button"
             onClick={() => navigate("/#categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
@@ -144,17 +185,17 @@ export default function WarehouseListings() {
           </button>
         </div>
 
-        {/* Heading (center, CAPS) */}
+        {/* Heading */}
         <header className="mb-8 space-y-3 text-center">
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            WAREHOUSE 
+            STAND ALONE
           </p>
         </header>
 
         {/* Cards grid */}
         <div className="grid gap-6 md:grid-cols-2">
-          {WAREHOUSE_OPTIONS.map((item, index) => (
-            <WarehouseCard key={item.id} item={item} index={index} />
+          {STANDALONE_ITEMS.map((item, index) => (
+            <StandAloneCard key={item.id} item={item} index={index} />
           ))}
         </div>
       </div>

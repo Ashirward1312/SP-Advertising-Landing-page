@@ -71,12 +71,17 @@ const ExpoSection = () => {
               >
                 <span className="font-bold mr-1">CALL NOW:</span> 88710 90476
               </a>
-              <span className="text-xs text-slate-500 uppercase">
-                OFFICIAL CHANNEL PARTNER:{" "}
-                <span className="font-semibold text-slate-800">
+
+              {/* OFFICIAL CHANNEL PARTNER – HIGHLIGHTED BADGE */}
+              <div className="flex items-center gap-2 text-[11px] uppercase">
+                <span className="inline-flex items-center gap-1 rounded-full bg-slate-900 px-3 py-1 text-[10px] font-semibold tracking-[0.18em] text-orange-300 shadow-sm">
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  OFFICIAL CHANNEL PARTNER
+                </span>
+                <span className="font-extrabold tracking-wide text-orange-600">
                   MAHESH VENTURES
                 </span>
-              </span>
+              </div>
             </div>
           </div>
 
@@ -100,7 +105,7 @@ const ExpoSection = () => {
         <div className="mt-12 border-t border-slate-200 pt-8">
           <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
             <h3 className="text-base font-semibold text-slate-900 uppercase">
-              <strong>EXPO GLIMPSES</strong> (PROJECTS &amp; STALLS)
+              <strong>EXPO GLIMPSES</strong>
             </h3>
             <p className="text-[11px] text-slate-500 uppercase">
               TAP / CLICK ON AN IMAGE TO{" "}
