@@ -13,13 +13,13 @@ const CTA_HOVER = "#fb923c";
 /* -------------------- LAND / PLOT INVESTMENT DATA -------------------- */
 
 const LAND_INVEST_OPTIONS = [
-  {
+   {
     id: "vip-60000",
     type: "LAND / PLOT INVESTMENT",
     city: "Raipur",
     title: "60,000 SQ.FT LAND INVESTMENT – VIP ROAD, RAIPUR",
     location: "VIP Road, Raipur",
-    size: "Approx 60,000 sq.ft",
+    size: "Range 60,000 sq.ft",
     note: "Suitable for large commercial, mixed-use or long-term investment holding on VIP Road belt.",
   },
   {
@@ -28,7 +28,7 @@ const LAND_INVEST_OPTIONS = [
     city: "Raipur",
     title: "30,000 SQ.FT LAND INVESTMENT – VIP ROAD, RAIPUR",
     location: "VIP Road, Raipur",
-    size: "Approx 30,000 sq.ft",
+    size: "Range 30,000 sq.ft",
     note: "Ideal ticket size for branded showroom, office block or mid-sized mixed-use development.",
   },
   {
@@ -37,9 +37,19 @@ const LAND_INVEST_OPTIONS = [
     city: "Raipur",
     title: "30,000 SQ.FT LAND INVESTMENT – KAMAL VIHAR, RAIPUR",
     location: "Kamal Vihar area, Raipur",
-    size: "Approx 30,000 sq.ft",
+    size: "Range 40,000 To 60,000 sq.ft",
     note: "Located in Kamal Vihar planning area – suitable for residential, mixed-use or plotted development.",
   },
+
+   {
+  id: "persulidih-7500",
+  type: "LAND / PLOT INVESTMENT",
+  city: "Raipur",
+  title: "7,500 SQ.FT LAND INVESTMENT – PARSULIDIH, RAIPUR",
+  location: "Parsulidih area, Raipur",
+  size: "Range 7,500 sq.ft",
+  note: "Persulidih belt land, Raipur."
+},
 ];
 
 /* -------------------- CARD COMPONENT -------------------- */
@@ -116,7 +126,7 @@ function LandInvestCard({ item, index }) {
           </span>
 
           <a
-            href="/#contact"
+            href="/contact"
             className="inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2 text-xs md:text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition-colors duration-200"
             style={{ backgroundColor: CTA_COLOR }}
             onMouseEnter={(e) => {
@@ -155,7 +165,7 @@ export default function LandInvestmentListings() {
         <div className="mb-6 flex items-center justify-between">
          <button
             type="button"
-            onClick={() => navigate("/#categories")}
+            onClick={() => navigate("/categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
@@ -167,7 +177,7 @@ export default function LandInvestmentListings() {
 
         {/* Heading */}
         <header className="mb-8 space-y-3 text-center">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
+          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
             LAND / PLOT INVESTMENT 
           </p>
         </header>

@@ -113,7 +113,7 @@ export default function About() {
             {/* CTA Buttons */}
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300 paragraph-font"
               >
                 CONTACT US

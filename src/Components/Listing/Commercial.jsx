@@ -13,21 +13,12 @@ const CTA_HOVER = "#fb923c";
 /* -------------------- COMMERCIAL DATA (NO IMAGES) -------------------- */
 
 const COMMERCIAL_OPTIONS = [
-  // 400–15,000 sq.ft belt: Jai Stambh -> Kamal Vihar
-  {
-    id: "jai-stambh",
-    area: "Central Raipur",
-    title: "Offices & Showrooms – Near Jai Stambh Chowk",
-    location: "Near Jai Stambh Chowk, Raipur",
-    size: "Approx 400 to 15,000 sq.ft (ready position units)",
-    note: "Central Raipur – suitable for offices, consultancy and branded retail.",
-  },
   {
     id: "vidhan-sabha",
     area: "Institutional Belt",
     title: "Commercial Spaces – Near Vidhan Sabha",
     location: "Vidhan Sabha Road, Raipur",
-    size: "Approx 400 to 15,000 sq.ft (shops & offices)",
+    size: "Range 400 to 15,000 sq.ft (shops & offices)",
     note: "Institutional corridor – good for clinics, offices and showrooms.",
   },
   {
@@ -35,7 +26,7 @@ const COMMERCIAL_OPTIONS = [
     area: "Premium Residential Belt",
     title: "Commercial Spaces – Near Shankar Nagar",
     location: "Near Shankar Nagar, Raipur",
-    size: "Approx 400 to 15,000 sq.ft (shops & offices)",
+    size: "Range 10,000 sq.ft + (shops & offices)",
     note: "Strong residential catchment – ideal for everyday retail and services.",
   },
   {
@@ -43,9 +34,10 @@ const COMMERCIAL_OPTIONS = [
     area: "Kamal Vihar Planning Area",
     title: "Commercial Spaces – Near Kamal Vihar",
     location: "Near Kamal Vihar, Raipur",
-    size: "Approx 400 to 15,000 sq.ft commercial spaces",
+    size: "Range 400 to 15,000 sq.ft commercial spaces",
     note: "Suitable for showrooms, mid-size offices and commercial blocks in a developing zone.",
   },
+  
 
   // Magneto / VIP / Tatibandh / Pachpedi – rent or sale
   {
@@ -82,38 +74,81 @@ const COMMERCIAL_OPTIONS = [
   },
 
   // Towers / complexes
+  // {
+  //   id: "at-tiara",
+  //   area: "Premium Commercial Tower",
+  //   title: "AT TIARA – Offices & Retail",
+  //   location: "AT Tiara, Raipur",
+  //   size: "Office & retail units – sizes as per requirement",
+  //   note: "Premium commercial tower – also available on rent and for sale. Price on request.",
+  // },
+  // {
+  //   id: "humming-sanjeeva-promenade",
+  //   area: "Premium Commercial Promenade",
+  //   title: "HUMMING SANJEEVA PROMENADE – Commercial Spaces",
+  //   location: "Humming Sanjeeva Promenade, Raipur",
+  //   size: "Commercial units – multiple sizes • Rent / Sale",
+  //   note: "Modern promenade – suitable for showrooms, restaurants and branded outlets.",
+  // },
+  // {
+  //   id: "vb-tower",
+  //   area: "Premium Tower",
+  //   title: "VB TOWER – Offices & Showrooms",
+  //   location: "VB Tower, Raipur",
+  //   size: "Office / showroom spaces – sizes as per layout",
+  //   note: "High-visibility tower – also available for investment, rent and sale. Price on request.",
+  // },
+  // {
+  //   id: "anand-arcade",
+  //   area: "Established Commercial Complex",
+  //   title: "ANAND ARCADE – Commercial Spaces",
+  //   location: "Anand Arcade, Raipur",
+  //   size: "Shops & offices – sizes as per requirement",
+  //   note: "Established commercial complex – spaces available on rent as well as for sale.",
+  // },
+  
+    // NEW ONES
   {
-    id: "at-tiara",
-    area: "Premium Commercial Tower",
-    title: "AT TIARA – Offices & Retail",
-    location: "AT Tiara, Raipur",
-    size: "Office & retail units – sizes as per requirement",
-    note: "Premium commercial tower – also available on rent and for sale. Price on request.",
+    id: "persulidih-7000",
+    area: "Persulidih",
+    title: "7000 sq.ft Commercial Land – Persulidih",
+    location: "Persulidih, Raipur",
+    size: "Range of 7,000 sq.ft land",
+    note: "",
   },
   {
-    id: "humming-sanjeeva-promenade",
-    area: "Premium Commercial Promenade",
-    title: "HUMMING SANJEEVA PROMENADE – Commercial Spaces",
-    location: "Humming Sanjeeva Promenade, Raipur",
-    size: "Commercial units – multiple sizes • Rent / Sale",
-    note: "Modern promenade – suitable for showrooms, restaurants and branded outlets.",
+    id: "pandri-3500",
+    area: "Pandri",
+    title: "3500 sq.ft Commercial Space – Pandri",
+    location: "Pandri, Raipur",
+    size: "Range of 3,500 sq.ft",
+    note: "",
   },
   {
-    id: "vb-tower",
-    area: "Premium Tower",
-    title: "VB TOWER – Offices & Showrooms",
-    location: "VB Tower, Raipur",
-    size: "Office / showroom spaces – sizes as per layout",
-    note: "High-visibility tower – also available for investment, rent and sale. Price on request.",
+    id: "devpuri-express-1acre",
+    area: "Devpuri / Express Highway",
+    title:
+      "1 Acre Commercial Land – Near Express Highway, Devpuri Dhamtari Road",
+    location: "Near Express Highway, Devpuri Dhamtari Road, Raipur",
+    size: "Range of 1 acre land",
+    note: "",
   },
   {
-    id: "anand-arcade",
-    area: "Established Commercial Complex",
-    title: "ANAND ARCADE – Commercial Spaces",
-    location: "Anand Arcade, Raipur",
-    size: "Shops & offices – sizes as per requirement",
-    note: "Established commercial complex – spaces available on rent as well as for sale.",
+    id: "60000",
+    area: "Near Bhatagaon",
+    title: "20,000 – 25,000 sq.ft Hospital Project – Near Bhatagaon",
+    location: "Near Bhatagaon, Raipur",
+    size: "Range 20,000 to 25,000 sq.ft construction potential, ideal for hospital use",
+    note: "",
   },
+  {
+  id: "vb-tower-mowa",
+  area: "Mowa / Vidhan Sabha Road",
+  title: "VB Tower – Premium Commercial Project",
+  location: "Vidhan Sabha Road, Mowa, Raipur, Chhattisgarh",
+  size: "Office spaces Range 347 to 950 sq.ft (S.B.A.)",
+  note: "Premium commercial tower on Vidhan Sabha Road, suitable for corporate offices, consultants and branded commercial use.",
+},
 ];
 
 /* -------------------- MAIN COMPONENT -------------------- */
@@ -156,7 +191,7 @@ export default function CommercialListings({ filters }) {
 
         {/* Heading */}
         <header className="mb-8 text-center">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
+          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
             COMMERCIAL SPACE AVAILABLE FOR  OFFICES • SHOPS • TOWERS
           </p>
         </header>
@@ -200,9 +235,9 @@ export default function CommercialListings({ filters }) {
                   <h2 className="text-sm sm:text-base md:text-lg font-bold text-white leading-snug">
                     {prop.title}
                   </h2>
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-[#f54900]">
+                  {/* <p className="text-[11px] uppercase tracking-[0.22em] text-[#f54900]">
                     COMMERCIAL OFFICES / SHOPS / TOWERS
-                  </p>
+                  </p> */}
                 </div>
 
                 {/* Simple details */}
@@ -246,7 +281,7 @@ export default function CommercialListings({ filters }) {
                   </span>
 
                   <a
-                    href="/#contact"
+                    href="/contact"
                     className="inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2 text-xs md:text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition-colors duration-200"
                     style={{ backgroundColor: CTA_COLOR }}
                     onMouseEnter={(e) => {

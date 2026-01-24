@@ -1,7 +1,30 @@
 // src/components/Prelaunch.jsx
-import React from "react";
+import React, { useEffect } from "react";
 
 const Prelaunch = () => {
+  // ✅ SEO: Title + Meta Description + Keywords (sirf Prelaunch page ke liye)
+  useEffect(() => {
+    // Page Title
+    document.title =
+      "Premium Pre-Launch Land & Property in Raipur | Mahesh Ventures";
+
+    // Meta Description
+    document
+      .querySelector("meta[name='description']")
+      ?.setAttribute(
+        "content",
+        "Premium pre-launch land and property options in Raipur (C.G.) by Mahesh Ventures. Early entry plots and upcoming projects near Kachna, VIP Road, Magneto, Boriyakala, Saddu and Naya Raipur curated for buyers and investors."
+      );
+
+    // Meta Keywords
+    document
+      .querySelector("meta[name='keywords']")
+      ?.setAttribute(
+        "content",
+        "pre launch property raipur, pre launch land raipur, pre launch plots raipur, kachna pre launch plots, vip road raipur pre launch, naya raipur pre launch projects, mahesh ventures prelaunch, upcoming projects raipur"
+      );
+  }, []);
+
   const whyPoints = [
     "Entry at an early price point before wider market launches.",
     "Better choice of plots and units while inventory is still fresh.",
@@ -13,7 +36,7 @@ const Prelaunch = () => {
   const prelaunchTypes = [
     {
       title: "Near Kachna – 2,500+ sq.ft Plots",
-      desc: "Pre-launch residential plots approx 2,500 sq.ft and above near Kachna belt – suitable for end use and investment.",
+      desc: "Pre-launch residential plots Range 2,500 sq.ft and above near Kachna belt – suitable for end use and investment.",
     },
     {
       title: "VIP Road – 3,000 to 6,000 sq.ft (5 min from Airport)",
@@ -53,11 +76,6 @@ const Prelaunch = () => {
     <section id="prelaunch" className="relative w-full bg-white text-slate-900">
       {/* HERO */}
       <div className="relative isolate overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 py-20 sm:py-24 lg:py-28">
-        <img
-          src="https://images.unsplash.com/photo-1541888946744-8d00916f9821?q=80&w=2940&auto=format&fit=crop"
-          alt="City skyline representing pre-launch real estate opportunities"
-          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-25"
-        />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/80 via-black/60 to-slate-950/90" />
 
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
@@ -66,8 +84,14 @@ const Prelaunch = () => {
             <span>PRE-LAUNCH CAMPAIGNS • MAHESH VENTURES</span>
           </div>
 
-          <h1 className="mt-8 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight uppercase">
-            Premium Pre-Launch Land & Property Entries
+          <h1
+            className="mt-8 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight uppercase
+             bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-400
+             bg-clip-text text-transparent
+             hover:from-orange-500 hover:via-amber-400 hover:to-yellow-500
+             transition-colors duration-300"
+          >
+            Premium Pre-Launch Land & Property in Raipur
           </h1>
 
           <p className="mt-2 text-sm sm:text-base font-medium text-orange-100">
@@ -174,7 +198,7 @@ const Prelaunch = () => {
         </div>
       </section>
 
-      {/* PRE-LAUNCH & UPCOMING PROJECTS – PREMIUM CARDS (NO ICON CIRCLE, LESS TOP SPACE) */}
+      {/* PRE-LAUNCH & UPCOMING PROJECTS – PREMIUM CARDS */}
       <section className="py-16 sm:py-20 bg-white border-t border-slate-100">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -192,7 +216,7 @@ const Prelaunch = () => {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {prelaunchTypes.map((type, index) => (
+            {prelaunchTypes.map((type) => (
               <div
                 key={type.title}
                 className="group relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 ring-1 ring-white/10 text-slate-100 shadow-[0_16px_50px_rgba(15,23,42,0.9)] transition-all duration-300 hover:ring-[#f54900]/80 hover:shadow-[0_22px_70px_rgba(245,73,0,0.35)] hover:-translate-y-[4px]"
@@ -201,7 +225,6 @@ const Prelaunch = () => {
                 <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#f54900] via-[#ff9b2e] to-transparent opacity-90" />
 
                 <div className="relative px-6 pt-5 pb-6 sm:px-7 sm:pt-6 sm:pb-7 space-y-3">
-                
                   {/* Title */}
                   <h3 className="text-sm sm:text-base font-bold text-white leading-snug uppercase tracking-wide group-hover:text-[#ff9b2e]">
                     {type.title}
@@ -220,7 +243,6 @@ const Prelaunch = () => {
           </div>
         </div>
       </section>
-
     </section>
   );
 };

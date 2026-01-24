@@ -6,7 +6,7 @@ const FloatingSocials = () => {
     {
       icon: <FaFacebookF />,
       link:
-        "https://www.facebook.com/people/Headquarter-HQ-In-Association-with-Kursi/61582888842094/",
+        "https://www.facebook.com/Maheshventures/",
       bg: "bg-blue-500",
       hover: "hover:bg-blue-600",
       label: "Facebook",
@@ -20,7 +20,7 @@ const FloatingSocials = () => {
     },
     {
       icon: <FaInstagram />,
-      link: "https://www.instagram.com/headquarterkursi/",
+      link: "https://www.instagram.com/maheshventuresrpr/",
       bg: "bg-pink-400",
       hover: "hover:bg-pink-500",
       label: "Instagram",

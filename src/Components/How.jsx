@@ -41,7 +41,7 @@ function useReveal(prefersReducedMotion) {
   return [ref, inView];
 }
 
-/* ================== Founder Content ================== */
+/* ================== Founder / Co‑Founder Content ================== */
 const FOUNDER_PHOTO = founderImg;
 
 const FOUNDER = {
@@ -50,31 +50,36 @@ const FOUNDER = {
   role: "Founder • Executive Vice President YUVA CAIT Chhattisgarh",
 };
 
+const CO_FOUNDER = {
+  name: "NEETU MAHESHWARI",
+  role: "Co‑Founder • Mahesh Ventures",
+};
+
 /* ================== Features ================== */
 const features = [
   {
     icon: <FaUsers size={26} aria-hidden="true" />,
-    title:"TRUSTED TEAM",
+    title: "TRUSTED TEAM",
     desc: "KYC‑verified owners and agents. Ethical, professional, responsive.",
   },
   {
     icon: <FaHandsHelping size={26} aria-hidden="true" />,
-    title:"CUSTOMER FIRST",
+    title: "CUSTOMER FIRST",
     desc: "Guidance from discovery to possession with dedicated support.",
   },
   {
     icon: <FaCheckCircle size={26} aria-hidden="true" />,
-    title:"TRANSPARENT PROCESS",
+    title: "TRANSPARENT PROCESS",
     desc: "Clear pricing, no hidden fees, real updates at every step.",
   },
   {
     icon: <FaBolt size={26} aria-hidden="true" />,
-    title:"FAST CLOSURES",
+    title: "FAST CLOSURES",
     desc: "Streamlined paperwork, coordinated site visits and timely approvals.",
   },
   {
     icon: <FaMapMarkerAlt size={26} aria-hidden="true" />,
-    title:"LOCAL EXPERTISE",
+    title: "LOCAL EXPERTISE",
     desc: "Strong network across Chhattisgarh & pan‑India with neighborhood insights.",
   },
 ];
@@ -105,58 +110,79 @@ const HowWeAre = () => {
             }}
           />
 
-          {/* WHO WE ARE Tag — WHITE */}
+          {/* WHO WE ARE Tag */}
           <div className="mb-4 flex justify-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/85 ring-1 ring-white/15 tracking-wide heading-font">
               WHO WE ARE
             </span>
           </div>
 
-          {/* Founder Section */}
+          {/* Founder + Co‑Founder Section */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
-            {/* Left: Founder Image — alignment fix */}
+            {/* Left: Founder Image (Bigger circle) */}
             <div className="lg:col-span-5 flex justify-center lg:justify-start">
               {FOUNDER_PHOTO ? (
                 <img
                   src={FOUNDER_PHOTO}
                   alt={`${FOUNDER.name || "Founder"} portrait`}
-                  className="h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56 rounded-full object-cover object-center ring-4 ring-orange-400/80 shadow-xl"
+                  className="h-44 w-44 sm:h-52 sm:w-52 lg:h-60 lg:w-60 rounded-full object-cover object-center ring-4 ring-orange-400/80 shadow-xl"
                 />
               ) : (
                 <div
-                  className="h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56 rounded-full ring-4 ring-orange-400/70 shadow-xl bg-gradient-to-tr from-slate-800 to-slate-700"
+                  className="h-44 w-44 sm:h-52 sm:w-52 lg:h-60 lg:w-60 rounded-full ring-4 ring-orange-400/70 shadow-xl bg-gradient-to-tr from-slate-800 to-slate-700"
                   aria-label="Founder image placeholder"
                 />
               )}
             </div>
 
-            {/* Right: Founder Info */}
+            {/* Right: Founder + Co‑Founder Info */}
             <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
-              {/* Quote in ORANGE */}
+              {/* Quote */}
               <h2 className="heading-font text-xl sm:text-2xl lg:text-3xl font-bold leading-tight text-orange-400">
                 {FOUNDER.quote}
               </h2>
 
-              {/* Bio with "Over two decades" highlighted ORANGE */}
+              {/* Bio */}
               <p className="paragraph-font text-white/90 text-sm sm:text-base lg:text-[16px] leading-relaxed max-w-lg mx-auto lg:mx-0">
-                <span className="">Over Two decades</span> in real estate strategy, sales, and marketing. From large‑scale builder planning to pan‑India broker networks, Pradeep has led innovative models that accelerate closures and create long‑term value.
+                <span className="">Over Two decades</span> in real estate
+                strategy, sales, and marketing. From large‑scale builder
+                planning to pan‑India broker networks, Pradeep has led
+                innovative models that accelerate closures and create long‑term
+                value.
               </p>
 
-              {/* Name in ORANGE and Role normal */}
-              {(FOUNDER.name || FOUNDER.role) && (
-                <div className="pt-2">
-                  {FOUNDER.name && (
-                    <div className="heading-font text-sm sm:text-base font-semibold text-orange-400">
-                      {FOUNDER.name}
-                    </div>
-                  )}
-                  {FOUNDER.role && (
-                    <div className="paragraph-font text-xs sm:text-sm text-white/80">
-                      {FOUNDER.role}
-                    </div>
-                  )}
-                </div>
-              )}
+              {/* Names & Roles */}
+              <div className="pt-2 space-y-2">
+                {(FOUNDER.name || FOUNDER.role) && (
+                  <div>
+                    {FOUNDER.name && (
+                      <div className="heading-font text-sm sm:text-base font-semibold text-orange-400">
+                        {FOUNDER.name}
+                      </div>
+                    )}
+                    {FOUNDER.role && (
+                      <div className="paragraph-font text-xs sm:text-sm text-white/80">
+                        {FOUNDER.role}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {(CO_FOUNDER.name || CO_FOUNDER.role) && (
+                  <div className="pt-2 border-t border-white/15 mt-2">
+                    {CO_FOUNDER.name && (
+                      <div className="heading-font text-sm sm:text-base font-semibold text-orange-300">
+                        {CO_FOUNDER.name}
+                      </div>
+                    )}
+                    {CO_FOUNDER.role && (
+                      <div className="paragraph-font text-xs sm:text-sm text-white/80">
+                        {CO_FOUNDER.role}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -168,7 +194,14 @@ const HowWeAre = () => {
             <span className="block w-14 h-1 bg-orange-500 rounded mt-2 mx-auto" />
           </h3>
           <p className="paragraph-font text-gray-600 max-w-2xl mx-auto text-sm sm:text-base lg:text-[17px] leading-relaxed">
-            <span className="font-semibold text-orange-600">With over Two decades</span> of hands‑on real estate leadership, we help buyers, sellers, and trusted agents close with confidence. KYC‑verified owners and brokers, transparent pricing, live market data, and end‑to‑end support — from first call to documentation — keep every step simple, fast, and reliable.
+            <span className="font-semibold text-orange-600">
+              With over Two decades
+            </span>{" "}
+            of hands‑on real estate leadership, we help buyers, sellers, and
+            trusted agents close with confidence. KYC‑verified owners and
+            brokers, transparent pricing, live market data, and end‑to‑end
+            support — from first call to documentation — keep every step simple,
+            fast, and reliable.
           </p>
         </div>
 
@@ -189,7 +222,9 @@ const HowWeAre = () => {
 
             return (
               <div key={i} className="group flex flex-col items-center text-center">
-                <div className="h-20 flex items-center justify-center">{Icon}</div>
+                <div className="h-20 flex items-center justify-center">
+                  {Icon}
+                </div>
                 <h4 className="heading-font mt-4 text-[17px] sm:text-[18px] font-semibold text-orange-600 transition-colors duration-200 group-hover:text-black">
                   {f.title}
                 </h4>

@@ -36,7 +36,7 @@ const properties = [
     area: "1,40,000 sq.ft",
     front: "240 ft front",
     rateLabel: "Rate",
-    rate: "₹20 / sq.ft",
+    // rate: "₹20 / sq.ft",
   },
   {
     id: "tatibandh",
@@ -46,7 +46,7 @@ const properties = [
     area: "40,000 sq.ft",
     front: "140 ft front",
     rateLabel: "Rate",
-    rate: "₹15 / sq.ft",
+    // rate: "₹15 / sq.ft",
   },
   {
     id: "shejbahar",
@@ -55,7 +55,7 @@ const properties = [
     location: "Shejbahar",
     area: "1,00,000 sq.ft",
     rateLabel: "Rent",
-    rate: "₹10 / sq.ft",
+    // rate: "₹10 / sq.ft",
   },
   {
     id: "ivy-hotel",
@@ -245,7 +245,7 @@ function PropertyCard({
       {/* CTA – right aligned */}
       <div className="mt-4 flex justify-end">
         <a
-          href="/#contact"
+          href="/contact"
           className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_10px_30px_rgba(248,113,22,0.45)] transition-all duration-300 hover:scale-[1.03]"
         >
           Enquire

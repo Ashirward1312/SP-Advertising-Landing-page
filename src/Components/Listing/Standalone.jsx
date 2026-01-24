@@ -18,9 +18,9 @@ const STANDALONE_ITEMS = [
     type: "STAND ALONE COMMERCIAL BUILDING",
     city: "Raipur",
     deal: "SALE",
-    title: "Standalone Commercial Building – Approx 40,000 sq ft Construction",
+    title: "Standalone Commercial Building – Range 40,000 sq ft Construction",
     location: "Near Colors Mall, Raipur",
-    priceInfo: "For Sale • Approx 40,000 sq ft constructed area. Pricing on request.",
+    priceInfo: "For Sale • Range 40,000 sq ft constructed area. Pricing on request.",
     note: "On sell near Colors Mall – suitable for showroom, corporate office, or multi-brand commercial use in a high visibility belt.",
   },
   {
@@ -28,9 +28,9 @@ const STANDALONE_ITEMS = [
     type: "STAND ALONE BUILDING",
     city: "Raipur",
     deal: "SALE",
-    title: "Standalone Building – Approx 6,000–7,000 sq ft (Approx)",
+    title: "Standalone Building – Range 6,000–7,000 sq ft (Range)",
     location: "Near Mahadev Ghat, Raipur",
-    priceInfo: "For Sale • Approx 6,000–7,000 sq ft constructed area. Pricing on request.",
+    priceInfo: "For Sale • Range 6,000–7,000 sq ft constructed area. Pricing on request.",
     note: "On sell near Mahadev Ghat – ideal for own use or investment as a mid-size independent building.",
   },
   {
@@ -136,7 +136,7 @@ function StandAloneCard({ item, index }) {
           </span>
 
           <a
-            href="/#contact"
+            href="/contact"
             className="inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2 text-xs md:text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition-colors duration-200"
             style={{ backgroundColor: CTA_COLOR }}
             onMouseEnter={(e) => {
@@ -175,7 +175,7 @@ export default function StandAloneListings() {
         <div className="mb-6 flex items-center justify-between">
        <button
             type="button"
-            onClick={() => navigate("/#categories")}
+            onClick={() => navigate("/categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
@@ -187,7 +187,7 @@ export default function StandAloneListings() {
 
         {/* Heading */}
         <header className="mb-8 space-y-3 text-center">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
+          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
             STAND ALONE
           </p>
         </header>

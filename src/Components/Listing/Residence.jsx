@@ -13,119 +13,176 @@ const CTA_HOVER = "#fb923c";
 /* -------------------- RESIDENTIAL DATA (NO IMAGES) -------------------- */
 
 const RESIDENCE_OPTIONS = [
-  {
-    id: "at-classic",
-    project: "AT Classic",
-    city: "Raipur",
-    title: "AT CLASSIC – 2 BHK READY POSITION",
-    location: "AT Classic, Raipur",
-    config: "2 BHK – Ready position",
-    priceInfo: "Approx ₹55–65 Lakh* (2 BHK)",
-    note: "Good for end use and investment in a developed residential belt.",
-    statusTag: "2 BHK • Ready Position",
-    priceTag: "Approx ₹55–65 Lakh • Price on Request",
-  },
-  {
-    id: "aditya-heights",
-    project: "Aditya Heights",
-    city: "Raipur",
-    title: "ADITYA HEIGHTS – 2 BHK READY POSITION",
-    location: "Aditya Heights, Raipur",
-    config: "2 BHK – Ready position",
-    priceInfo: "Approx ₹55–65 Lakh* (2 BHK)",
-    note: "Modern 2 BHK apartments with ready possession – suitable for small families.",
-    statusTag: "2 BHK • Ready Position",
-    priceTag: "Approx ₹55–65 Lakh • Price on Request",
-  },
-  {
-    id: "vardhman-elements",
-    project: "Vardhman Elements",
-    city: "Raipur",
-    title: "VARDHMAN ELEMENTS – 2 BHK READY POSITION",
-    location: "Vardhman Elements, Raipur",
-    config: "2 BHK – Ready position",
-    priceInfo: "Approx ₹55–65 Lakh* (2 BHK)",
-    note: "Well-planned residential project with good connectivity and amenities.",
-    statusTag: "2 BHK • Ready Position",
-    priceTag: "Approx ₹55–65 Lakh • Price on Request",
-  },
-  {
-    id: "richmond-park-kachna",
-    project: "Richmond Park",
-    city: "Raipur",
-    title: "RICHMOND PARK – 2 BHK READY POSITION (KACHNA)",
-    location: "Richmond Park, Kachna, Raipur",
-    config: "2 BHK – Ready position",
-    priceInfo: "Approx ₹55–65 Lakh* (2 BHK)",
-    note: "Located in the Kachna belt – upcoming residential corridor with good future potential.",
-    statusTag: "2 BHK • Ready Position",
-    priceTag: "Approx ₹55–65 Lakh • Price on Request",
-  },
+  // {
+  //   id: "at-classic",
+  //   project: "AT Classic",
+  //   city: "Raipur",
+  //   title: "AT CLASSIC – 2 BHK READY POSITION",
+  //   location: "AT Classic, Raipur",
+  //   config: "2 BHK – Ready position",
+  //   priceInfo: "Approx ₹55–65 Lakh* (2 BHK)",
+  //   note: "Good for end use and investment in a developed residential belt.",
+  //   statusTag: "2 BHK • Ready Position",
+  //   priceTag: "Approx ₹55–65 Lakh • Price on Request",
+  // },
+  // {
+  //   id: "aditya-heights",
+  //   project: "Aditya Heights",
+  //   city: "Raipur",
+  //   title: "ADITYA HEIGHTS – 2 BHK READY POSITION",
+  //   location: "Aditya Heights, Raipur",
+  //   config: "2 BHK – Ready position",
+  //   priceInfo: "Approx ₹55–65 Lakh* (2 BHK)",
+  //   note: "Modern 2 BHK apartments with ready possession – suitable for small families.",
+  //   statusTag: "2 BHK • Ready Position",
+  //   priceTag: "Approx ₹55–65 Lakh • Price on Request",
+  // },
+  
+  // {
+  //   id: "richmond-park-kachna",
+  //   project: "Richmond Park",
+  //   city: "Raipur",
+  //   title: "RICHMOND PARK – 2 BHK READY POSITION (KACHNA)",
+  //   location: "Richmond Park, Kachna, Raipur",
+  //   config: "2 BHK – Ready position",
+  //   priceInfo: "Approx ₹55–65 Lakh* (2 BHK)",
+  //   note: "Located in the Kachna belt – upcoming residential corridor with good future potential.",
+  //   statusTag: "2 BHK • Ready Position",
+  //   priceTag: "Approx ₹55–65 Lakh • Price on Request",
+  // },
 
   // ✅ Additional projects – "Residence Available • Price on Request"
-  {
-    id: "ambience-kachna",
-    project: "Ambience",
+  // {
+  //   id: "ambience-kachna",
+  //   project: "Ambience",
+  //   city: "Raipur",
+  //   title: "AMBIENCE – RESIDENTIAL APARTMENTS (KACHNA)",
+  //   location: "Ambience, Kachna, Raipur",
+  //   config: "Residential apartments – available",
+  //   priceInfo: "Price on Request",
+  //   note: "Premium residential apartments in the Kachna area – availability as per inventory.",
+  //   statusTag: "Residence Available",
+  //   priceTag: "Price on Request",
+  // },
+  // {
+  //   id: "humming-residential",
+  //   project: "Humming Residential",
+  //   city: "Raipur",
+  //   title: "HUMMING RESIDENTIAL – APARTMENTS",
+  //   location: "Humming Residential, Raipur",
+  //   config: "Residential apartments – available",
+  //   priceInfo: "Price on Request",
+  //   note: "Modern residential development – suitable for families and investors.",
+  //   statusTag: "Residence Available",
+  //   priceTag: "Price on Request",
+  // },
+  // {
+  //   id: "rishabh-parksyde",
+  //   project: "Rishabh The Parksyde",
+  //   city: "Raipur",
+  //   title: "RISHABH THE PARKSYDE – RESIDENTIAL APARTMENTS",
+  //   location: "Rishabh The Parksyde, Raipur",
+  //   config: "2 & 3 BHK apartments – available as per inventory",
+  //   priceInfo: "Price on Request",
+  //   note: "Lifestyle apartments with park-facing options (subject to availability).",
+  //   statusTag: "Residence Available",
+  //   priceTag: "Price on Request",
+  // },
+  // {
+  //   id: "classic-tower-amlidih",
+  //   project: "Classic Tower",
+  //   city: "Raipur",
+  //   title: "CLASSIC TOWER – AMLIDIH",
+  //   location: "Classic Tower, Amlidih, Raipur",
+  //   config: "Residential apartments – available",
+  //   priceInfo: "Price on Request",
+  //   note: "Located in the Amlidih area – convenient access to nearby social infrastructure.",
+  //   statusTag: "Residence Available",
+  //   priceTag: "Price on Request",
+  // },
+  // {
+  //   id: "classic-castle-kachna",
+  //   project: "Classic Castle",
+  //   city: "Raipur",
+  //   title: "CLASSIC CASTLE – KACHNA",
+  //   location: "Classic Castle, Kachna, Raipur",
+  //   config: "Residential apartments – available",
+  //   priceInfo: "Price on Request",
+  //   note: "Residential project in Kachna with scope for future appreciation.",
+  //   statusTag: "Residence Available",
+  //   priceTag: "Price on Request",
+  // },
+   {
+    id: "old-dhamtari-road-30-50",
     city: "Raipur",
-    title: "AMBIENCE – RESIDENTIAL APARTMENTS (KACHNA)",
-    location: "Ambience, Kachna, Raipur",
-    config: "Residential apartments – available",
+    title: "Start 30 to 50+ lakhs in Old Dhamtari Road",
+    location: "Old Dhamtari Road, Raipur",
+    config: "Residential",
     priceInfo: "Price on Request",
-    note: "Premium residential apartments in the Kachna area – availability as per inventory.",
-    statusTag: "Residence Available",
+    note: "",
+    statusTag: "Residential",
     priceTag: "Price on Request",
   },
   {
-    id: "humming-residential",
-    project: "Humming Residential",
+    id: "kachna-60-150",
     city: "Raipur",
-    title: "HUMMING RESIDENTIAL – APARTMENTS",
-    location: "Humming Residential, Raipur",
-    config: "Residential apartments – available",
+    title: "Kachna 60 lakhs to 1.5 cr+ • 1000 sq.ft and above",
+    location: "Kachna, Raipur",
+    config: "1000 sq.ft and above",
     priceInfo: "Price on Request",
-    note: "Modern residential development – suitable for families and investors.",
-    statusTag: "Residence Available",
+    note: "",
+    statusTag: "Residential",
     priceTag: "Price on Request",
   },
   {
-    id: "rishabh-parksyde",
-    project: "Rishabh The Parksyde",
+    id: "abhinav-city-2-3bhk",
     city: "Raipur",
-    title: "RISHABH THE PARKSYDE – RESIDENTIAL APARTMENTS",
-    location: "Rishabh The Parksyde, Raipur",
-    config: "2 & 3 BHK apartments – available as per inventory",
+    title: "Abhinav City – Ready to Move 2 & 3 BHK Flats",
+    location: "Abhinav City, Raipur",
+    config: "2 BHK: 1066 / 1125 sq.ft • 3 BHK: 1317 sq.ft",
     priceInfo: "Price on Request",
-    note: "Lifestyle apartments with park-facing options (subject to availability).",
-    statusTag: "Residence Available",
+    note:
+      "Up to 90% finance available. Immediate rental income potential. Super market, mall, schools & all modern amenities nearby with covered, secure campus and peaceful residential environment – ideal for self-use + investment.",
+    statusTag: "Residential",
     priceTag: "Price on Request",
   },
   {
-    id: "classic-tower-amlidih",
-    project: "Classic Tower",
+    id: "golden-residency-boriyakala-plots",
     city: "Raipur",
-    title: "CLASSIC TOWER – AMLIDIH",
-    location: "Classic Tower, Amlidih, Raipur",
-    config: "Residential apartments – available",
+    title: "Golden Residency – Premium Residential Plots",
+    location: "New Dhamtari Road, Boriyakala, Raipur",
+    config: "Residential plots • 711 sq.ft – 1500 sq.ft",
     priceInfo: "Price on Request",
-    note: "Located in the Amlidih area – convenient access to nearby social infrastructure.",
-    statusTag: "Residence Available",
+    note:
+      "Premium residential plotting project on New Dhamtari Road, Boriyakala – suitable for end-use homes as well as investment.",
+    statusTag: "Residential Plot",
     priceTag: "Price on Request",
   },
+  // {
+  //   id: "welworth-devpuri-2bhk-811",
+  //   city: "Raipur",
+  //   title: "Welworth Residential Apartment – 2 BHK",
+  //   location: "Near Devpuri Chowk, New Dhamtari Road, Raipur",
+  //   config: "2 BHK apartment • 811 sq.ft",
+  //   priceInfo: "Approx ₹28.51 Lakh",
+  //   note:
+  //     "Residential apartment project near Devpuri Chowk with 2 BHK units of 811 sq.ft – suitable for self-use and rental income.",
+  //   statusTag: "Residential Apartment",
+  //   priceTag: "₹28.51 Lakh",
+  // },
   {
-    id: "classic-castle-kachna",
-    project: "Classic Castle",
+    id: "devpuri-2bhk-811-alt",
     city: "Raipur",
-    title: "CLASSIC CASTLE – KACHNA",
-    location: "Classic Castle, Kachna, Raipur",
-    config: "Residential apartments – available",
+    title: "Residential Apartment – 2 BHK (811 sq.ft)",
+    location: "Near Devpuri Chowk, New Dhamtari Road, Raipur",
+    config: "2 BHK apartment • 811 sq.ft",
     priceInfo: "Price on Request",
-    note: "Residential project in Kachna with scope for future appreciation.",
-    statusTag: "Residence Available",
+    note:
+      "Another 2 BHK configuration of Residential Apartment near Devpuri Chowk – compact size with value-focused pricing.",
+    statusTag: "Residential Apartment",
     priceTag: "Price on Request",
   },
 ];
-
-/* -------------------- CARD COMPONENT -------------------- */
 
 function ResidenceCard({ item, index }) {
   const { title, city, location, config, priceInfo, note, statusTag, priceTag } =
@@ -163,9 +220,9 @@ function ResidenceCard({ item, index }) {
           <h2 className="text-sm sm:text-base md:text-lg font-bold text-white leading-snug">
             {title}
           </h2>
-          <p className="text-[11px] uppercase tracking-[0.22em] text-[#f54900]">
+          {/* <p className="text-[11px] uppercase tracking-[0.22em] text-[#f54900]">
             RESIDENTIAL APARTMENTS
-          </p>
+          </p> */}
         </div>
 
         {/* Details box */}
@@ -203,7 +260,7 @@ function ResidenceCard({ item, index }) {
             <span className="font-semibold text-slate-100">
               budget and preferred project
             </span>{" "}
-            – we&apos;ll share exact availability, floor plans and negotiation
+            – we&apos;ll share exact availability, floor plans and price
             room for these{" "}
             <span className="font-semibold text-slate-100">
               residential options (Price on Request)
@@ -212,7 +269,7 @@ function ResidenceCard({ item, index }) {
           </span>
 
           <a
-            href="/#contact"
+            href="/contact"
             className="inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2 text-xs md:text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition-colors duration-200"
             style={{ backgroundColor: CTA_COLOR }}
             onMouseEnter={(e) => {
@@ -259,7 +316,7 @@ export default function ResidentialListings({ filters }) {
         <div className="mb-6 flex items-center justify-between">
       <button
             type="button"
-            onClick={() => navigate("/#categories")}
+            onClick={() => navigate("/categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
@@ -271,7 +328,7 @@ export default function ResidentialListings({ filters }) {
 
         {/* Heading */}
         <header className="mb-8 text-center">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
+          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
             RESIDENTIAL • RAIPUR
           </p>
      

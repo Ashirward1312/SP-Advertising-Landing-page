@@ -1,7 +1,5 @@
-// src/App.jsx
-
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "./Components/Home";
 import Nav from "./Components/Nav";
@@ -21,20 +19,13 @@ import Brand from "./Components/Brands";
 import B2B from "./Components/Bab";
 import Prelaunch from "./Components/Prelaunch";
 import Carrer from "./Components/Carrer";
-import Gallery from "./Components/Gallery"; // ✅ Gallery page
 
-// ✅ EXPO page (NEW)
-import Expo from "./Components/Expo";
-
-// ✅ Land, Commercial, Residential pages
 import Land from "./Components/Listing/Land";
 import CommercialListings from "./Components/Listing/Commercial";
 import ResidentialListings from "./Components/Listing/Residence";
 import Others from "./Components/Listing/Others";
 import Hospital from "./Components/Listing/Hospital";
-import MallListings from "./Components/Listing/Mall"; // Malls page (JV for malls)
-
-// ✅ Joint Ventures page
+import MallListings from "./Components/Listing/Mall";
 import Jointventures from "./Components/Listing/Jointventures";
 import FarmhouseListings from "./Components/Listing/Farmhouse";
 import WarehouseListings from "./Components/Listing/Warehouse";
@@ -43,91 +34,112 @@ import ResortListings from "./Components/Listing/Resort";
 import EducationListings from "./Components/Listing/Education";
 import LandInvestmentListings from "./Components/Listing/Landinvesment";
 import Lease from "./Components/Listing/Lease";
-
-// ✅ Stand Alone page (NEW)
 import StandAloneListings from "./Components/Listing/Standalone";
+import OfficeListings from "./Components/Listing/Office";
+import ProjectsListings from "./Components/Listing/Projectlands";
+
+/* 🔥 FORCE SCROLL TO TOP */
+function ScrollFix() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location.pathname]);
+
+  return null;
+}
+
+/* ✅ Reusable Home Page Layout */
+function HomePage() {
+  return (
+    <>
+      <Home />
+      <Listing />
+      <How />
+      <About />
+      <Brand />
+      <Testimonial />
+      <Faq />
+      <Contactus />
+    </>
+  );
+}
+
+/* ✅ /categories route – Home + scroll to #categories */
+function CategoriesPage() {
+  useEffect(() => {
+    const el = document.getElementById("categories");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+  }, []);
+
+  return <HomePage />;
+}
+
+function AppContent() {
+  return (
+    <>
+      {/* HEADER */}
+      <Nav />
+
+      {/* Floating items */}
+      <MyChatBot />
+      <Floating />
+      <Whatsapp />
+
+      {/* ROUTES */}
+      <Routes>
+        {/* Home */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
+
+        {/* ✅ /categories route for BACK TO CATEGORIES buttons */}
+        <Route path="/categories" element={<CategoriesPage />} />
+
+        {/* Standalone pages */}
+        <Route path="/services" element={<Service />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+
+        {/* Other pages */}
+        <Route path="/B2B-land-&-property-in-raipur" element={<B2B />} />
+        <Route path="/pre-launch-land-&-property-raipur" element={<Prelaunch />} />
+        <Route path="/career" element={<Carrer />} />
+
+        {/* Listings */}
+        <Route path="/luxury-plots-in-raipur" element={<Land />} />
+        <Route path="/commercial-property-raipur" element={<CommercialListings />} />
+        <Route path="/residential-property-in-raipur" element={<ResidentialListings />} />
+        <Route path="/others" element={<Others />} />
+        <Route path="/hospital-lands-in-raipur" element={<Hospital />} />
+        <Route path="/joint-ventures-property-in-raipur" element={<Jointventures />} />
+        <Route path="/malls-jv-opportunity-raipur" element={<MallListings />} />
+        <Route path="/farmhouse-plots-raipur" element={<FarmhouseListings />} />
+        <Route path="/warehouse-in-raipur" element={<WarehouseListings />} />
+        <Route path="/best-property-buy-offices-plots-raipur" element={<BestBuyListings />} />
+        <Route path="/resorts-&-wedding-lawn-lands" element={<ResortListings />} />
+        <Route path="/education-&-institution-lands-raipur" element={<EducationListings />} />
+        <Route path="/land-plot-investment-raipur" element={<LandInvestmentListings />} />
+        <Route path="/land-on-lease-in-raipur" element={<Lease />} />
+        <Route path="/stand-alone-property-raipur" element={<StandAloneListings />} />
+        <Route path="/office-space-in-raipur" element={<OfficeListings />} />
+        <Route path="/key-project-lands-raipur" element={<ProjectsListings />} />
+      </Routes>
+
+      {/* FOOTER */}
+      <Footer />
+    </>
+  );
+}
 
 function App() {
   return (
     <Router>
-      <div>
-        {/* Har page par common components */}
-        <Nav />
-        <MyChatBot />
-        <Floating />
-        <Whatsapp />
-
-        <Routes>
-          {/* HOME / MAIN LANDING */}
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-                <Listing />
-                <How />
-                <About />
-                <Service />
-                <Brand />
-                <Testimonial />
-                <Contact />
-                <Faq />
-                <Contactus />
-              </>
-            }
-          />
-
-          {/* ✅ EXPO PAGE (alag route) */}
-          <Route path="/expo" element={<Expo />} />
-
-          {/* ✅ GALLERY PAGE (alag route) */}
-          <Route path="/gallery" element={<Gallery />} />
-
-          {/* B2B Page */}
-          <Route path="/b2b" element={<B2B />} />
-
-          {/* Pre-Launch Page */}
-          <Route path="/prelaunch" element={<Prelaunch />} />
-
-          {/* Career Page */}
-          <Route path="/career" element={<Carrer />} />
-
-          {/* LAND PAGE */}
-          <Route path="/land" element={<Land />} />
-
-          {/* COMMERCIAL REAL ESTATE PAGE */}
-          <Route path="/commercial" element={<CommercialListings />} />
-
-          {/* RESIDENTIAL REAL ESTATE PAGE */}
-          <Route path="/residential" element={<ResidentialListings />} />
-
-          {/* OTHERS / PREMIUM VIDEO SHOWCASE PAGE */}
-          <Route path="/others" element={<Others />} />
-
-          {/* HOSPITAL PAGE */}
-          <Route path="/hospital" element={<Hospital />} />
-
-          {/* ✅ JOINT VENTURES PAGE */}
-          <Route path="/jointventures" element={<Jointventures />} />
-
-          {/* ✅ MALLS JV PAGE */}
-          <Route path="/malls" element={<MallListings />} />
-
-          <Route path="/farmhouse" element={<FarmhouseListings />} />
-          <Route path="/warehouse" element={<WarehouseListings />} />
-          <Route path="/bestbuy" element={<BestBuyListings />} />
-          <Route path="/resorts-wedding" element={<ResortListings />} />
-          <Route path="/education" element={<EducationListings />} />
-          <Route path="/land-investment" element={<LandInvestmentListings />} />
-          <Route path="/lease" element={<Lease />} />
-
-          {/* ✅ STAND ALONE PAGE */}
-          <Route path="/standalone" element={<StandAloneListings />} />
-        </Routes>
-
-        {/* Footer sab pages pe */}
-        <Footer />
-      </div>
+      <ScrollFix />
+      <AppContent />
     </Router>
   );
 }

@@ -17,17 +17,33 @@ const MALL_OPPORTUNITIES = [
     id: "ambuja-mall-jv",
     dealType: "JV",
     city: "Raipur",
-    title: "Malls  – Near Ambuja",
+    title: "MALLS – NEAR AMBUJA (JV / LEASE)",
     location: "Near Ambuja Mall, Raipur",
-    size: "Size as per project plan (JV basis)",
+    size: "Size as per project plan (JV / Lease basis)",
   },
   {
     id: "kamal-vihar-mall-jv",
     dealType: "JV",
     city: "Raipur",
-    title: "Malls – Near Kamal Vihar",
+    title: "MALLS – NEAR KAMAL VIHAR (JV / LEASE)",
     location: "Near Kamal Vihar, Raipur",
-    size: "Size as per project plan (JV basis)",
+    size: "Size as per project plan (JV / Lease basis)",
+  },
+  {
+    id: "colors-mall-jv-lease",
+    dealType: "JV",
+    city: "Raipur",
+    title: "MALL – NEAR COLORS MALL (JV / LEASE)",
+    location: "Near Colors Mall, Raipur",
+    size: "Size as per project plan (JV / Lease basis)",
+  },
+  {
+    id: "kamal-vihar-60000-jv-lease",
+    dealType: "JV",
+    city: "Raipur",
+    title: "MALL – NEAR KAMAL VIHAR 60,000 SQ.FT (JV / LEASE)",
+    location: "Near Kamal Vihar, Raipur",
+    size: "Range 60,000 sq.ft (JV / Lease basis)",
   },
 ];
 
@@ -97,7 +113,7 @@ function MallCard({ item, index }) {
           </span>
 
           <a
-            href="/#contact"
+            href="/contact"
             className="inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2 text-xs md:text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition-colors duration-200"
             style={{ backgroundColor: CTA_COLOR }}
             onMouseEnter={(e) => {
@@ -136,7 +152,7 @@ export default function MallsListings() {
         <div className="mb-6 flex items-center justify-between">
           <button
             type="button"
-            onClick={() => navigate("/#categories")}
+            onClick={() => navigate("/categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
@@ -148,7 +164,7 @@ export default function MallsListings() {
 
         {/* Heading */}
         <header className="mb-8 space-y-3 text-center">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
+          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
             MALLS • RETAIL • JOINT VENTURE
           </p>
           <h1 className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight uppercase">

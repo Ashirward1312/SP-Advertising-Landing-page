@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -6,6 +5,7 @@ import {
   Hospital as HospitalIcon,
   GraduationCap as GraduationCapIcon,
   Building as BuildingIcon,
+  Building2 as OfficeIcon, // ✅ Office icon
   Gem as GemIcon,
   ShoppingBag as ShoppingBagIcon,
   Trees as TreesIcon,
@@ -14,7 +14,7 @@ import {
   FerrisWheel as FerrisWheelIcon,
   LineChart as LineChartIcon,
   MoreHorizontal as MoreHorizontalIcon,
-  MapPin as MapPinIcon, // Land on Lease
+  MapPin as MapPinIcon, // Land on Lease / Project Lands
   Home as HomeIcon, // Premium Farm House
 } from "lucide-react";
 
@@ -31,7 +31,13 @@ const CATS = [
   { id: "residential", label: "Residential Real Estate", icon: BuildingIcon },
   { id: "commercial", label: "Commercial Real Estate", icon: BuildingIcon },
 
+  // ✅ Office section
+  { id: "office", label: "Office Space", icon: OfficeIcon },
+
   { id: "luxuryplots", label: "Premium Luxury Plots", icon: GemIcon },
+
+  // ✅ Project Lands (NEW) — path will be /projects
+  { id: "projectlands", label: "Project Lands", icon: MapPinIcon },
 
   // Premium Farm House
   { id: "farmhouse", label: "Premium Farm House", icon: HomeIcon },
@@ -53,7 +59,7 @@ const CATS = [
   // Investment
   { id: "invest-land", label: "Land / Plot Investment", icon: LineChartIcon },
 
-  // 🔹 yahan pe pehle "Land/Plot" tha, ab "Stand Alone"
+  // 🔹 Stand Alone
   { id: "standalone", label: "Stand Alone", icon: LineChartIcon },
 
   { id: "others", label: "Others", icon: MoreHorizontalIcon },
@@ -73,81 +79,93 @@ export default function CategoriesSection() {
   const handleCategoryClick = (id) => {
     // BEST BUY
     if (id === "bestbuy") {
-      navigate("/bestbuy");
+      navigate("/best-property-buy-offices-plots-raipur");
       return;
     }
 
     // ✅ Joint Ventures
     if (id === "jointventures") {
-      navigate("/jointventures");
+      navigate("/joint-ventures-property-in-raipur");
       return;
     }
 
     if (id === "hospital") {
-      navigate("/hospital");
+      navigate("/hospital-lands-in-raipur");
       return;
     }
 
     if (id === "education") {
-      navigate("/education");
+      navigate("/education-&-institution-lands-raipur");
       return;
     }
 
     // Real Estate pages
     if (id === "residential") {
-      navigate("/residential");
+      navigate("/residential-property-in-raipur");
       return;
     }
 
     if (id === "commercial") {
-      navigate("/commercial");
+      navigate("/commercial-property-raipur");
+      return;
+    }
+
+    // ✅ Office section route
+    if (id === "office") {
+      navigate("/office-space-in-raipur");
       return;
     }
 
     // Premium plots / land (normal listing page)
     if (id === "luxuryplots") {
-      navigate("/land");
+      navigate("/luxury-plots-in-raipur");
+      return;
+    }
+
+    // ✅ Project Lands route — FIXED PATH to /projects
+    if (id === "projectlands") {
+      navigate("/key-project-lands-raipur"); // ✅ Changed from /projectlands to /projects
       return;
     }
 
     // 🔹 Stand Alone
     if (id === "standalone") {
-      navigate("/standalone"); // yahan apna route laga sakte ho
+      navigate("/stand-alone-property-raipur");
       return;
     }
 
     // Malls
     if (id === "malls") {
-      navigate("/malls");
+      navigate("/malls-jv-opportunity-raipur");
       return;
     }
 
     // Resorts + Wedding Lawns
     if (id === "resortswedding") {
-      navigate("/resorts-wedding");
+      navigate("/resorts-&-wedding-lawn-lands");
       return;
     }
 
     // Premium Farm House
     if (id === "farmhouse") {
-      navigate("/farmhouse");
+      navigate("/farmhouse-plots-raipur");
       return;
     }
 
     // Warehouse
     if (id === "warehouse") {
-      navigate("/warehouse");
+      navigate("/warehouse-in-raipur");
       return;
     }
 
     // ✅ Investment – land
     if (id === "invest-land") {
-      navigate("/land-investment"); // ✅ naya LandInvestment page
+      navigate("/land-plot-investment-raipur");
       return;
     }
 
     if (id === "lease") {
-      navigate("/lease");
+      navigate("/land-on-lease-in-raipur");
       return;
     }
 
@@ -251,6 +269,57 @@ export default function CategoriesSection() {
             );
           })}
         </div>
+
+       {/* Promotional block under categories */}
+<div className="mt-10 flex justify-center">
+  <a
+    href="https://www.landbazar.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group relative inline-flex items-center gap-3 rounded-2xl border px-5 py-3 text-sm font-medium shadow-lg max-w-xl w-full sm:w-auto"
+    style={{
+      borderColor: BRAND.soft,
+      background:
+        "radial-gradient(circle at top left, rgba(245,73,0,0.28), transparent 55%), rgba(15,23,42,0.96)",
+      boxShadow: `0 14px 40px -18px ${BRAND.glow}`,
+    }}
+  >
+    {/* Icon circle */}
+    <span
+      className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-950/90 ring-1 ring-slate-700/80"
+      style={{ color: BRAND.soft }}
+    >
+      <MapPinIcon className="h-4 w-4" />
+    </span>
+
+    {/* Text */}
+    <span className="text-left">
+      <span className="block text-[11px] uppercase tracking-[0.16em] text-slate-400">
+        LOOKING FOR LAND / PLOT OPPORTUNITIES?
+      </span>
+      <span className="block text-[13px] text-slate-100">
+        EXPLORE CURATED RESIDENTIAL, COMMERCIAL & INVESTMENT PROPERTIES ON{" "}
+        <span
+          className="font-semibold group-hover:underline"
+          style={{ color: BRAND.soft }}
+        >
+          LANDBAZAR
+        </span>
+        .
+      </span>
+    </span>
+
+    
+
+    {/* subtle glow on hover */}
+    <span
+      className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+      style={{
+        boxShadow: `0 0 30px -20px ${BRAND.glow}`,
+      }}
+    />
+  </a>
+</div>
       </div>
     </section>
   );

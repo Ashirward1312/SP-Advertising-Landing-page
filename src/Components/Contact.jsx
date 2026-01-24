@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -10,6 +12,8 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ type: "", msg: "" });
   const [sending, setSending] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -82,7 +86,20 @@ export default function Contact() {
         className="pointer-events-none absolute left-1/2 top-0 -z-10 h-72 w-[90vw] -translate-x-1/2 bg-gradient-to-tr from-orange-400/10 via-amber-400/10 to-transparent blur-3xl"
         aria-hidden="true"
       />
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* 🔙 Back to Home button */}
+        <div className="mt-3 mb-4 flex justify-start">
+  <button
+    type="button"
+    onClick={() => navigate("/")}
+    className="inline-flex items-center gap-1.5 rounded-full border border-orange-200 bg-white/80 px-3 py-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-orange-700 shadow-sm hover:bg-orange-50 hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition transform"
+  >
+    <FaArrowLeft className="h-3.5 w-3.5" />
+    Back to Home
+  </button>
+</div>
+
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xs font-medium text-orange-700 ring-1 ring-orange-100">
@@ -92,8 +109,8 @@ export default function Contact() {
             WE’D LOVE TO HEAR FROM YOU
           </h1>
           <p className="paragraph-font mt-2 text-slate-600">
-            Have A Question Or Want To Book A Site Visit? Send Us A Message And Our Team
-            Will Respond Soon.
+            Have A Question Or Want To Book A Site Visit? Send Us A Message And
+            Our Team Will Respond Soon.
           </p>
         </div>
 
@@ -110,27 +127,28 @@ export default function Contact() {
 
             <div className="mt-4 space-y-4">
               {/* Phone – footer wala number */}
-              <a
-                href="tel:+918871090476"
-                className="flex items-center gap-3 rounded-xl p-3 hover:bg-slate-50 transition"
-              >
-                <span className="h-9 w-9 inline-flex items-center justify-center rounded-lg bg-orange-50">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    className="text-orange-600"
-                  >
-                    <path
-                      d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.1 5.18 2 2 0 0 1 5.05 3h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </span>
-                <span className="paragraph-font text-sm text-slate-800">
-                  +91 88710-90476
-                </span>
-              </a>
+             <a
+  href="mailto:mventures011@gmail.com"
+  className="flex items-center gap-3 rounded-xl p-3 hover:bg-slate-50 transition"
+>
+  <span className="h-9 w-9 inline-flex items-center justify-center rounded-lg bg-orange-50">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      className="text-orange-600"
+    >
+      <path
+        d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13 20 6.01V6H4zm0 12h16V8l-8 6-8-6v10z"
+        fill="currentColor"
+      />
+    </svg>
+  </span>
+  <span className="paragraph-font text-sm text-slate-800">
+    mventures011@gmail.com
+  </span>
+</a>
+
 
               {/* Address */}
               <div className="flex items-center gap-3 rounded-xl p-3">
@@ -151,8 +169,8 @@ export default function Contact() {
                   </svg>
                 </span>
                 <div className="paragraph-font text-sm text-slate-800">
-                  Mahesh Ventures, LK Logistic Park, Kursi, 3rd Floor, Near Kamal
-                  Vihar, Raipur (C.G.)
+                  Mahesh Ventures, LK Logistic Park, Kursi, 3rd Floor, Near
+                  Kamal Vihar, Raipur (C.G.)
                   <div>
                     <a
                       className="text-orange-600 hover:text-orange-700 underline underline-offset-2"

@@ -75,16 +75,10 @@ function HostelCard({ item, index }) {
       {/* Bottom CTA */}
       <div className="border-t border-white/5 px-5 md:px-6 py-4 bg-black/70">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-          <span className="text-xs text-slate-400 sm:flex-1">
-            Is{" "}
-            <span className="font-semibold text-slate-100">
-              hostel property
-            </span>{" "}
-            ke liye details chahiye ho to enquiry bhejein.
-          </span>
+         
 
           <a
-            href="/#contact"
+            href="/contact"
             className="inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2 text-xs md:text-sm font-semibold text-white bg-orange-500 shadow-lg shadow-orange-500/30 transition-colors duration-200 hover:bg-orange-400"
           >
             ENQUIRE PROPERTY
@@ -104,7 +98,7 @@ export default function Others() {
         {/* Back Button */}
        <button
             type="button"
-            onClick={() => navigate("/#categories")}
+            onClick={() => navigate("/categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>

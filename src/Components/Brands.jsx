@@ -268,7 +268,7 @@ export default function AssociatesPage() {
         {/* CTA */}
         <div className="mt-10 sm:mt-12 flex items-center justify-center">
           <a
-            href="#contact"
+            href="/contact"
             className="paragraph-font inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-orange-500/20 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300"
           >
             BECOME A PARTNER

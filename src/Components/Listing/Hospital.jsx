@@ -1,5 +1,4 @@
-"use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const BRAND = {
@@ -13,36 +12,37 @@ const CTA_HOVER = "#fb923c";
 /* -------------------- PROPERTY DATA -------------------- */
 
 const PROPERTIES = [
-  {
-    id: "pachpedi-naka-tower",
-    title: "Prime Hospital / Medical Tower – Pachpedi Naka",
-    location: "Main road, Pachpedi Naka, Raipur (next to Ganeshi Hospital)",
-    size: "Approx 8,800 sq.ft plot • Multi-storey RCC structure ready",
-  },
-  {
-    id: "raipur-3000",
-    title: "3,000 sq.ft Construction-Ready Land in Raipur",
-    location: "Well-connected location, Raipur",
-    size: "Approx 3,000 sq.ft construction potential",
-  },
-  {
-    id: "raigarh-50000",
-    title: "Up to 50,000 sq.ft Construction near AIIMS, Raigarh",
-    location: "Raigarh",
-    size: "Approx 50,000 sq.ft construction potential",
-  },
-  {
-    id: "tatibandh-40000-100000",
-    title: "40,000 – 1,00,000 sq.ft Options in Tatibandh",
-    location: "Near AIIMS Tatibandh, Raipur",
-    size: "40,000 to 1,00,000 sq.ft construction potential",
-  },
-  {
-    id: "swarn-bhumi-60000",
-    title: "Around 60,000 sq.ft Construction near Swarn Bhoomi",
-    location: "Near Swarn Bhoomi, Raipur",
-    size: "Approx 60,000 sq.ft construction potential",
-  },
+ {
+  id: "pachpedi-naka-tower",
+  title: "Prime Hospital / Medical Tower – Pachpedi Naka",
+  location: "Main road, Pachpedi Naka, Raipur (next to Ganeshi Hospital)",
+  size: "Range 8,800 sq.ft plot • Multi-storey RCC structure ready",
+},
+{
+  id: "60000",
+  title: "20,000 – 25,000 sq.ft Hospital Project – Near Bhatagaon",
+  location: "Near Bhatagaon, Raipur",
+  size: "Range 20,000 to 25,000 sq.ft construction potential, ideal for hospital use",
+},
+{
+  id: "raigarh-50000",
+  title: "Up to 50,000 sq.ft Construction , Raigarh",
+  location: "Raigarh",
+  size: "Range 50,000 sq.ft construction potential",
+},
+{
+  id: "tatibandh-40000-100000",
+  title: "40,000 – 1,00,000 sq.ft Options in Tatibandh",
+  location: "Near AIIMS Tatibandh, Raipur",
+  size: "40,000 to 1,00,000 sq.ft construction potential",
+},
+{
+  id: "swarn-bhumi-60000",
+  title: "Around 60,000 sq.ft Construction near Swarn Bhoomi",
+  location: "Near Swarn Bhoomi, Raipur",
+  size: "Range 60,000 sq.ft construction potential",
+},
+
 ];
 
 /* -------------------- CARD COMPONENT -------------------- */
@@ -68,9 +68,11 @@ function PropertyCard({ property, index }) {
       <div className="p-5 md:p-6 space-y-4">
         {/* Tags */}
         <div className="flex flex-wrap gap-2 text-[11px] font-semibold">
-          {/* <span className="rounded-full bg-black/80 px-3 py-1 text-slate-100 ring-1 ring-white/15">
+          {/* 
+          <span className="rounded-full bg-black/80 px-3 py-1 text-slate-100 ring-1 ring-white/15">
             {label} • {city}
-          </span> */}
+          </span> 
+          */}
           <span className="rounded-full bg-emerald-500/95 px-3 py-1 text-black ring-1 ring-emerald-300/80">
             Price on Request
           </span>
@@ -128,7 +130,7 @@ function PropertyCard({ property, index }) {
           </span>
 
           <a
-            href="/#contact"
+            href="/contact"
             className="inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2 text-xs md:text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition-colors duration-200"
             style={{ backgroundColor: CTA_COLOR }}
             onMouseEnter={(e) => {
@@ -151,6 +153,25 @@ function PropertyCard({ property, index }) {
 export default function HospitalListings({ filters }) {
   const navigate = useNavigate();
 
+  // ✅ SEO: Title + Description + Keywords for this page
+  useEffect(() => {
+    document.title = "Hospital Lands in Raipur | Mahesh Ventures";
+
+    document
+      .querySelector("meta[name='description']")
+      ?.setAttribute(
+        "content",
+        "Discover curated hospital lands and medical construction opportunities in Raipur and Raigarh with Mahesh Ventures. Options near Pachpedi Naka, Bhatagaon, AIIMS Tatibandh and Swarn Bhoomi with strong construction potential."
+      );
+
+    document
+      .querySelector("meta[name='keywords']")
+      ?.setAttribute(
+        "content",
+        "hospital land raipur, hospital plot raipur, medical land raipur, hospital project land raipur, AIIMS tatibandh hospital land, Pachpedi Naka medical tower, Swarn Bhoomi hospital site, Raigarh hospital construction land, Mahesh Ventures"
+      );
+  }, []);
+
   return (
     <section className="relative bg-slate-950 text-slate-100 pt-24 pb-14 md:pt-28 md:pb-16">
       {/* Orange aura */}
@@ -167,25 +188,24 @@ export default function HospitalListings({ filters }) {
         <div className="mb-6 flex items-center justify-between">
           <button
             type="button"
-            onClick={() => navigate("/#categories")}
+            onClick={() => navigate("/categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
-            <span>
-              BACK TO CATEGORIES
-            </span>
+            <span>BACK TO CATEGORIES</span>
           </button>
         </div>
 
         {/* Heading */}
         <header className="mb-8 space-y-3">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900] text-center">
+          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900] text-center">
             HOSPITAL • LAND • CONSTRUCTION
           </p>
 
-
-          <p className="max-w-2xl text-sm sm:text-base text-slate-300 leading-relaxed">
-
+          <p className="max-w-2xl text-sm sm:text-base text-slate-300 leading-relaxed mx-auto text-center">
+            Curated options for hospital and medical projects with strong
+            construction potential and strategic locations across Raipur and
+            Raigarh.
           </p>
         </header>
 

@@ -1,5 +1,4 @@
-"use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const BRAND = {
@@ -14,61 +13,54 @@ const CTA_HOVER = "#fb923c";
 
 const OPPORTUNITIES = [
   {
-    id: "vip-road-jv",
-    dealType: "JV",
-    city: "Raipur",
-    title: "3, 5 & 7 Acre JV Land – VIP Road, Raipur",
-    location: "VIP Road corridor, Raipur",
-    size: "3 acre, 5 acre & 7 acre options available",
-  },
-  {
-    id: "baloda-bazar-road-jv",
-    dealType: "JV",
-    city: "Raipur",
-    title: "10 – 25 Acre JV Land – Baloda Bazar Road",
-    location: "Baloda Bazar Road, Raipur outskirts",
-    size: "10 to 25 acre (contiguous land) on JV",
-  },
-  {
-    id: "persulidih-tekari-jv",
-    dealType: "JV",
-    city: "Raipur",
-    title: "7 – 10 Acre JV Land – Persulidih / Tekari Belt",
-    location: "Persulidih – Tekari side, Raipur",
-    size: "Approx 7 to 10 acre land on partnership",
-  },
-  {
-    id: "saddu-jv",
-    dealType: "JV",
-    city: "Raipur",
-    title: "Approx 5 Acre JV Land – Near Saddu",
-    location: "Saddu side, Raipur",
-    size: "Approx 5 acre land on partnership",
-  },
-  {
-    id: "boriyakala-jv",
-    dealType: "JV",
-    city: "Raipur",
-    title: "6 Acre JV Land – Boriyakala (National Highway)",
-    location: "Near Boriyakala, on National Highway",
-    size: "Approx 6 acre highway-touch land on JV",
-  },
-  {
-    id: "mm-fun-city-jv",
-    dealType: "JV",
-    city: "Raipur",
-    title: "8 Acre JV Land – Near MM Fun City",
-    location: "Near MM Fun City, Raipur",
-    size: "Approx 8 acre land for joint venture",
-  },
-  {
-    id: "gadhi-chowk-sale",
-    dealType: "SALE",
-    city: "Raipur",
-    title: "10,000 – 40,000 sq.ft Commercial – Near Gadhi Chowk / Raj Bhawan",
-    location: "Near Gadhi Chowk / Raj Bhawan, Raipur",
-    size: "Approx 10,000 to 40,000 sq.ft commercial space / land",
-  },
+  id: "vip-road-jv",
+  dealType: "JV",
+  city: "Raipur",
+  title: "3, 5 & 7 Acre JV Land – VIP Road, Raipur",
+  location: "VIP Road corridor, Raipur",
+  size: "Range of 3, 5 & 7 acres – ideal for resort development",
+},
+{
+  id: "baloda-bazar-road-jv",
+  dealType: "JV",
+  city: "Raipur",
+  title: "10–25 Acre JV Land – Baloda Bazar Road",
+  location: "Baloda Bazar Road, Raipur outskirts",
+  size: "Range of 10 to 25 acres (contiguous land) available for JV",
+},
+{
+  id: "persulidih-tekari-jv",
+  dealType: "PARTNERSHIP",
+  city: "Raipur",
+  title: "7–10 Acre Partnership Land – Persulidih / Tekari Belt",
+  location: "Persulidih–Tekari belt, Raipur",
+  size: "Range of 7 to 10 acres available for partnership",
+},
+{
+  id: "saddu-jv",
+  dealType: "PARTNERSHIP",
+  city: "Raipur",
+  title: "Up to 5 Acre Partnership Land – Near Saddu",
+  location: "Saddu side, Raipur",
+  size: "Land size range up to 5 acres available for partnership",
+},
+{
+  id: "mm-fun-city-jv",
+  dealType: "JV",
+  city: "Raipur",
+  title: "Up to 8 Acre JV Land – Near MM Fun City",
+  location: "Near MM Fun City, Raipur",
+  size: "Land size range up to 8 acres available for joint venture",
+},
+{
+  id: "ghadi-chowk-sale",
+  dealType: "SALE",
+  city: "Raipur",
+  title: "10,000–40,000 sq.ft Commercial Property – Near Ghadi Chowk / Raj Bhawan",
+  location: "Near Ghadi Chowk / Raj Bhawan, Raipur",
+  size: "Range of 10,000 to 40,000 sq.ft commercial space or land",
+},
+
 ];
 
 /* -------------------- CARD COMPONENT -------------------- */
@@ -145,7 +137,7 @@ function OpportunityCard({ item, index }) {
           </span>
 
           <a
-            href="/#contact"
+            href="/contact"
             className="inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2 text-xs md:text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition-colors duration-200"
             style={{ backgroundColor: CTA_COLOR }}
             onMouseEnter={(e) => {
@@ -168,6 +160,26 @@ function OpportunityCard({ item, index }) {
 export default function JVListings() {
   const navigate = useNavigate();
 
+  // ✅ SEO: Title + Description + Keywords for this page
+  useEffect(() => {
+    document.title =
+      "Joint Ventures Property Lands and Commercial in Raipur | Mahesh Ventures";
+
+    document
+      .querySelector("meta[name='description']")
+      ?.setAttribute(
+        "content",
+        "Explore joint ventures property lands and prime commercial opportunities in Raipur with Mahesh Ventures. Curated JV and partnership lands from 3 to 25 acres and commercial spaces near VIP Road, MM Fun City, Ghadi Chowk and more."
+      );
+
+    document
+      .querySelector("meta[name='keywords']")
+      ?.setAttribute(
+        "content",
+        "joint venture land raipur, JV land raipur, partnership land raipur, commercial property JV raipur, resort JV VIP Road raipur, commercial land for sale raipur, ghadi chowk commercial raipur, MM Fun City land raipur, Mahesh Ventures JV"
+      );
+  }, []);
+
   return (
     <section className="relative bg-slate-950 text-slate-100 pt-24 pb-14 md:pt-28 md:pb-16">
       {/* Orange aura */}
@@ -182,39 +194,31 @@ export default function JVListings() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         {/* Back button */}
         <div className="mb-6 flex items-center justify-between">
-         <button
+          <button
             type="button"
-            onClick={() => navigate("/#categories")}
+            onClick={() => navigate("/categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
-            <span>
-              BACK TO CATEGORIES
-            </span>
+            <span>BACK TO CATEGORIES</span>
           </button>
         </div>
 
         {/* Heading */}
         <header className="mb-8 space-y-3 text-center flex flex-col items-center">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
+          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
             JOINT VENTURE (JV) • LAND • COMMERCIAL
           </p>
-
-          {/* <h1 className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight uppercase">
-            JV Land & Prime Commercial Opportunities – Raipur
-          </h1> */}
 
           <p className="max-w-2xl text-sm sm:text-base text-slate-300 leading-relaxed">
             JV (Joint Venture) is an{" "}
             <span className="font-semibold text-slate-100">
               agreement and mutual understanding
             </span>{" "}
-            between the client and the land owner to
-            develop a project together and share profits, revenue or developed
-            area as per agreed terms.
+            between the client and the land owner to develop a project together
+            and share profits, revenue or developed area as per agreed terms.
           </p>
         </header>
-
 
         {/* Cards grid */}
         <div className="grid gap-6 md:grid-cols-2">

@@ -12,19 +12,19 @@ const LAND_CARDS = [
     id: "vip-3000-6000",
     title: "3,000 – 6,000 sq.ft Land – VIP Road Belt",
     locationTag: "VIP Road, Raipur",
-    size: "Approx 3,000 – 6,000 sq.ft plots available",
+    size: "Range 3,000 – 6,000 sq.ft plots available",
   },
   {
     id: "magneto-3000-6000",
     title: "3,000 – 6,000 sq.ft Land – Near Magneto",
     locationTag: "Near Magneto Mall, Raipur",
-    size: "Approx 3,000 – 6,000 sq.ft plots available",
+    size: "Range 3,000 – 6,000 sq.ft plots available",
   },
   {
     id: "sayaji-3000-6000",
     title: "3,000 – 6,000 sq.ft Land – Near Sayaji",
     locationTag: "Near Sayaji, Raipur",
-    size: "Approx 3,000 – 6,000 sq.ft plots available",
+    size: "Range 3,000 – 6,000 sq.ft plots available",
   },
   {
     id: "pachpedi",
@@ -32,12 +32,7 @@ const LAND_CARDS = [
     locationTag: "Pachpedi Naka, Raipur",
     size: "Size as per requirement",
   },
-  {
-    id: "tagore",
-    title: "Land Near Tagore Nagar",
-    locationTag: "Tagore Nagar, Raipur",
-    size: "Size as per requirement",
-  },
+ 
 ];
 
 export default function LandListings() {
@@ -58,7 +53,7 @@ export default function LandListings() {
         <div className="mb-8 flex items-center justify-between">
            <button
             type="button"
-            onClick={() => navigate("/#categories")}
+            onClick={() => navigate("/categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
@@ -70,7 +65,7 @@ export default function LandListings() {
 
         {/* Heading */}
         <header className="mb-12 text-center">
-          <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+          <h1 className="mt-3 text-xl sm:text-2xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
             PREMIUM LUXURY PLOTS IN  RAIPUR 
           </h1>
         </header>
@@ -130,7 +125,7 @@ export default function LandListings() {
                 {/* CTA row */}
                 <div className="mt-6 flex items-center justify-between gap-4 border-t border-slate-800 pt-5">
                   <a
-                    href="/#contact"
+                    href="/contact"
                     className="inline-flex items-center justify-center rounded-full bg-gradient-to-r px-6 py-3 text-sm font-semibold text-white shadow-xl transition-all duration-300 hover:scale-[1.03]"
                     style={{
                       backgroundImage: `linear-gradient(to right, ${GRADIENT_FROM}, ${GRADIENT_TO})`,

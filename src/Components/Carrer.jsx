@@ -9,6 +9,9 @@ import {
   TrendingUp,
   CheckCircle,
   Sparkles,
+  Home,
+  GraduationCap,
+  Globe2,
 } from "lucide-react";
 
 const CTA_COLOR = "#f97316";
@@ -60,8 +63,8 @@ export default function Career() {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-600 max-w-4xl mx-auto">
-            <strong>GET STRUCTURED TRAINING AND EDUCATION IN REAL ESTATE</strong>
-            {" "}with certification courses, practical guidance and a
+            <strong>GET STRUCTURED TRAINING AND EDUCATION IN REAL ESTATE</strong>{" "}
+            with certification courses, practical guidance and a
             growth-focused environment. Learn the business and work towards{" "}
             <strong>YOUR FIRST ₹1 CR IN REAL ESTATE</strong>.
           </p>
@@ -101,7 +104,7 @@ export default function Career() {
             </div>
 
             <a
-              href="/#contact"
+              href="/contact"
               className="inline-flex rounded-full px-10 py-4 text-sm font-extrabold text-white shadow-lg transition hover:scale-105"
               style={{ backgroundColor: CTA_COLOR }}
               onMouseEnter={(e) =>
@@ -140,6 +143,50 @@ export default function Career() {
           </div>
         </section>
 
+        {/* BUILD YOUR CAREER – WFH / INTERNSHIP / FREELANCE */}
+        <motion.section
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mb-28"
+        >
+          <div className="text-center mb-10">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-700 bg-orange-100 px-5 py-2 rounded-full shadow-sm">
+              Build Your Career
+            </span>
+            <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold uppercase">
+              WFH, Internship & Freelance Options
+            </h2>
+            <p className="mt-3 text-base sm:text-lg text-slate-600 max-w-3xl mx-auto">
+              Choose how you want to start with Mahesh Ventures –{" "}
+              work from home, start as an intern, or grow as a freelance
+              real estate partner.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            <InfoCard
+              icon={<Home className="w-6 h-6" />}
+              badge="WFH"
+              title="Work From Home"
+              description="Build your real estate career remotely with flexible timings, online training and virtual client coordination."
+            />
+            <InfoCard
+              icon={<GraduationCap className="w-6 h-6" />}
+              badge="INTERNSHIP"
+              title="Structured Internship"
+              description="Hands-on learning for students and freshers – learn documentation, site visits and client interaction from scratch."
+            />
+            <InfoCard
+              icon={<Globe2 className="w-6 h-6" />}
+              badge="FREELANCE"
+              title="Freelance Partner"
+              description="Work on a commission basis as a freelance associate, tap your own network and grow income deal by deal."
+            />
+          </div>
+        </motion.section>
+
         {/* FINAL NOTE */}
         <motion.section
           variants={fadeUp}
@@ -152,10 +199,9 @@ export default function Career() {
             THIS IS NOT JUST A SALES JOB – IT IS{" "}
             <strong>
               A COMPLETE EDUCATION AND CAREER-BUILDING PLATFORM IN REAL ESTATE
-            </strong>.
-            IF YOU ARE SERIOUS ABOUT LEARNING AND GROWTH, WE ARE READY TO GUIDE YOU.
+            </strong>
+            . IF YOU ARE SERIOUS ABOUT LEARNING AND GROWTH, WE ARE READY TO GUIDE YOU.
           </p>
-
         </motion.section>
       </div>
     </section>
@@ -194,7 +240,9 @@ function InfoCard({ icon, badge, title, description }) {
 
         <div>
           <h3 className="text-lg font-extrabold uppercase mb-2">{title}</h3>
-          <p className="text-slate-600 text-sm leading-relaxed">{description}</p>
+          <p className="text-slate-600 text-sm leading-relaxed">
+            {description}
+          </p>
         </div>
 
         <div className="mt-auto h-1 w-12 rounded-full bg-gradient-to-r from-orange-500 to-red-500 group-hover:w-24 transition-all" />

@@ -1,9 +1,11 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import { FaFacebookF, FaInstagram, FaTwitter, FaArrowUp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [showTop, setShowTop] = useState(false);
-  const year = new Date().getFullYear(); // ✅ year defined
+  const year = new Date().getFullYear();
 
   // Show scroll-to-top button after scrolling down
   useEffect(() => {
@@ -33,36 +35,67 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Quick Links */}
+        {/* Quick Links – same as Header nav */}
         <div>
           <h2 className="text-lg font-semibold mb-4 text-orange-400">
             Quick Links
           </h2>
           <ul className="space-y-2 text-white/70 text-sm">
             <li>
-              <a href="#home" className="hover:text-orange-400 transition duration-300">
+              <Link
+                to="/"
+                className="hover:text-orange-400 transition duration-300"
+              >
                 HOME
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#service" className="hover:text-orange-400 transition duration-300">
+              <Link
+                to="/services"
+                className="hover:text-orange-400 transition duration-300"
+              >
                 SERVICE
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#about" className="hover:text-orange-400 transition duration-300">
-                ABOUT
-              </a>
+              {/* <Link
+                to="/gallery"
+                className="hover:text-orange-400 transition duration-300"
+              >
+                GALLERY
+              </Link> */}
             </li>
             <li>
-              <a href="#testimonials" className="hover:text-orange-400 transition duration-300">
-                TESTIMONIALS
-              </a>
+              <Link
+                to="/B2B-land-&-property-in-raipur"
+                className="hover:text-orange-400 transition duration-300"
+              >
+                B2B
+              </Link>
             </li>
             <li>
-              <a href="#contact" className="hover:text-orange-400 transition duration-300">
+              <Link
+                to="/pre-launch-land-&-property-raipur"
+                className="hover:text-orange-400 transition duration-300"
+              >
+                PRE-LAUNCH
+              </Link>
+            </li>
+            <li>
+              {/* <Link
+                to="/career"
+                className="hover:text-orange-400 transition duration-300"
+              >
+                CAREER
+              </Link> */}
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                className="hover:text-orange-400 transition duration-300"
+              >
                 CONTACT
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -90,7 +123,7 @@ const Footer = () => {
           <div className="flex space-x-4 text-white/80 text-xl">
             {/* Facebook */}
             <a
-              href="https://www.facebook.com/people/Headquarter-HQ-In-Association-with-Kursi/61582888842094/"
+              href="https://www.facebook.com/Maheshventures/"
               target="_blank"
               rel="noreferrer"
               className="hover:text-orange-400 transition transform hover:scale-110"
@@ -100,7 +133,7 @@ const Footer = () => {
 
             {/* Instagram */}
             <a
-              href="https://www.instagram.com/headquarterkursi/"
+              href="https://www.instagram.com/maheshventuresrpr/"
               target="_blank"
               rel="noreferrer"
               className="hover:text-orange-400 transition transform hover:scale-110"

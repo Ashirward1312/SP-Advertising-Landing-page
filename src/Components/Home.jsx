@@ -36,6 +36,27 @@ export default function Hero() {
   const [loaded, setLoaded] = useState({});
   const timerRef = useRef(null);
 
+  // ✅ SEO: Home page title + description + keywords
+  useEffect(() => {
+    document.title =
+      "Best Property Dealer in Raipur (C.G) | Mahesh Ventures";
+
+    document
+      .querySelector("meta[name='description']")
+      ?.setAttribute(
+        "content",
+        "Mahesh Ventures is a trusted property dealer in Raipur (C.G.), offering verified residential, commercial and investment properties with clear documentation and hassle-free transactions."
+      );
+
+    document
+      .querySelector("meta[name='keywords']")
+      ?.setAttribute(
+        "content",
+        "property dealer in raipur, best property dealer raipur, real estate agent raipur, property broker raipur, buy property raipur cg, residential property raipur, commercial property raipur, Mahesh Ventures"
+      );
+  }, []);
+
+  // Preload images
   useEffect(() => {
     IMAGES.forEach((img, i) => {
       const image = new Image();
@@ -46,6 +67,7 @@ export default function Hero() {
     });
   }, []);
 
+  // Start / stop slideshow
   useEffect(() => {
     start();
     return stop;
@@ -87,19 +109,15 @@ export default function Hero() {
           </div>
         ))}
 
-        {/* Thoda strong overlay but same idea */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          {/* 1st line – gradient text */}
           <span className="block bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-white to-amber-400 drop-shadow-[0_0_30px_rgba(0,0,0,0.9)]">
             {currentHeadline}
           </span>
-
-          {/* 2nd line – amber, thoda close laya with -mt-1 */}
           <span className="block text-amber-400 drop-shadow-[0_0_18px_rgba(0,0,0,0.9)] -mt-1">
             AWAITS IN RAIPUR
           </span>

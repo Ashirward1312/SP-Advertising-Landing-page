@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const BRAND = {
@@ -10,63 +10,62 @@ const BRAND = {
 const CTA_COLOR = "#f97316";
 const CTA_HOVER = "#fb923c";
 
-/* -------------------- BEST BUY DATA -------------------- */
+/* -------------------- ONLY VB TOWER DATA -------------------- */
 
-const BEST_BUY_ITEMS = [
-  {
-    id: "office-jai-stambh",
-    type: "OFFICE / COMMERCIAL",
-    city: "Raipur",
-    title: "OFFICE STARTS FROM 20 LAKH ONLY",
-    location: "Near Jai Stambh Chowk, Raipur",
-    priceInfo: "Best rates on request ",
-    note: "Ideal for small office, consultancy, CA / legal, or compact commercial space in central Raipur.",
-  },
-  {
-    id: "luxury-plots-magneto",
-    type: "LUXURY RESIDENTIAL PLOTS",
-    city: "Raipur",
-    title: "LUXURY PLOTS ON BEST RATES ",
-    location: "Near Magneto Mall belt, Raipur",
-    priceInfo: "Best rates on request ",
-    note: "Premium location plots suitable for luxury homes or investment near established Magneto zone.",
-  },
-];
+const VB_TOWER_OFFICE = {
+  id: "vb-tower-office",
+  dealType: "Lease", // Lease / Rent
+  city: "Raipur",
+  title: "VB TOWER – PREMIUM OFFICE SPACE",
+  location: "Prime Commercial Zone, Raipur",
+  size: "Flexible options (as per requirement)",
+  furnishing: "Shell / Semi-furnished / Furnished options (as per requirement)",
+  idealFor:
+    "Corporate offices, CA / CS firms, IT, consultants, startups, clinics, coaching HQ, etc.",
+  notes:
+    "Modern commercial tower with good visibility, parking and corporate environment.",
+};
 
 /* -------------------- CARD COMPONENT -------------------- */
 
-function BestBuyCard({ item, index }) {
-  const { type, city, title, location, priceInfo, note } = item;
+function OfficeCard({ item }) {
+  const { dealType, city, title, location, size, furnishing, idealFor, notes } =
+    item;
+
+  const isLease = dealType === "Lease";
 
   return (
     <article className="group relative flex flex-col rounded-3xl bg-gradient-to-b from-slate-900/90 via-slate-950 to-black ring-1 ring-white/10 shadow-[0_20px_60px_-35px_rgba(0,0,0,1)] hover:ring-[#f97316]/80 hover:shadow-[0_30px_90px_-45px_rgba(0,0,0,1)] hover:-translate-y-[2px] transition-all duration-200 overflow-hidden">
       {/* Top gradient line */}
       <div
-        className="absolute inset-x-0 top-0 h-[3px] opacity-90"
+        className="absolute inset-x-0 top-0 h-[3px] opacity-80"
         style={{
           background: `linear-gradient(90deg, transparent, ${BRAND.base}, ${BRAND.soft}, transparent)`,
         }}
       />
 
-      {/* Option badge */}
+      {/* Option badge (single option) */}
       <div className="absolute right-4 top-4 rounded-full bg-black/80 px-3 py-1 text-[11px] font-semibold text-slate-200 ring-1 ring-white/15">
-        OPTION {String(index + 1).padStart(2, "0")}
+        Option 1
       </div>
 
       <div className="p-5 md:p-6 space-y-4 flex-1 flex flex-col">
         {/* Tags */}
         <div className="flex flex-wrap gap-2 text-[11px] font-semibold">
           <span className="rounded-full bg-black/80 px-3 py-1 text-slate-100 ring-1 ring-white/15">
-            {type} • {city}
+            Office • {city}
           </span>
-          <span className="rounded-full bg-emerald-500/95 px-3 py-1 text-black ring-1 ring-emerald-300/80">
-            BEST BUY
-          </span>
+
+          {isLease && (
+            <span className="rounded-full bg-emerald-500/95 px-3 py-1 text-black ring-1 ring-emerald-300/80">
+              For Lease / Rent
+            </span>
+          )}
         </div>
 
         {/* Title */}
         <div className="space-y-1">
-          <h2 className="text-sm sm:text-base md:text-lg font-bold text-white leading-snug uppercase">
+          <h2 className="text-lg md:text-xl font-bold text-white leading-snug uppercase">
             {title}
           </h2>
         </div>
@@ -74,19 +73,37 @@ function BestBuyCard({ item, index }) {
         {/* Details box */}
         <div className="mt-1 rounded-2xl border border-white/5 bg-black/50 px-3 py-3 space-y-1.5">
           <p className="text-xs text-slate-400 uppercase tracking-[0.16em]">
-            KEY DETAILS
+            Key Details
           </p>
+
           <p className="text-sm text-slate-300">
             <span className="font-semibold text-slate-100">Location:</span>{" "}
             {location}
           </p>
+
           <p className="text-sm text-slate-300">
-            <span className="font-semibold text-slate-100">Price Info:</span>{" "}
-            {priceInfo}
+            <span className="font-semibold text-slate-100">Size:</span> {size}
           </p>
-          {note && (
-            <p className="text-xs text-slate-400">
-              <span className="font-semibold text-slate-100">Note:</span> {note}
+
+          {furnishing && (
+            <p className="text-sm text-slate-300">
+              <span className="font-semibold text-slate-100">
+                Furnishing:
+              </span>{" "}
+              {furnishing}
+            </p>
+          )}
+
+          {idealFor && (
+            <p className="text-sm text-slate-300">
+              <span className="font-semibold text-slate-100">Ideal for:</span>{" "}
+              {idealFor}
+            </p>
+          )}
+
+          {notes && (
+            <p className="text-xs text-slate-400 pt-1 border-t border-white/5 mt-2">
+              {notes}
             </p>
           )}
         </div>
@@ -95,12 +112,11 @@ function BestBuyCard({ item, index }) {
       {/* Bottom CTA */}
       <div className="border-t border-white/5 px-5 md:px-6 py-4 bg-black/70">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-          <span className="text-xs text-slate-400 sm:flex-1">
-            Share your budget and requirement – we&apos;ll share exact
-            availability, layouts, and deal structure for this{" "}
-            <span className="font-semibold text-slate-100">Best Buy</span>{" "}
-            option.
-          </span>
+          {/* <span className="text-xs text-slate-400 sm:flex-1">
+            Apni office requirement / profile share karein – hum aapko VB Tower
+            me suitable office space suggest karenge (size, budget, furnishing
+            ke hisaab se).
+          </span> */}
 
           <a
             href="/contact"
@@ -113,7 +129,7 @@ function BestBuyCard({ item, index }) {
               e.currentTarget.style.backgroundColor = CTA_COLOR;
             }}
           >
-            ENQUIRE BEST BUY
+            Discuss VB Tower Office
           </a>
         </div>
       </div>
@@ -123,28 +139,8 @@ function BestBuyCard({ item, index }) {
 
 /* -------------------- MAIN COMPONENT -------------------- */
 
-export default function BestBuyListings() {
+export default function OfficeListings() {
   const navigate = useNavigate();
-
-  // ✅ SEO: Title + Description + Keywords for this page
-  useEffect(() => {
-    document.title =
-      "Best Property Buy For Offices and Luxury Plots Raipur | Mahesh Ventures";
-
-    document
-      .querySelector("meta[name='description']")
-      ?.setAttribute(
-        "content",
-        "Explore best property buy options for offices and luxury residential plots in Raipur with Mahesh Ventures. Handpicked deals near Jai Stambh Chowk and Magneto Mall belt, curated for business use and premium home investments."
-      );
-
-    document
-      .querySelector("meta[name='keywords']")
-      ?.setAttribute(
-        "content",
-        "best property buy raipur, office property raipur, luxury plots raipur, commercial office raipur, office for sale raipur, premium plots near magneto raipur, best buy offices raipur, Mahesh Ventures"
-      );
-  }, []);
 
   return (
     <section className="relative bg-slate-950 text-slate-100 pt-24 pb-14 md:pt-28 md:pb-16">
@@ -172,16 +168,18 @@ export default function BestBuyListings() {
 
         {/* Heading */}
         <header className="mb-8 space-y-3 text-center">
-          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            BEST BUY FOR • OFFICE • LUXURY PLOTS
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
+            OFFICE • COMMERCIAL • VB TOWER
           </p>
+          <h1 className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight uppercase">
+            VB TOWER – PREMIUM OFFICE SPACES, RAIPUR
+          </h1>
+          
         </header>
 
-        {/* Cards grid */}
-        <div className="grid gap-6 md:grid-cols-2">
-          {BEST_BUY_ITEMS.map((item, index) => (
-            <BestBuyCard key={item.id} item={item} index={index} />
-          ))}
+        {/* Single card */}
+        <div className="max-w-3xl mx-auto">
+          <OfficeCard item={VB_TOWER_OFFICE} />
         </div>
       </div>
     </section>

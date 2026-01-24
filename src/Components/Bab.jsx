@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const B2B = () => {
+  // ✅ SEO: Page Title + Meta Description + Keywords (sirf B2B page ke liye)
+  useEffect(() => {
+    // TITLE
+    document.title =
+      "Premium B2B Land & Property In Raipur | Mahesh Ventures";
+
+    // META DESCRIPTION
+    document
+      .querySelector("meta[name='description']")
+      ?.setAttribute(
+        "content",
+        "Premium B2B land and property deals in Raipur (C.G.) by Mahesh Ventures. Ready land parcels, joint ventures, pre-rented commercial assets and institutional plots curated for investors, developers and institutions."
+      );
+
+    // META KEYWORDS
+    document
+      .querySelector("meta[name='keywords']")
+      ?.setAttribute(
+        "content",
+        "B2B real estate Raipur, land deals Raipur, premium land Raipur, joint venture land Raipur, pre rented property Raipur, commercial property Raipur, institutional land Raipur, Mahesh Ventures"
+      );
+  }, []);
+
   const focusAreas = [
     {
       title: "Ready land for premium projects",
@@ -105,7 +128,7 @@ const B2B = () => {
     {
       num: "03",
       title: "Structuring & Transaction support",
-      desc: "Support with negotiations, JV structures, term sheets and coordination with your legal & financial advisors.",
+      desc: "JV structures, term sheets and coordination with your legal & financial advisors.",
     },
   ];
 
@@ -132,11 +155,6 @@ const B2B = () => {
     <section id="b2b" className="relative w-full bg-white text-slate-900">
       {/* HERO */}
       <div className="relative isolate overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 py-20 sm:py-24 lg:py-28">
-        <img
-          src="https://images.unsplash.com/photo-1541888946744-8d00916f9821?q=80&w=2940&auto=format&fit=crop"
-          alt="City skyline representing premium real estate opportunities"
-          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30"
-        />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/70 via-black/60 to-slate-900/80" />
 
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
@@ -145,10 +163,15 @@ const B2B = () => {
             <span>B2B Real Estate • Mahesh Ventures</span>
           </div>
 
-          <h1 className="mt-8 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight uppercase">
-            Premium B2B Land & Property Deals
+          <h1
+            className="mt-8 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight uppercase
+             bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-400
+             bg-clip-text text-transparent
+             hover:from-orange-500 hover:via-amber-400 hover:to-yellow-500
+             transition-colors duration-300"
+          >
+            Premium B2B Land & Property Deals in Raipur (C.G)
           </h1>
-
           <p className="mt-2 text-base sm:text-lg font-medium text-orange-100">
             FOR INVESTORS, DEVELOPERS & INSTITUTIONS.
           </p>
@@ -180,8 +203,6 @@ const B2B = () => {
           </div>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-          
-            {/* CTA 2 */}
             <a
               href="#focus"
               className="inline-flex items-center gap-2 rounded-full ring-2 ring-white/70 px-9 py-3.5 text-base font-semibold text-white/90 shadow-lg transition-all duration-300 hover:bg-white/10 hover:ring-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900"
@@ -259,7 +280,7 @@ const B2B = () => {
                     {item.desc}
                   </p>
                   <a
-                    href="#contact"
+                    href="/contact"
                     className="mt-4 text-sm font-bold text-slate-900 transition-colors inline-flex items-center group-hover:text-[#f54900]"
                   >
                     Discuss this type of deal
@@ -350,7 +371,7 @@ const B2B = () => {
                   {whoProfiles.map((profile) => (
                     <div
                       key={profile.title}
-                      className="group rounded-2xl bg-white ring-1 ring-slate-200 shadow-md px-5 py-5 text-left transition-all duration-300 hover:ring-[#f54900] hover:shadow-[0_0px_50px_rgba(245,73,0,0.15)] hover:bg-[#fffdfb] relative overflow-hidden"
+                      className="group rounded-2xl bg:white ring-1 ring-slate-200 shadow-md px-5 py-5 text-left transition-all duration-300 hover:ring-[#f54900] hover:shadow-[0_0px_50px_rgba(245,73,0,0.15)] hover:bg-[#fffdfb] relative overflow-hidden"
                     >
                       <div
                         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
@@ -375,7 +396,7 @@ const B2B = () => {
       </section>
 
       {/* PROCESS */}
-      <section className="py-20 sm:py-24 bg-white">
+      <section className="py-20 sm:py-24 bg:white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
@@ -412,8 +433,6 @@ const B2B = () => {
           </div>
         </div>
       </section>
-
-    
     </section>
   );
 };

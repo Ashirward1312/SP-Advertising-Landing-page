@@ -19,8 +19,8 @@ const FARMHOUSE_OPTIONS = [
     city: "Raipur",
     title: "FARM HOUSE PLOTS – 10,000 TO 20,000 SQ.FT",
     location: "Kumhari / Arang Belt, Raipur",
-    size: "Approx 10,000 – 20,000 sq.ft per plot",
-    note: "Approx 400* (farm house belt)",
+    size: "Range 10,000 – 20,000 sq.ft per plot",
+    note: "Range 400* (farm house belt)",
   },
   {
     id: "mm-fun-city-prelaunch",
@@ -28,7 +28,7 @@ const FARMHOUSE_OPTIONS = [
     city: "Raipur",
     title: "FARM HOUSE PLOTS – NEAR MM FUN CITY ROAD",
     location: "Near MM Fun City Road, Raipur",
-    size: "Approx 1,200 – 1,300 sq.ft pre-launch options",
+    size: "Range 1,200 – 1,300 sq.ft pre-launch options",
     note: "Pre-launch 1,200 – 1,300* (as shared on discussion)",
   },
 ];
@@ -105,7 +105,7 @@ function FarmhouseCard({ item, index }) {
           </span>
 
           <a
-            href="/#contact"
+            href="/contact"
             className="inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2 text-xs md:text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition-colors duration-200"
             style={{ backgroundColor: CTA_COLOR }}
             onMouseEnter={(e) => {
@@ -144,7 +144,7 @@ export default function FarmhouseListings() {
         <div className="mb-6 flex items-center justify-between">
          <button
             type="button"
-            onClick={() => navigate("/#categories")}
+            onClick={() => navigate("/categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
@@ -156,7 +156,7 @@ export default function FarmhouseListings() {
 
         {/* Heading (center, CAPS) */}
         <header className="mb-8 space-y-3 text-center">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
+          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
             PREMIUM FARM HOUSE 
           </p>
          
