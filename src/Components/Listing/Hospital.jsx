@@ -1,5 +1,16 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // ✅ motion import
+
+// ✅ Heading animation
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const BRAND = {
   base: "#f54900",
@@ -12,37 +23,36 @@ const CTA_HOVER = "#fb923c";
 /* -------------------- PROPERTY DATA -------------------- */
 
 const PROPERTIES = [
- {
-  id: "pachpedi-naka-tower",
-  title: "Prime Hospital / Medical Tower – Pachpedi Naka",
-  location: "Main road, Pachpedi Naka, Raipur (next to Ganeshi Hospital)",
-  size: "Range 8,800 sq.ft plot • Multi-storey RCC structure ready",
-},
-{
-  id: "60000",
-  title: "20,000 – 25,000 sq.ft Hospital Project – Near Bhatagaon",
-  location: "Near Bhatagaon, Raipur",
-  size: "Range 20,000 to 25,000 sq.ft construction potential, ideal for hospital use",
-},
-{
-  id: "raigarh-50000",
-  title: "Up to 50,000 sq.ft Construction , Raigarh",
-  location: "Raigarh",
-  size: "Range 50,000 sq.ft construction potential",
-},
-{
-  id: "tatibandh-40000-100000",
-  title: "40,000 – 1,00,000 sq.ft Options in Tatibandh",
-  location: "Near AIIMS Tatibandh, Raipur",
-  size: "40,000 to 1,00,000 sq.ft construction potential",
-},
-{
-  id: "swarn-bhumi-60000",
-  title: "Around 60,000 sq.ft Construction near Swarn Bhoomi",
-  location: "Near Swarn Bhoomi, Raipur",
-  size: "Range 60,000 sq.ft construction potential",
-},
-
+  {
+    id: "pachpedi-naka-tower",
+    title: "Prime Hospital / Medical Tower – Pachpedi Naka",
+    location: "Main road, Pachpedi Naka, Raipur (next to Ganeshi Hospital)",
+    size: "Range 8,800 sq.ft plot • Multi-storey RCC structure ready",
+  },
+  {
+    id: "60000",
+    title: "20,000 – 25,000 sq.ft Hospital Project – Near Bhatagaon",
+    location: "Near Bhatagaon, Raipur",
+    size: "Range 20,000 to 25,000 sq.ft construction potential, ideal for hospital use",
+  },
+  {
+    id: "raigarh-50000",
+    title: "Up to 50,000 sq.ft Construction , Raigarh",
+    location: "Raigarh",
+    size: "Range 50,000 sq.ft construction potential",
+  },
+  {
+    id: "tatibandh-40000-100000",
+    title: "40,000 – 1,00,000 sq.ft Options in Tatibandh",
+    location: "Near AIIMS Tatibandh, Raipur",
+    size: "40,000 to 1,00,000 sq.ft construction potential",
+  },
+  {
+    id: "swarn-bhumi-60000",
+    title: "Around 60,000 sq.ft Construction near Swarn Bhoomi",
+    location: "Near Swarn Bhoomi, Raipur",
+    size: "Range 60,000 sq.ft construction potential",
+  },
 ];
 
 /* -------------------- CARD COMPONENT -------------------- */
@@ -196,13 +206,21 @@ export default function HospitalListings({ filters }) {
           </button>
         </div>
 
-        {/* Heading */}
-        <header className="mb-8 space-y-3">
-          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900] text-center">
-            HOSPITAL • LAND • CONSTRUCTION
-          </p>
+        {/* Heading with motion (same style you showed) */}
+        <header className="mb-8 space-y-3 text-center flex flex-col items-center">
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.6rem]"
+          >
+            HOSPITAL{" "}
+            <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+              LAND &amp; CONSTRUCTION IN RAIPUR (C.G)
+            </span>
+          </motion.h1>
 
-          <p className="max-w-2xl text-sm sm:text-base text-slate-300 leading-relaxed mx-auto text-center">
+          <p className="max-w-2xl text-sm sm:text-base text-slate-300 leading-relaxed">
             Curated options for hospital and medical projects with strong
             construction potential and strategic locations across Raipur and
             Raigarh.

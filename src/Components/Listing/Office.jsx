@@ -1,6 +1,16 @@
 "use client";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // ✅ motion import
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const BRAND = {
   base: "#f54900",
@@ -63,7 +73,7 @@ function OfficeCard({ item }) {
           )}
         </div>
 
-        {/* Title */}
+        {/* Title inside card (keep as-is, good size here) */}
         <div className="space-y-1">
           <h2 className="text-lg md:text-xl font-bold text-white leading-snug uppercase">
             {title}
@@ -112,12 +122,6 @@ function OfficeCard({ item }) {
       {/* Bottom CTA */}
       <div className="border-t border-white/5 px-5 md:px-6 py-4 bg-black/70">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-          {/* <span className="text-xs text-slate-400 sm:flex-1">
-            Apni office requirement / profile share karein – hum aapko VB Tower
-            me suitable office space suggest karenge (size, budget, furnishing
-            ke hisaab se).
-          </span> */}
-
           <a
             href="/contact"
             className="inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2 text-xs md:text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition-colors duration-200"
@@ -166,15 +170,26 @@ export default function OfficeListings() {
           </button>
         </div>
 
-        {/* Heading */}
-        <header className="mb-8 space-y-3 text-center">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            OFFICE • COMMERCIAL • VB TOWER
-          </p>
-          <h1 className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight uppercase">
-            VB TOWER – PREMIUM OFFICE SPACES, RAIPUR
-          </h1>
+        {/* Heading with motion */}
+        <header className="mb-8 space-y-3 text-center flex flex-col items-center">
           
+          {/* Main big heading */}
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.6rem]"
+          >
+            OFFICE SPACES{" "}
+            <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+              IN RAIPUR (C.G)
+            </span>
+          </motion.h1>
+
+          {/* Smaller VB Tower line */}
+          <p className="text-sm sm:text-base font-semibold text-slate-100 uppercase tracking-[0.16em]">
+            VB TOWER – PREMIUM OFFICE SPACES, RAIPUR
+          </p>
         </header>
 
         {/* Single card */}

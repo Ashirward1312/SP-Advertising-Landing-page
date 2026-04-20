@@ -125,7 +125,7 @@ export default function LandOnLease() {
           >
             LAND{" "}
             <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
-              ON LEASE
+              ON LEASE IN RAIPUR (C.G)
             </span>
           </motion.h1>
         </motion.header>

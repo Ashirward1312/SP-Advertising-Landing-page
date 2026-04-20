@@ -1,5 +1,15 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const BRAND = {
   base: "#f54900",
@@ -83,15 +93,15 @@ const PROJECT_LANDS = [
       "Well-sized project land near a prominent landmark, suitable for residential, institutional or commercial use as per sanctioned permissions.",
   },
   {
-  id: "evaraa-sector-25-naya-raipur",
-  city: "Naya Raipur",
-  title: "EVARAA – Ultra Luxurious Villas Project",
-  location: "Sector 25, Naya Raipur, Chhattisgarh",
-  size: "All villas offered in structure-only format",
-  zoning: "Ultra luxurious residential villas project",
-  highlights:
-    "Plot rate approx ₹5,000/- per sq.ft and construction rate approx ₹1,500/- per sq.ft (structure only), plus other applicable charges, registry and GST. Located in premium Sector 25, Naya Raipur, Chhattisgarh.",
-}
+    id: "evaraa-sector-25-naya-raipur",
+    city: "Naya Raipur",
+    title: "EVARAA – Ultra Luxurious Villas Project",
+    location: "Sector 25, Naya Raipur, Chhattisgarh",
+    size: "All villas offered in structure-only format",
+    zoning: "Ultra luxurious residential villas project",
+    highlights:
+      "Plot rate approx ₹5,000/- per sq.ft and construction rate approx ₹1,500/- per sq.ft (structure only), plus other applicable charges, registry and GST. Located in premium Sector 25, Naya Raipur, Chhattisgarh.",
+  },
 ];
 
 /* -------------------- CARD COMPONENT -------------------- */
@@ -172,9 +182,9 @@ function ProjectLandCard({ item, index }) {
       <div className="border-t border-white/5 px-5 md:px-6 py-4 bg-black/70">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           <span className="text-xs text-slate-400 sm:flex-1">
-            Share your project requirement and profile – we will share
-            ownership details, town planning status and commercial terms for
-            suitable project lands.
+            Share your project requirement and profile – we will share ownership
+            details, town planning status and commercial terms for suitable
+            project lands.
           </span>
 
           <a
@@ -222,14 +232,20 @@ export default function ProjectsListings() {
           </a>
         </div>
 
-        {/* Heading */}
+        {/* Heading with motion + gradient color */}
         <header className="mb-8 space-y-3 text-center">
-          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            PROJECT LANDS • RESIDENTIAL • COMMERCIAL
-          </p>
-          <h1 className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight uppercase">
-            KEY PROJECT LAND OPTIONS
-          </h1>
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight uppercase text-white"
+          >
+            KEY{" "}
+            <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+              PROJECT LAND IN RAIPUR (C.G)
+            </span>
+          </motion.h1>
+
           <p className="max-w-2xl mx-auto text-sm sm:text-base text-slate-300 leading-relaxed">
             Curated{" "}
             <span className="font-semibold text-slate-100">

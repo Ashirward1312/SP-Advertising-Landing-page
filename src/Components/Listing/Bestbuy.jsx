@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // ✅ import motion
 
 const BRAND = {
   base: "#f54900",
@@ -9,6 +10,16 @@ const BRAND = {
 
 const CTA_COLOR = "#f97316";
 const CTA_HOVER = "#fb923c";
+
+/* -------------------- FRAMER VARIANTS -------------------- */
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 /* -------------------- BEST BUY DATA -------------------- */
 
@@ -58,9 +69,6 @@ function BestBuyCard({ item, index }) {
         <div className="flex flex-wrap gap-2 text-[11px] font-semibold">
           <span className="rounded-full bg-black/80 px-3 py-1 text-slate-100 ring-1 ring-white/15">
             {type} • {city}
-          </span>
-          <span className="rounded-full bg-emerald-500/95 px-3 py-1 text-black ring-1 ring-emerald-300/80">
-            BEST BUY
           </span>
         </div>
 
@@ -126,7 +134,6 @@ function BestBuyCard({ item, index }) {
 export default function BestBuyListings() {
   const navigate = useNavigate();
 
-  // ✅ SEO: Title + Description + Keywords for this page
   useEffect(() => {
     document.title =
       "Best Property Buy For Offices and Luxury Plots Raipur | Mahesh Ventures";
@@ -170,11 +177,20 @@ export default function BestBuyListings() {
           </button>
         </div>
 
-        {/* Heading */}
+        {/* Heading with motion */}
         <header className="mb-8 space-y-3 text-center">
-          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            BEST BUY FOR • OFFICE • LUXURY PLOTS
-          </p>
+          
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.6rem]"
+          >
+            BEST BUY FOR{" "}
+            <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+              OFFICES & LUXURY PLOTS IN RAIPUR (C.G)
+            </span>
+          </motion.h1>
         </header>
 
         {/* Cards grid */}

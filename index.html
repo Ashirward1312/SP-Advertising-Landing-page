@@ -3,28 +3,100 @@
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Favicon -->
+    <!-- ================= FAVICON ================= -->
     <link rel="icon" type="image/png" href="/favicon.png" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mahesh Ventures</title>
 
-    <!-- Google Structured Data for Logo -->
+    <!-- ================= PRIMARY SEO ================= -->
+    <title>Mahesh Ventures | Best Real Estate Company in Raipur | Land & Commercial Property</title>
+
+    <meta name="title" content="Mahesh Ventures | Best Real Estate Company in Raipur" />
+
+    <meta name="description" content="Mahesh Ventures is a leading real estate company in Raipur offering residential plots, commercial property, B2B land deals, pre-launch projects, investment lands, office space, warehouse, resorts and joint ventures in Raipur." />
+
+    <meta name="keywords" content="
+    Real estate broker in Raipur,
+    Real estate company in Raipur,
+    Land in Raipur,
+    Residential plots in Raipur,
+    Commercial property in Raipur,
+    B2B property in Raipur,
+    Pre launch property in Raipur,
+    Joint venture property in Raipur,
+    Hospital land in Raipur,
+    Educational land in Raipur,
+    Industrial land in Raipur,
+    Office space in Raipur,
+    Warehouse in Raipur,
+    Farmhouse plots Raipur,
+    Land investment in Raipur,
+    Stand alone property Raipur,
+    Best property dealer in Raipur
+    " />
+
+    <meta name="author" content="Mahesh Ventures" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- ================= OPEN GRAPH ================= -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://maheshventures.in/" />
+    <meta property="og:title" content="Mahesh Ventures | Best Real Estate Company in Raipur" />
+    <meta property="og:description" content="Mahesh Ventures is a leading real estate company in Raipur offering residential plots, commercial property, B2B land deals, pre-launch projects, investment lands, office space, warehouse, resorts and joint ventures in Raipur." />
+    <meta property="og:image" content="https://maheshventures.in/favicon.png" />
+    <meta property="og:site_name" content="Mahesh Ventures" />
+
+    <!-- =====================================================
+         ORGANIZATION SCHEMA
+    ====================================================== -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": "https://maheshventures.in/#organization",
       "name": "Mahesh Ventures",
       "url": "https://maheshventures.in/",
-      "logo": "https://maheshventures.in/favicon.png"
+      "logo": "https://maheshventures.in/favicon.png",
+      "sameAs": [
+        "https://www.facebook.com/pradeepmaheshwarirpr",
+        "https://www.instagram.com/maheshventuresrpr/",
+        "https://www.linkedin.com/in/mahesh-ventures-0466673a7/"
+      ]
     }
     </script>
+
+    <!-- =====================================================
+         LOCAL BUSINESS SCHEMA
+    ====================================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://maheshventures.in/#localbusiness",
+      "name": "Mahesh Ventures",
+      "image": "https://maheshventures.in/favicon.png",
+      "url": "https://maheshventures.in/",
+      "telephone": "+91-8871090476",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Kursi, Kamal Vihar",
+        "addressLocality": "Raipur",
+        "addressRegion": "CG",
+        "postalCode": "492004",
+        "addressCountry": "IN"
+      },
+      "department": {
+        "@type": "RealEstateAgent",
+        "name": "Pradeep Maheshwari",
+        "telephone": "+91-8871090476"
+      }
+    }
+    </script>
+
   </head>
 
   <body>
     <div id="root"></div>
-
-    <!-- Vite / React entry -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

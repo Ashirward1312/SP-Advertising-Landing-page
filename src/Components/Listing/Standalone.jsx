@@ -1,6 +1,16 @@
 "use client";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // ✅ motion import
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const BRAND = {
   base: "#f54900",
@@ -20,7 +30,8 @@ const STANDALONE_ITEMS = [
     deal: "SALE",
     title: "Standalone Commercial Building – Range 40,000 sq ft Construction",
     location: "Near Colors Mall, Raipur",
-    priceInfo: "For Sale • Range 40,000 sq ft constructed area. Pricing on request.",
+    priceInfo:
+      "For Sale • Range 40,000 sq ft constructed area. Pricing on request.",
     note: "On sell near Colors Mall – suitable for showroom, corporate office, or multi-brand commercial use in a high visibility belt.",
   },
   {
@@ -30,7 +41,8 @@ const STANDALONE_ITEMS = [
     deal: "SALE",
     title: "Standalone Building – Range 6,000–7,000 sq ft (Range)",
     location: "Near Mahadev Ghat, Raipur",
-    priceInfo: "For Sale • Range 6,000–7,000 sq ft constructed area. Pricing on request.",
+    priceInfo:
+      "For Sale • Range 6,000–7,000 sq ft constructed area. Pricing on request.",
     note: "On sell near Mahadev Ghat – ideal for own use or investment as a mid-size independent building.",
   },
   {
@@ -40,7 +52,8 @@ const STANDALONE_ITEMS = [
     deal: "RENT",
     title: "Standalone Commercial Space on Rent – Near Ivy Hotel",
     location: "Near Ivy Hotel, Pachpedi Naka, Raipur",
-    priceInfo: "On Rent • Multiple floor / unit options possible. Rent on request.",
+    priceInfo:
+      "On Rent • Multiple floor / unit options possible. Rent on request.",
     note: "On rent near Ivy Hotel, Pachpedi Naka – suitable for clinic, diagnostics, office, or retail with good traffic.",
   },
   {
@@ -50,7 +63,8 @@ const STANDALONE_ITEMS = [
     deal: "RENT",
     title: "Standalone Commercial / Retail on Rent – Near AIIMS",
     location: "Near AIIMS, Raipur",
-    priceInfo: "On Rent • Ideal for medical-support services, retail, or office use. Rent on request.",
+    priceInfo:
+      "On Rent • Ideal for medical-support services, retail, or office use. Rent on request.",
     note: "Near AIIMS on rent – strong catchment of students, staff, and patients in the immediate vicinity.",
   },
 ];
@@ -75,8 +89,6 @@ function StandAloneCard({ item, index }) {
           background: `linear-gradient(90deg, transparent, ${BRAND.base}, ${BRAND.soft}, transparent)`,
         }}
       />
-
-
 
       <div className="p-5 md:p-6 space-y-4 flex-1 flex flex-col">
         {/* Tags */}
@@ -124,14 +136,10 @@ function StandAloneCard({ item, index }) {
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           <span className="text-xs text-slate-400 sm:flex-1">
             Share whether you are looking for{" "}
-            <span className="font-semibold text-slate-100">
-              sale or rent
-            </span>{" "}
+            <span className="font-semibold text-slate-100">sale or rent</span>{" "}
             – we&apos;ll share exact availability, floor plans, and deal
             structure for this{" "}
-            <span className="font-semibold text-slate-100">
-              Stand Alone
-            </span>{" "}
+            <span className="font-semibold text-slate-100">Stand Alone</span>{" "}
             option.
           </span>
 
@@ -173,23 +181,29 @@ export default function StandAloneListings() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         {/* Back button */}
         <div className="mb-6 flex items-center justify-between">
-       <button
+          <button
             type="button"
             onClick={() => navigate("/categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
-            <span>
-              BACK TO CATEGORIES
-            </span>
+            <span>BACK TO CATEGORIES</span>
           </button>
         </div>
 
-        {/* Heading */}
+        {/* Heading with motion + gradient color */}
         <header className="mb-8 space-y-3 text-center">
-          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            STAND ALONE
-          </p>
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.6rem] text-white"
+          >
+            STAND ALONE PROPERTY{" "}
+            <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+              IN RAIPUR (C.G)
+            </span>
+          </motion.h1>
         </header>
 
         {/* Cards grid */}

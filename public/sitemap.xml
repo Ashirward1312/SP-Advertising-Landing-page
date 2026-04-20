@@ -13,6 +13,20 @@
     <priority>1.00</priority>
   </url>
 
+  <!-- OPTIONAL: /home (same as /) -->
+  <url>
+    <loc>https://maheshventures.in/home</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- OPTIONAL: /categories (scrolls to categories section on home) -->
+  <url>
+    <loc>https://maheshventures.in/categories</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
   <!-- MAIN NAV PAGES -->
   <url>
     <loc>https://maheshventures.in/services</loc>
@@ -21,19 +35,19 @@
   </url>
 
   <url>
-    <loc>https://maheshventures.in/gallery</loc>
+    <loc>https://maheshventures.in/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://maheshventures.in/b2b</loc>
+    <loc>https://maheshventures.in/B2B-land-&amp;-property-in-raipur</loc>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://maheshventures.in/pre-launch</loc>
+    <loc>https://maheshventures.in/pre-launch-land-&amp;-property-raipur</loc>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -88,7 +102,7 @@
   </url>
 
   <url>
-    <loc>http://maheshventures.in/office-space-in-raipur</loc>
+    <loc>https://maheshventures.in/office-space-in-raipur</loc>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>

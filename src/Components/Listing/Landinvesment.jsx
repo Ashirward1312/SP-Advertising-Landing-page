@@ -1,6 +1,16 @@
 "use client";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // ✅ motion import
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const BRAND = {
   base: "#f54900",
@@ -13,7 +23,7 @@ const CTA_HOVER = "#fb923c";
 /* -------------------- LAND / PLOT INVESTMENT DATA -------------------- */
 
 const LAND_INVEST_OPTIONS = [
-   {
+  {
     id: "vip-60000",
     type: "LAND / PLOT INVESTMENT",
     city: "Raipur",
@@ -40,16 +50,15 @@ const LAND_INVEST_OPTIONS = [
     size: "Range 40,000 To 60,000 sq.ft",
     note: "Located in Kamal Vihar planning area – suitable for residential, mixed-use or plotted development.",
   },
-
-   {
-  id: "persulidih-7500",
-  type: "LAND / PLOT INVESTMENT",
-  city: "Raipur",
-  title: "7,500 SQ.FT LAND INVESTMENT – PARSULIDIH, RAIPUR",
-  location: "Parsulidih area, Raipur",
-  size: "Range 7,500 sq.ft",
-  note: "Persulidih belt land, Raipur."
-},
+  {
+    id: "persulidih-7500",
+    type: "LAND / PLOT INVESTMENT",
+    city: "Raipur",
+    title: "7,500 SQ.FT LAND INVESTMENT – PARSULIDIH, RAIPUR",
+    location: "Parsulidih area, Raipur",
+    size: "Range 7,500 sq.ft",
+    note: "Persulidih belt land, Raipur.",
+  },
 ];
 
 /* -------------------- CARD COMPONENT -------------------- */
@@ -163,24 +172,31 @@ export default function LandInvestmentListings() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         {/* Back button */}
         <div className="mb-6 flex items-center justify-between">
-         <button
+          <button
             type="button"
             onClick={() => navigate("/categories")}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
-            <span>
-              BACK TO CATEGORIES
-            </span>
+            <span>BACK TO CATEGORIES</span>
           </button>
         </div>
 
-        {/* Heading */}
+        {/* Heading with motion + gradient color */}
         <header className="mb-8 space-y-3 text-center">
-          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            LAND / PLOT INVESTMENT 
-          </p>
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.6rem] text-white"
+          >
+            LAND AND PLOT INVESTMENT{" "}
+            <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+              IN RAIPUR (C.G)
+            </span>
+          </motion.h1>
         </header>
+
         {/* Cards grid */}
         <div className="grid gap-6 md:grid-cols-2">
           {LAND_INVEST_OPTIONS.map((item, index) => (

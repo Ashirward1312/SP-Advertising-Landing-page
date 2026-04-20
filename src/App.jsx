@@ -14,7 +14,7 @@ import Whatsapp from "./Components/Whatsapp";
 import Contact from "./Components/Contact";
 import How from "./Components/How";
 import Faq from "./Components/Faq";
-import Contactus from "./Components/Contactus";
+// import Contactus from "./Components/Contactus";
 import Brand from "./Components/Brands";
 import B2B from "./Components/Bab";
 import Prelaunch from "./Components/Prelaunch";
@@ -60,7 +60,7 @@ function HomePage() {
       <Brand />
       <Testimonial />
       <Faq />
-      <Contactus />
+      {/* <Contactus /> */}
     </>
   );
 }

@@ -1,6 +1,16 @@
 "use client";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // ✅ motion import
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const BRAND = {
   base: "#f54900",
@@ -60,7 +70,7 @@ function WarehouseCard({ item, index }) {
             {title}
           </h2>
           <p className="text-[11px] uppercase tracking-[0.22em] text-[#f54900]">
-            LARGE WAREHOUSE 
+            LARGE WAREHOUSE
           </p>
         </div>
 
@@ -138,17 +148,23 @@ export default function WarehouseListings() {
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
-            <span>
-              BACK TO CATEGORIES
-            </span>
+            <span>BACK TO CATEGORIES</span>
           </button>
         </div>
 
-        {/* Heading (center, CAPS) */}
+        {/* Heading with motion + gradient color */}
         <header className="mb-8 space-y-3 text-center">
-          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            WAREHOUSE 
-          </p>
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.6rem] text-white"
+          >
+            WAREHOUSE PROPERTY{" "}
+            <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+              IN RAIPUR (C.G)
+            </span>
+          </motion.h1>
         </header>
 
         {/* Cards grid */}

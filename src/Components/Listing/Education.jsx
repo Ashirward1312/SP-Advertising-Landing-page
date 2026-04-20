@@ -1,6 +1,16 @@
 "use client";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // ✅ motion import
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const BRAND = {
   base: "#f54900",
@@ -108,8 +118,8 @@ function EducationCard({ item, index }) {
       <div className="border-t border-white/5 px-5 md:px-6 py-4 bg-black/70">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           <span className="text-xs text-slate-400 sm:flex-1">
-            Share your institution type, required land size and budget – we&apos;ll
-            share exact options, layouts and terms for these{" "}
+            Share your institution type, required land size and budget –
+            we&apos;ll share exact options, layouts and terms for these{" "}
             <span className="font-semibold text-slate-100">
               Education / Institutional
             </span>{" "}
@@ -160,18 +170,28 @@ export default function EducationListings() {
             className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-3.5 py-1.5 text-xs md:text-sm font-medium text-slate-200 hover:bg-black/90 hover:border-white/40 transition"
           >
             <span className="text-base md:text-lg">←</span>
-            <span>
-              BACK TO CATEGORIES
-            </span>
+            <span>BACK TO CATEGORIES</span>
           </button>
         </div>
 
-        {/* Heading */}
-        <header className="mb-8 space-y-3 text-center">
-          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            EDUCATION • INSTITUTIONAL • RAIPUR
+        {/* Heading with framer-motion */}
+        <header className="mb-8 space-y-3 text-center flex flex-col items-center">
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.6rem]"
+          >
+            EDUCATIONAL &amp; INSTITUTIONAL{" "}
+            <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+              LAND IN RAIPUR (C.G)
+            </span>
+          </motion.h1>
+
+          <p className="max-w-2xl text-sm sm:text-base text-slate-300 leading-relaxed">
+            Curated land options for schools, colleges, coaching campuses and
+            institutional projects across key corridors of Raipur.
           </p>
-        
         </header>
 
         {/* Cards grid */}

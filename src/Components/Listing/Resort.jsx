@@ -2,6 +2,16 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // ✅ motion import
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const BRAND = {
   base: "#f54900",
@@ -154,11 +164,19 @@ export default function ResortListings() {
           </button>
         </div>
 
-        {/* Heading */}
+        {/* Heading with motion + gradient color */}
         <header className="mb-8 space-y-3 text-center">
-          <p className="text-xl sm:text-2xl font-semibold uppercase tracking-[0.22em] text-[#f54900]">
-            RESORT • WEDDING LAWN
-          </p>
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.6rem] text-white"
+          >
+            RESORT &amp;{" "}
+            <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+              WEDDING LAWN LAND ACROSS INDIA
+            </span>
+          </motion.h1>
         </header>
 
         {/* Cards */}
