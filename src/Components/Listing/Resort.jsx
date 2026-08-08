@@ -22,16 +22,10 @@ const CTA_COLOR = "#f97316";
 const CTA_HOVER = "#fb923c";
 
 /* -------------------- RESORT / WEDDING LAWN DATA -------------------- */
+// Old Option 1 (kanha-resort-10-13) REMOVED as requested
+// 22 Acre Near Champaran ADDED
 
 const RESORT_OPTIONS = [
-  {
-    id: "kanha-resort-10-13",
-    title: "RESORT / WEDDING LAWN – KANHA NATIONAL PARK (MP)",
-    location: "Near Kanha National Park, Madhya Pradesh",
-    size: "Range 10 to 13 acres",
-    approvals: "With all approvals in place (resort / hospitality use).",
-    note: "Suitable for resort, wedding lawn, destination wedding venue and nature-based hospitality project.",
-  },
   {
     id: "vip-road-resort-3-5-7",
     title: "3, 5 & 7 ACRE RESORT LAND – NEAR VIP ROAD (LEASE / JV)",
@@ -39,6 +33,14 @@ const RESORT_OPTIONS = [
     size: "Range 3, 5 & 7 acre resort land options",
     approvals: "",
     note: "Lease and Joint Venture options available for resort project.",
+  },
+  {
+    id: "champaran-22acre",
+    title: "22 ACRE NEAR CHAMPARAN",
+    location: "Near Champaran",
+    size: "22 Acres",
+    approvals: "",
+    note: "",
   },
 ];
 
@@ -165,6 +167,7 @@ export default function ResortListings() {
         </div>
 
         {/* Heading with motion + gradient color */}
+        {/* NOTE: "Across India" intentionally REMOVED from heading as per requirements */}
         <header className="mb-8 space-y-3 text-center">
           <motion.h1
             variants={fadeUp}
@@ -174,7 +177,7 @@ export default function ResortListings() {
           >
             RESORT &amp;{" "}
             <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
-              WEDDING LAWN LAND ACROSS INDIA
+              WEDDING LAWN LAND
             </span>
           </motion.h1>
         </header>

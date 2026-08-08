@@ -42,6 +42,33 @@ const BEST_BUY_ITEMS = [
     priceInfo: "Best rates on request ",
     note: "Premium location plots suitable for luxury homes or investment near established Magneto zone.",
   },
+  {
+    id: "residential-plotting-daldal-seoni",
+    type: "RESIDENTIAL PLOTTING",
+    city: "Raipur",
+    title: "Near Daldal Seoni, Mowa | Residential Plotting",
+    location: "Near Daldal Seoni, Mowa, Raipur",
+    priceInfo: "Price on request",
+    note: "",
+  },
+  {
+    id: "commercial-anupam-garden",
+    type: "COMMERCIAL PROJECT",
+    city: "Raipur",
+    title: "Commercial Project – Near Anupam Garden",
+    location: "Near Anupam Garden, Raipur",
+    priceInfo: "Price on request",
+    note: "",
+  },
+  {
+    id: "pre-rented-deals",
+    type: "PRE-RENTED",
+    city: "Raipur",
+    title: "Pre-Rented Deals Starting From ₹1.50 Cr",
+    location: "Raipur",
+    priceInfo: "Starting From ₹1.50 Cr",
+    note: "",
+  },
 ];
 
 /* -------------------- CARD COMPONENT -------------------- */
@@ -188,7 +215,7 @@ export default function BestBuyListings() {
           >
             BEST BUY FOR{" "}
             <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
-              OFFICES & LUXURY PLOTS IN RAIPUR (C.G)
+              OFFICES &amp; LUXURY PLOTS IN RAIPUR (C.G)
             </span>
           </motion.h1>
         </header>

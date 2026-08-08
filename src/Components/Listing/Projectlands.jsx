@@ -33,6 +33,15 @@ const PROJECT_LANDS = [
       "Suitable for mid to large-scale residential projects such as apartments, gated community or group housing, subject to approvals.",
   },
   {
+    id: "avanti-vihar-2700",
+    city: "Raipur",
+    title: "Avanti Vihar",
+    location: "Avanti Vihar, Raipur",
+    size: "2,700 Sq. Ft.",
+    zoning: "Residential project land",
+    highlights: "",
+  },
+  {
     id: "ring-road-4-4acres",
     city: "Raipur",
     title: "4 Acre Mixed-Use Land – Near Ring Road No. 4",
