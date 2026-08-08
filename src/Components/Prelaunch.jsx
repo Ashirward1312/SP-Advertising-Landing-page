@@ -58,6 +58,14 @@ const Prelaunch = () => {
       title: "Near Naya Raipur – Studio Apartment & Luxury Villa",
       desc: "Upcoming pre-launch concepts for studio apartments and luxury villas near the Naya Raipur corridor.",
     },
+    {
+      title: "Near Labhandi",
+      desc: "Pre-launch property opportunity near Labhandi, Raipur.",
+    },
+    {
+      title: "Near Ring Road",
+      desc: "Pre-launch property opportunity near Ring Road, Raipur.",
+    },
   ];
 
   const kachanLeft = [

@@ -37,6 +37,7 @@ import Lease from "./Components/Listing/Lease";
 import StandAloneListings from "./Components/Listing/Standalone";
 import OfficeListings from "./Components/Listing/Office";
 import ProjectsListings from "./Components/Listing/Projectlands";
+import Founder from "./Components/Founder";
 
 /* 🔥 FORCE SCROLL TO TOP */
 function ScrollFix() {
@@ -56,6 +57,7 @@ function HomePage() {
       <Home />
       <Listing />
       <How />
+      <Founder />
       <About />
       <Brand />
       <Testimonial />
