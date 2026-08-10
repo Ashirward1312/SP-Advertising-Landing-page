@@ -45,7 +45,7 @@ function useReveal(prefersReducedMotion) {
 const FOUNDER_PHOTO = founderImg;
 
 const FOUNDER = {
-  quote: "STRATEGY FIRST. PEOPLE ALWAYS. REAL ESTATE DONE RIGHT.",
+  quote:"Turning Real Estate Opportunities into Strategic Investments, Lasting Value, and Successful Futures.",
   name: "PRADEEP MAHESHWARI",
   role: "Founder • Executive Vice President YUVA CAIT Chhattisgarh",
 };

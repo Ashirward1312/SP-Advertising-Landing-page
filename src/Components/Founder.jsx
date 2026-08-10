@@ -91,9 +91,9 @@ function useGSAPReveal(ref) {
           const delay = parseFloat(el.dataset.delay || "0");
           const from =
             dir === "left" ? { x: -40, opacity: 0 }
-            : dir === "right" ? { x: 40, opacity: 0 }
-            : dir === "scale" ? { scale: 0.9, opacity: 0 }
-            : { y: 40, opacity: 0 };
+              : dir === "right" ? { x: 40, opacity: 0 }
+                : dir === "scale" ? { scale: 0.9, opacity: 0 }
+                  : { y: 40, opacity: 0 };
 
           gsap.fromTo(
             el,
@@ -114,7 +114,7 @@ function useGSAPReveal(ref) {
             }
           );
         });
-        return () => {};
+        return () => { };
       }
     );
     return () => mm.revert();
@@ -155,9 +155,8 @@ function useMagnetic(ref, strength = 18) {
 const Eyebrow = ({ children, center = false, dark = false }) => (
   <div
     data-reveal="up"
-    className={`inline-flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.28em] mb-5 ${
-      dark ? "text-[#FFC27A]" : "text-[#F28C28]"
-    } ${center ? "mx-auto justify-center w-full" : ""}`}
+    className={`inline-flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.28em] mb-5 ${dark ? "text-[#FFC27A]" : "text-[#F28C28]"
+      } ${center ? "mx-auto justify-center w-full" : ""}`}
   >
     <span className="w-6 h-px bg-current opacity-60" />
     {children}
@@ -319,7 +318,7 @@ const Founder = () => {
       <FontLoader />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative overflow-hidden bg-[#071A33] py-24 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8">
+      {/* <section ref={heroRef} className="relative overflow-hidden bg-[#071A33] py-24 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8">
         <div className="hero-orb absolute top-[-10%] right-[-6%] w-[560px] h-[560px] bg-[#F28C28] opacity-[0.08] blur-[130px] rounded-full pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[420px] h-[420px] bg-[#F28C28] opacity-[0.05] blur-[110px] rounded-full pointer-events-none" />
         <div
@@ -366,135 +365,268 @@ const Founder = () => {
             <div className="w-px h-10 bg-gradient-to-b from-[#F28C28] to-transparent" />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Founder Portrait */}
-      <section ref={founderRef} className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-white">
+      <section
+        ref={founderRef}
+        className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-white"
+      >
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div data-reveal="left" className="relative">
-              <div className="absolute -top-4 -left-4 w-20 h-20 border-[3px] border-[#F28C28]/40 rounded-2xl -z-10" />
-              <div className="absolute -bottom-4 -right-4 w-28 h-28 border-[3px] border-[#F28C28]/20 rounded-2xl -z-10" />
-              <div className="rounded-2xl overflow-hidden shadow-2xl border-2 border-[#F28C28]/20 max-w-sm mx-auto lg:mx-0">
-                <img src={founderImg} alt="Pradeep Maheshwari" className="w-full h-72 object-cover object-top" loading="lazy" />
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-14 lg:gap-18 items-center">
+
+            {/* ================= IMAGE SIDE ================= */}
+            <div data-reveal="left" className="relative flex justify-center lg:justify-start">
+
+              {/* Decorative Elements (unchanged style) */}
+              <div className="absolute -top-5 -left-5 w-24 h-24 border-[3px] border-[#F28C28]/40 rounded-2xl -z-10" />
+              <div className="absolute -bottom-5 -right-5 w-32 h-32 border-[3px] border-[#F28C28]/20 rounded-2xl -z-10" />
+
+              {/* ✅ Slightly Larger Image */}
+              <div className="relative w-full max-w-[480px] lg:max-w-[520px]">
+                <div className="relative w-full h-[420px] sm:h-[480px] lg:h-[540px] overflow-hidden rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.08)] border-2 border-[#F28C28]/20">
+                  <img
+                    src={founderImg}
+                    alt="Pradeep Maheshwari"
+                    className="w-full h-full object-cover object-[center_top]"
+                    loading="lazy"
+                  />
+
+                  {/* Soft Gradient Depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none" />
+                </div>
+
+                {/* Experience Badge */}
+                <div className="absolute -bottom-5 left-8 bg-[#071A33] text-white text-xs font-semibold px-6 py-2.5 rounded-full shadow-xl border border-[#F28C28]/30">
+                  <span className="text-[#F28C28]">20+</span> Years Experience
+                </div>
               </div>
-              <div className="absolute -bottom-5 left-8 bg-[#071A33] text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-xl border border-[#F28C28]/30">
-                <span className="text-[#F28C28]">20+</span> Years Experience
-              </div>
+
+              {/* Ambient Glow */}
               <div className="absolute inset-0 -z-10 blur-3xl opacity-20 bg-[#F28C28] rounded-3xl pointer-events-none" />
             </div>
 
-            <div className="space-y-7">
+            {/* ================= CONTENT SIDE ================= */}
+            <div className="space-y-8">
+
               <div data-reveal="right">
-                <Eyebrow>Section 01 — Founder</Eyebrow>
-                <h2 className="text-[#071A33] font-bold leading-[1.05]" style={{ fontSize: "clamp(1.9rem, 3.5vw, 3rem)", letterSpacing: "-0.02em" }}>
+                {/* <Eyebrow>Section 01 — Founder</Eyebrow> */}
+
+                <h2
+                  className="text-[#071A33] font-bold leading-[1.05]"
+                  style={{
+                    fontSize: "clamp(2rem, 3.2vw, 3rem)",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
                   Pradeep Maheshwari
                 </h2>
-                <p className="text-[#071A33]/60 font-medium text-sm mt-1">Founder · Executive Vice President, YUVA CAIT Chhattisgarh</p>
+
+                <p className="text-[#071A33]/60 font-medium text-sm mt-2">
+                  Founder · Executive Vice President, YUVA CAIT Chhattisgarh
+                </p>
               </div>
 
               <div data-reveal="right" data-delay="0.1">
-                <p className="text-[#071A33]/80 leading-relaxed font-medium" style={{ fontSize: "clamp(0.95rem, 1.1vw, 1.08rem)", lineHeight: 1.75 }}>
-                  <span className="font-bold text-[#F28C28]">Over two decades</span> in real estate strategy, sales and marketing.
-                  From large-scale builder planning to pan-India broker networks, Pradeep has led
-                  models that accelerate closures and create long-term value.
+                <p
+                  className="text-[#071A33]/80 leading-relaxed font-medium"
+                  style={{
+                    fontSize: "clamp(1rem, 1.05vw, 1.08rem)",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  <span className="font-bold text-[#F28C28]">
+                    Over two decades
+                  </span>{" "}
+                  in real estate strategy, sales and marketing.
+                  From large-scale builder planning to pan-India broker networks,
+                  Pradeep has led models that accelerate closures and create long-term value.
                 </p>
-                <p className="text-[#071A33]/70 leading-relaxed font-medium mt-4" style={{ fontSize: "clamp(0.9rem, 1vw, 1rem)", lineHeight: 1.75 }}>
-                  A visionary leader who believes <span className="font-bold text-[#071A33]">success is meaningless without inner fulfilment</span>.
-                  Beyond real estate, Pradeep serves as a Happiness Coach — guiding individuals and teams
-                  toward emotional fitness, clarity and balanced living.
+
+                <p
+                  className="text-[#071A33]/70 leading-relaxed font-medium mt-5"
+                  style={{
+                    fontSize: "clamp(0.95rem, 1vw, 1rem)",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  A visionary leader who believes{" "}
+                  <span className="font-bold text-[#071A33]">
+                    success is meaningless without inner fulfilment
+                  </span>.
+                  Beyond real estate, Pradeep serves as a Happiness Coach —
+                  guiding individuals and teams toward emotional fitness, clarity and balanced living.
                 </p>
               </div>
 
-              <div data-reveal="right" data-delay="0.18" className="flex flex-wrap gap-3">
+              {/* ✅ Slightly Larger Stats Cards */}
+              <div
+                data-reveal="right"
+                data-delay="0.18"
+                className="flex flex-wrap gap-4"
+              >
                 {[
                   { val: "20+ Yrs", lbl: "Experience" },
                   { val: "Raipur", lbl: "Based In" },
                   { val: "C.G.", lbl: "Market Focus" },
                 ].map((s) => (
-                  <div key={s.lbl} className="bg-[#071A33]/5 border border-[#071A33]/10 rounded-xl px-4 py-2.5 text-center">
-                    <div className="text-[#F28C28] font-bold text-sm">{s.val}</div>
-                    <div className="text-[#071A33]/60 text-[10px] uppercase tracking-wide font-bold">{s.lbl}</div>
+                  <div
+                    key={s.lbl}
+                    className="bg-[#071A33]/5 border border-[#071A33]/10 rounded-xl px-6 py-3 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                  >
+                    <div className="text-[#F28C28] font-bold text-base">
+                      {s.val}
+                    </div>
+                    <div className="text-[#071A33]/60 text-[11px] uppercase tracking-wide font-bold mt-1">
+                      {s.lbl}
+                    </div>
                   </div>
                 ))}
               </div>
 
               <div data-reveal="up" data-delay="0.22">
-                <MagneticCTA href="/contact">Connect with Pradeep</MagneticCTA>
+                <MagneticCTA href="/contact">
+                  Connect with Pradeep
+                </MagneticCTA>
               </div>
+
             </div>
           </div>
         </div>
       </section>
 
       {/* Happiness Coach */}
-      <section ref={happRef} className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-[#071A33] relative overflow-hidden text-white">
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F28C28] opacity-[0.06] blur-[140px] rounded-full pointer-events-none" />
-        <div className="absolute top-0 right-0 w-72 h-72 bg-[#F28C28] opacity-[0.04] blur-[100px] rounded-full pointer-events-none" />
+      <section
+        ref={happRef}
+        className="relative py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-[#071A33] overflow-hidden text-white"
+      >
+        {/* ✅ Background Depth Layers */}
+        <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-[#F28C28] opacity-[0.05] blur-[160px] rounded-full pointer-events-none" />
+        <div className="absolute -top-32 -right-32 w-[400px] h-[400px] bg-[#F28C28] opacity-[0.04] blur-[130px] rounded-full pointer-events-none" />
 
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <Eyebrow center dark>Section 02 — Dual Role</Eyebrow>
-            <h2 data-reveal="up" data-delay="0.05" className="font-bold" style={{ fontSize: "clamp(2rem, 4.5vw, 4rem)", letterSpacing: "-0.02em", lineHeight: 1.05 }}>
+
+          {/* ================= HEADER ================= */}
+          <div className="text-center mb-20">
+            {/* <Eyebrow center dark>Section 02 — Dual Role</Eyebrow> */}
+
+            <h2
+              data-reveal="up"
+              data-delay="0.05"
+              className="font-bold mt-4"
+              style={{
+                fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
+                letterSpacing: "-0.02em",
+                lineHeight: 1.05,
+              }}
+            >
               Happiness Coach
             </h2>
-            <p data-reveal="up" data-delay="0.1" className="text-[#F28C28] font-medium mt-3" style={{ fontSize: "clamp(1rem, 1.4vw, 1.35rem)" }}>
-              Emotional Fitness, Balance &amp; Fulfilment
+
+            <p
+              data-reveal="up"
+              data-delay="0.1"
+              className="text-[#F28C28] font-medium mt-4"
+              style={{ fontSize: "clamp(1.05rem, 1.4vw, 1.35rem)" }}
+            >
+              Emotional Fitness, Balance & Fulfilment
             </p>
-            <p data-reveal="up" data-delay="0.15" className="text-white/50 mt-4 max-w-xl mx-auto text-sm leading-relaxed font-medium">
+
+            <p
+              data-reveal="up"
+              data-delay="0.15"
+              className="text-white/50 mt-5 max-w-2xl mx-auto text-sm leading-relaxed font-medium"
+            >
               Beyond real estate, Pradeep brings a holistic philosophy — helping individuals rediscover
-              joy, manage modern stress, and build lives of meaning.
+              joy, manage modern stress, and build lives of clarity, resilience and meaning.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {/* ================= CORE POINTS ================= */}
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
             {happinessPoints.map((point, i) => (
               <div
                 key={point.title}
                 data-reveal="up"
                 data-delay={`${i * 0.1}`}
-                className="group relative bg-white/[0.03] border border-white/10 rounded-2xl p-7 hover:border-[#F28C28]/40 hover:bg-white/[0.06] transition-all duration-500"
+                className="group relative bg-white/[0.04] backdrop-blur-md border border-white/10 rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#F28C28]/40 hover:bg-white/[0.07]"
               >
-                <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#F28C28]/60 to-transparent rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="flex items-start gap-4 mb-4">
-                  <span className="text-2xl">{point.icon}</span>
-                  <h3 className="text-white font-semibold text-sm uppercase tracking-wide pt-1">{point.title}</h3>
+                {/* Top Gradient Line */}
+                <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#F28C28]/70 to-transparent rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                <div className="flex items-start gap-4 mb-5">
+                  <span className="text-3xl">{point.icon}</span>
+                  <h3 className="text-white font-semibold text-sm uppercase tracking-wide pt-1">
+                    {point.title}
+                  </h3>
                 </div>
-                <div className="w-10 h-[2px] bg-[#F28C28]/40 mb-4 group-hover:w-16 transition-all duration-300" />
-                <p className="text-white/60 text-sm leading-relaxed font-medium">{point.text}</p>
+
+                <div className="w-12 h-[2px] bg-[#F28C28]/40 mb-5 group-hover:w-20 transition-all duration-300" />
+
+                <p className="text-white/60 text-sm leading-relaxed font-medium">
+                  {point.text}
+                </p>
               </div>
             ))}
           </div>
 
-          <div data-reveal="up" className="mb-10 text-center">
-            <p className="text-white/40 text-[11px] uppercase tracking-[0.25em] font-bold">The Four Pillars of Happiness Coaching</p>
+          {/* ================= PILLARS ================= */}
+          <div data-reveal="up" className="mb-12 text-center">
+            <p className="text-[#F28C28] text-[11px] uppercase tracking-[0.35em] font-bold">
+              The Four Pillars of Happiness Coaching
+            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {happinessPillars.map((p, i) => (
               <div
                 key={p.title}
                 data-reveal="up"
                 data-delay={`${i * 0.08}`}
-                className="group bg-white/[0.04] border border-white/[0.08] rounded-xl p-5 text-center hover:border-[#F28C28]/30 transition-all duration-300 hover:-translate-y-1"
+                className="group relative bg-white/[0.05] backdrop-blur-sm border border-white/[0.08] rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:border-[#F28C28]/40 hover:bg-white/[0.08]"
               >
-                <div className="text-3xl mb-3">{p.emoji}</div>
-                <h4 className="text-white font-bold text-sm mb-2">{p.title}</h4>
-                <p className="text-white/50 text-xs leading-relaxed font-medium">{p.desc}</p>
+                <div className="text-4xl mb-4">{p.emoji}</div>
+
+                <h4 className="text-white font-bold text-sm mb-3">
+                  {p.title}
+                </h4>
+
+                <p className="text-white/50 text-xs leading-relaxed font-medium">
+                  {p.desc}
+                </p>
               </div>
             ))}
           </div>
 
-          <div data-reveal="up" data-delay="0.15" className="mt-16 text-center">
-            <blockquote className="relative inline-block max-w-2xl">
-              <div className="text-5xl text-[#F28C28]/30 leading-none absolute -top-3 -left-4">"</div>
-              <p className="text-white/80 italic px-6 font-medium" style={{ fontSize: "clamp(1.05rem, 1.6vw, 1.3rem)", lineHeight: 1.6 }}>
-                True success is not just what you earn — it's who you become and how peacefully you can sleep at night.
+          {/* ================= QUOTE ================= */}
+          <div data-reveal="up" data-delay="0.15" className="mt-24 text-center">
+            <blockquote className="relative inline-block max-w-3xl">
+              {/* Decorative Quotes */}
+              <div className="text-6xl text-[#F28C28]/25 leading-none absolute -top-6 -left-6">
+                "
+              </div>
+
+              <p
+                className="text-white/80 italic px-8 font-medium"
+                style={{
+                  fontSize: "clamp(1.1rem, 1.6vw, 1.4rem)",
+                  lineHeight: 1.7,
+                }}
+              >
+                True success is not just what you earn — it’s who you become,
+                the peace you carry within, and how calmly you can sleep at night.
               </p>
-              <div className="text-5xl text-[#F28C28]/30 leading-none absolute -bottom-6 -right-4 rotate-180">"</div>
-              <cite className="block mt-5 text-[#F28C28] text-xs font-bold not-italic uppercase tracking-wide">— Pradeep Maheshwari</cite>
+
+              <div className="text-6xl text-[#F28C28]/25 leading-none absolute -bottom-10 -right-6 rotate-180">
+                "
+              </div>
+
+              <cite className="block mt-8 text-[#F28C28] text-xs font-bold not-italic uppercase tracking-[0.2em]">
+                — Pradeep Maheshwari
+              </cite>
             </blockquote>
           </div>
+
         </div>
       </section>
 
@@ -502,7 +634,7 @@ const Founder = () => {
       <section ref={credRef} className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <Eyebrow center>Section 04 — Credentials</Eyebrow>
+            {/* <Eyebrow center>Section 04 — Credentials</Eyebrow> */}
             <h2 data-reveal="up" className="text-[#071A33] font-bold" style={{ fontSize: "clamp(1.8rem, 3.5vw, 3.5rem)", letterSpacing: "-0.02em", lineHeight: 1.05 }}>
               Recognition &amp; Proof of Work
             </h2>
@@ -532,15 +664,15 @@ const Founder = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div data-reveal="left" className="order-last lg:order-first relative">
               <div className="absolute -bottom-4 -right-4 w-24 h-24 border-[3px] border-[#F28C28]/30 rounded-2xl -z-10" />
-              <div className="bg-white/[0.03] border border-[#F28C28]/20 p-4 rounded-2xl shadow-2xl max-w-xs mx-auto lg:mx-0">
-                <img src={awardImg} alt="Pradeep Maheshwari Award" className="w-full h-64 object-contain rounded-xl" loading="lazy" />
+              <div className="bg-white/[0.03] border border-[#F28C28]/20 p-4 rounded-2xl shadow-2xl max-w-sm mx-auto lg:mx-0">
+                <img src={awardImg} alt="Pradeep Maheshwari Award" className="w-full h-80 object-contain rounded-xl" loading="lazy" />
               </div>
               <div className="absolute -top-6 -left-6 w-24 h-24 bg-[#F28C28] rounded-full opacity-10 blur-3xl" />
             </div>
 
             <div className="space-y-10">
               <div data-reveal="right">
-                <Eyebrow dark>Section 05 — Legacy</Eyebrow>
+                {/* <Eyebrow dark>Section 05 — Legacy</Eyebrow> */}
                 <h2 className="text-white font-bold" style={{ fontSize: "clamp(1.8rem, 3.5vw, 3.5rem)", letterSpacing: "-0.02em", lineHeight: 1.05 }}>
                   Two Decades of<br /><span className="text-[#F28C28]">Compounding Trust</span>
                 </h2>
@@ -565,7 +697,7 @@ const Founder = () => {
       <section ref={newsRef} className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--ivory-dim)] relative overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <Eyebrow center>Section 07 — Media &amp; Recognition</Eyebrow>
+            {/* <Eyebrow center>Section 07 — Media &amp; Recognition</Eyebrow> */}
             <h2 data-reveal="up" className="text-[#071A33] font-bold" style={{ fontSize: "clamp(1.8rem, 3.5vw, 3.5rem)", letterSpacing: "-0.02em", lineHeight: 1.05 }}>
               In the News
             </h2>
@@ -583,7 +715,7 @@ const Founder = () => {
       </section>
 
       {/* Final CTA */}
-      <section ref={ctaRef} className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-[#071A33] relative overflow-hidden text-center text-white">
+      {/* <section ref={ctaRef} className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-[#071A33] relative overflow-hidden text-center text-white">
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 50% 0%, #F28C28, transparent 60%)" }} />
         <div className="max-w-2xl mx-auto relative z-10">
           <Eyebrow center dark>Let's Talk</Eyebrow>
@@ -598,7 +730,7 @@ const Founder = () => {
             <MagneticCTA href="/seminars" variant="ghost">Join a Free Seminar</MagneticCTA>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
